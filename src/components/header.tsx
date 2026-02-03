@@ -3,18 +3,19 @@ import "../styles/header.css";
 
 export default function Header() {
   const mainLinks = [
-    { label: "Gameplay", to: "/" },
-    { label: "Items", to: "/" },
-    { label: "Terrain", to: "/" },
-    { label: "Downloads", to: "/" },
-    { label: "Guides", to: "/" },
-    { label: "Roadmap", to: "/" },
+    { label: "Gameplay", to: "/gameplay" },
+    { label: "Items", to: "/items" },
+    { label: "Heroes", to: "/heroes" },
+    { label: "Forum", to: "/forum" },
+    { label: "Terrain", to: "/terrain" },
+    { label: "Guides", to: "/guides" },
+    { label: "Roadmap", to: "/roadmap" },
   ];
 
   const subLinks = [
-    { label: "Login", to: "/" },
+    { label: "Login", to: "/login" },
     { label: "Donations", to: "/" },
-    { label: "PLAY HERE", to: "/" },
+    { label: "PLAY HERE", to: "/downloads" },
   ];
 
   return (

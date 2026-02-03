@@ -50,7 +50,8 @@ h6 {
 
 span,
 div,
-p {
+p,
+a {
   font-size: var(--font-size-text);
   font-weight: var(--font-weight-regular);
   font-family: var(--font-family-secondary);
