@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
+import HeroBanner from "../components/banner";
 
 export default function HomePage() {
   return (
-    <main>
-      <h1>Homepage</h1>
-    </main>
+    <>
+      <HeroBanner></HeroBanner>
+    </>
   );
 }

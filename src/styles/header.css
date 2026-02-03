@@ -5,6 +5,10 @@
   padding-bottom: 1rem;
   background-color: var(--color-primary);
 
+  * {
+    color: var(--color-text-secondary);
+  }
+
   .logo {
     position: relative;
     display: flex;

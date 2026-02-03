@@ -10,7 +10,7 @@ import Roadmap from "./pages/roadmap";
 import Guide from "./pages/guides";
 import About from "./pages/about";
 import Join from "./pages/join";
-
+import Support from "./pages/support";
 import Layout from "./components/layout";
 
 function App() {
@@ -27,6 +27,7 @@ function App() {
         <Route path="guides" element={<Guide />} />
         <Route path="join" element={<Join />} />
         <Route path="about" element={<About />} />
+        <Route path="support" element={<Support />} />
       </Route>
     </Routes>
   );

@@ -2,8 +2,8 @@ html {
   --color-primary: #212324;
   --color-secondary: #e9e9e9;
 
-  --color-text-primary: #e9e9e9;
-  --color-text-secondary: #212324;
+  --color-text-primary: #212324;
+  --color-text-secondary: #e9e9e9;
 
   --color-link-primary: #e9e9e9;
   --color-link-hover-primary: #c8d6e4;
@@ -95,8 +95,8 @@ ul {
 }
 
 .section {
-  padding-top: var(--section-spacing);
-  padding-bottom: var(--section-spacing);
+  --padding-top: var(--section-spacing);
+  --padding-bottom: var(--section-spacing);
 }
 
 .hover-underline-animation {

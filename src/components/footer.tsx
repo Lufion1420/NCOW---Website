@@ -1,5 +1,9 @@
 import { Link } from "react-router-dom";
 import "../styles/footer.css";
+import discordIcon from "../assets/icon-discord.svg";
+import vkIcon from "../assets/icon-vk.svg";
+import instaIcon from "../assets/icon-insta.svg";
+import youtubeIcon from "../assets/icon-youtube.svg";
 
 export default function Footer() {
   return (
@@ -23,13 +27,25 @@ export default function Footer() {
           </li>
         </ul>
         <ul className="social_links">
-          <li className="icon-discord"></li>
-          <li className="icon-vk"></li>
-          <li className="icon-insta"></li>
-          <li className="icon-youtube"></li>
+          <li className="icon-discord">
+            <img src={discordIcon} alt="Discord" />
+            <Link to={`https://discord.gg/eHyt3YFP5y`}></Link>
+          </li>
+          <li className="icon-vk">
+            <img src={vkIcon} alt="VK" />
+            <Link to={`https://vk.com/club215919346`}></Link>
+          </li>
+          <li className="icon-insta">
+            <img src={instaIcon} alt="Instagram" />
+            <Link to={`/`}></Link>
+          </li>
+          <li className="icon-youtube">
+            <img src={youtubeIcon} alt="YouTube" />
+            <Link to={`https://www.youtube.com/@ncow8830`}></Link>
+          </li>
         </ul>
         <div className="logo">
-          <img src="https://placehold.co/125x125" alt="NCOW - Logo" />
+          <img src="https://placehold.co/100x100" alt="NCOW - Logo" />
         </div>
         <div className="footer_copyright">
           <span>© Website designed and developed by Maurice Samba.</span>
