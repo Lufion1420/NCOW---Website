@@ -3,11 +3,16 @@ import "../styles/header.css";
 
 export default function Header() {
   const mainLinks = [
-    { label: "Gameplay", to: "/gameplay" },
-    { label: "Items", to: "/items" },
-    { label: "Heroes", to: "/heroes" },
+    {
+      label: "Gameplay",
+      to: "/gameplay",
+      children: [
+        { label: "Items", to: "/items" },
+        { label: "Heroes", to: "/heroes" },
+        { label: "Terrain", to: "/terrain" },
+      ],
+    },
     { label: "Forum", to: "/forum" },
-    { label: "Terrain", to: "/terrain" },
     { label: "Guides", to: "/guides" },
     { label: "Roadmap", to: "/roadmap" },
   ];
@@ -27,8 +32,17 @@ export default function Header() {
       <nav>
         <ul className="main-nav">
           {mainLinks.map((link) => (
-            <li key={link.label} className="hover-underline-animation">
+            <li key={link.label} className={`hover-underline-animation ${link.children ? "has-submenu" : ""}`}>
               <Link to={link.to}>{link.label}</Link>
+              {link.children && (
+                <div className="submenu">
+                  {link.children.map((child) => (
+                    <div key={child.label}>
+                      <Link to={child.to}>{child.label}</Link>
+                    </div>
+                  ))}
+                </div>
+              )}
             </li>
           ))}
         </ul>
