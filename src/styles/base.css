@@ -1,14 +1,17 @@
 html {
-  --color-primary: #000000;
-  --color-secondary: #000000;
+  --color-primary: #e7e4ff;
+  --color-secondary: #cbbcff;
 
-  --color-text-primary: #000000;
-  --color-text-secondary: #000000;
+  --color-text-primary: #1a1a24;
+  --color-text-secondary: #5b5c73;
 
-  --color-link-primary: #000000;
+  --color-link-primary: #9a7cff;
 
-  --color-border-primary: #000000;
-  --color-border-secondary: #000000;
+  --color-border-primary: #2a2a38;
+  --color-border-secondary: #dcd4ff;
+
+  --font-family-primary: "Cinzel", "Cormorant Garamond", "Times New Roman", serif;
+  --font-family-secondary: "Source Sans 3", "Inter", "Segoe UI", sans-serif;
 
   --font-size-text: clamp(16px, 2vw, 20px);
   --font-size-headings: clamp(28px, 5vw, 46px);
@@ -39,6 +42,7 @@ h6 {
   margin: 0;
   font-size: clamp(24px, 5vw, 46px);
   font-weight: var(--font-weight-highlight);
+  font-family: var(--font-family-primary);
 }
 
 span,
@@ -46,6 +50,7 @@ div,
 p {
   font-size: var(--font-size-text);
   font-weight: var(--font-weight-regular);
+  font-family: var(--font-family-secondary);
 }
 
 button {
