@@ -88,6 +88,10 @@ ul {
   list-style: none;
 }
 
+img {
+  object-fit: contain;
+}
+
 /* Utility Classes */
 .container {
   padding-left: var(--padding-base);
