@@ -1,48 +1,43 @@
 import { Link } from "react-router-dom";
+import "../styles/header.css";
 
 export default function Header() {
-  const mainLinks = {};
+  const mainLinks = [
+    { label: "Gameplay", to: "/" },
+    { label: "Items", to: "/" },
+    { label: "Terrain", to: "/" },
+    { label: "Downloads", to: "/" },
+    { label: "Guides", to: "/" },
+    { label: "Roadmap", to: "/" },
+  ];
+
+  const subLinks = [
+    { label: "Login", to: "/" },
+    { label: "Donations", to: "/" },
+    { label: "PLAY HERE", to: "/" },
+  ];
 
   return (
-    <header className="header">
+    <header className="header container">
       <h1 className="logo">
-        <Link to={`/`}>
-          <img src="https://placehold.co/250x150" alt="NCOW - Logo" />
-        </Link>
+        <img src="https://placehold.co/75x75" alt="NCOW - Logo" />
+        <Link to={`/`}></Link>
       </h1>
-      <nav className="main-nav">
-        <ul>
-          <li>
-            <Link to={`/`}>Gameplay</Link>
-          </li>
-          <li>
-            <Link to={`/`}>Items</Link>
-          </li>
-          <li>
-            <Link to={`/`}>Terrain</Link>
-          </li>
-          <li>
-            <Link to={`/`}>Downloads</Link>
-          </li>
-          <li>
-            <Link to={`/`}>Guides</Link>
-          </li>
-          <li>
-            <Link to={`/`}>Roadmap</Link>
-          </li>
+      <nav>
+        <ul className="main-nav">
+          {mainLinks.map((link) => (
+            <li key={link.label} className="hover-underline-animation">
+              <Link to={link.to}>{link.label}</Link>
+            </li>
+          ))}
         </ul>
-      </nav>
-      <nav className="sub-nav">
-        <ul>
-          <li>
-            <Link to={`/`}>Login</Link>
-          </li>
-          <li>
-            <Link to={`/`}>Donations</Link>
-          </li>
-          <li>
-            <Link to={`/`}>PLAY HERE</Link>
-          </li>
+
+        <ul className="sub-nav">
+          {subLinks.map((link) => (
+            <li key={link.label} className="hover-underline-animation">
+              <Link to={link.to}>{link.label}</Link>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

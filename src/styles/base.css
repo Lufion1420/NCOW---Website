@@ -1,14 +1,17 @@
 html {
-  --color-primary: #e7e4ff;
-  --color-secondary: #cbbcff;
+  --color-primary: #212324;
+  --color-secondary: #e9e9e9;
 
-  --color-text-primary: #1a1a24;
-  --color-text-secondary: #5b5c73;
+  --color-text-primary: #e9e9e9;
+  --color-text-secondary: #212324;
 
-  --color-link-primary: #9a7cff;
+  --color-link-primary: #e9e9e9;
+  --color-link-hover-primary: #c8d6e4;
+  --color-link-secondary: #a23030;
+  --color-link-hover-secondary: #e7e1e7;
 
-  --color-border-primary: #2a2a38;
-  --color-border-secondary: #dcd4ff;
+  --color-border-primary: #a23030;
+  --color-border-secondary: #9b8980;
 
   --font-family-primary: "Cinzel", "Cormorant Garamond", "Times New Roman", serif;
   --font-family-secondary: "Source Sans 3", "Inter", "Segoe UI", sans-serif;
@@ -61,7 +64,11 @@ button {
 
 a {
   text-decoration: none;
-  color: inherit;
+  color: var(--color-link-primary);
+}
+
+a:hover {
+  color: var(--color-link-hover-primary);
 }
 
 li,
@@ -73,5 +80,34 @@ ul {
 
 /* Utility Classes */
 .container {
-  padding: var(--section-spacing) var(--padding-base);
+  padding-left: var(--padding-base);
+  padding-right: var(--padding-base);
+}
+
+.section {
+  padding-top: var(--section-spacing);
+  padding-bottom: var(--section-spacing);
+}
+
+.hover-underline-animation {
+  display: inline-block;
+  position: relative;
+}
+
+.hover-underline-animation::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: -0.5rem;
+  left: 0;
+  background-color: var(--color-link-hover-primary);
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
 }
