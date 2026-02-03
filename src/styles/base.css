@@ -34,6 +34,7 @@ html {
 body {
   margin: auto;
   max-width: var(--page-width);
+  background-color: var(--color-secondary);
 }
 
 h1,
