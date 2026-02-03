@@ -1,0 +1,72 @@
+html {
+  --color-primary: #000000;
+  --color-secondary: #000000;
+
+  --color-text-primary: #000000;
+  --color-text-secondary: #000000;
+
+  --color-link-primary: #000000;
+
+  --color-border-primary: #000000;
+  --color-border-secondary: #000000;
+
+  --font-size-text: clamp(16px, 2vw, 20px);
+  --font-size-headings: clamp(28px, 5vw, 46px);
+
+  --font-weight-regular: 500;
+  --font-weight-highlight: 600;
+
+  --page-width: 1920px;
+
+  --padding-base: 4rem;
+
+  --section-spacing: 5rem;
+
+  --border-radius: 25px;
+}
+
+body {
+  margin: auto;
+  max-width: var(--page-width);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-size: clamp(24px, 5vw, 46px);
+  font-weight: var(--font-weight-highlight);
+}
+
+span,
+div,
+p {
+  font-size: var(--font-size-text);
+  font-weight: var(--font-weight-regular);
+}
+
+button {
+  border-radius: var(--border-radius);
+  padding: 0.5rem 3rem;
+  width: fit-content;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+li,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Utility Classes */
+.container {
+  padding: var(--section-spacing) var(--padding-base);
+}
