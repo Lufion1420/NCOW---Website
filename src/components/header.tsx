@@ -17,18 +17,18 @@ export default function Header() {
     { label: "Roadmap", to: "/roadmap" },
   ];
 
-  const subLinks = [
+  /*   const subLinks = [
     { label: "Login", to: "/login" },
     { label: "Donations", to: "/" },
     { label: "PLAY HERE", to: "/downloads" },
-  ];
+  ]; */
 
   return (
     <header className="header container">
-      <h1 className="logo">
+      {/*  <h1 className="logo">
         <img src="https://placehold.co/75x75" alt="NCOW - Logo" />
         <Link to={`/`}></Link>
-      </h1>
+      </h1> */}
       <nav>
         <ul className="main-nav">
           {mainLinks.map((link) => (
@@ -43,14 +43,6 @@ export default function Header() {
                   ))}
                 </div>
               )}
-            </li>
-          ))}
-        </ul>
-
-        <ul className="sub-nav">
-          {subLinks.map((link) => (
-            <li key={link.label} className="hover-underline-animation">
-              <Link to={link.to}>{link.label}</Link>
             </li>
           ))}
         </ul>

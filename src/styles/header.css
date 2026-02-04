@@ -1,9 +1,16 @@
 .header {
   display: flex;
   gap: 2rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   background-color: var(--color-primary);
+  width: 40%;
+  margin: auto;
+  position: fixed;
+  top: 0.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px solid var(--color-border-primary);
 
   * {
     color: var(--color-text-secondary);
@@ -28,15 +35,19 @@
     justify-content: space-between;
     flex: 1;
 
-    ul {
-      display: flex;
-      gap: 1rem;
-      align-items: center;
-    }
-
     .main-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+
       li {
         position: relative;
+        display: flex;
+
+        a {
+          font-size: 14px;
+        }
       }
     }
 

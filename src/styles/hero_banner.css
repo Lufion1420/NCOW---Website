@@ -1,6 +1,27 @@
 .hero_banner {
+  height: 800px;
+  width: auto;
+  position: relative;
+  z-index: -1;
+
   img {
-    width: 100%;
-    height: 100%;
+    display: flex;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
+}
+
+.hero_banner::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: url(../assets/wallpapers/Wallpaper-4.jpg) no-repeat 50% / auto 100%;
+  filter: blur(20px);
+  width: 135%;
+  height: 135%;
+  z-index: -1;
 }
