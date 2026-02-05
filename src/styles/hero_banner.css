@@ -10,6 +10,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    width: 400px;
+    height: auto;
   }
 }
 
@@ -19,8 +21,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: url(../assets/wallpapers/NCOW-Wallpaper-3.png) no-repeat 50% / auto 100%;
-  --filter: blur(10px);
+  background: url(../assets/wallpapers/NCOW-Wallpaper-4.png) no-repeat 50% / auto 100%;
+  filter: blur(2px);
   width: 135%;
   height: 135%;
   z-index: -1;
