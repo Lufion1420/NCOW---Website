@@ -4,7 +4,7 @@ import "../styles/hero_banner.css";
 export default function HeroBanner() {
   return (
     <div className="hero_banner">
-      <img src="https://placehold.co/1000x600" alt="Placeholder Image" />
+      <img src="../assets/wallpapers/NCOW-Wallpaper-3.png" alt="Teste" />
     </div>
   );
 }
