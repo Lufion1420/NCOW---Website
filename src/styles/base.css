@@ -1,3 +1,11 @@
+@font-face {
+  font-family: "Noto Serif";
+  src: url("../assets/fonts/NotoSerif-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 html {
   /* Color Palette */
   --color-primary: #0b0d12; /* Main Page Background */
@@ -35,8 +43,7 @@ html {
   --color-glow: rgba(167, 199, 255, 0.35);
 
   /* Font Related */
-  --font-family-primary: MFW-PShueiMinPr6N-B, "Noto Serif", serif;
-  --font-family-secondary: "Source Sans 3", "Inter", "Segoe UI", sans-serif;
+  --font-family-primary: "Noto Serif", serif;
 
   --font-size-text: clamp(16px, 2vw, 20px);
   --font-size-headings: clamp(28px, 5vw, 46px);
@@ -45,7 +52,7 @@ html {
   --font-weight-highlight: 600;
 
   --letter-spacing-text: 0.02em;
-  --letter-spacing-headings: 0.1em;
+  --letter-spacing-headings: 0.05em;
   --line-height-text: inherit;
   --line-height-headings: inherit;
 
@@ -105,15 +112,10 @@ button {
   border-radius: var(--border-radius);
   padding: 0.5rem 3rem;
   width: fit-content;
-
-  * {
-    font-family: var(--font-family-secondary);
-  }
 }
 
 a {
   text-decoration: none;
-  font-family: var(--font-family-secondary);
 }
 
 li,

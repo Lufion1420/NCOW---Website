@@ -30,7 +30,9 @@ export default function Header() {
                 <div className="submenu">
                   {link.children.map((child) => (
                     <div key={child.label}>
-                      <Link to={child.to}>{child.label}</Link>
+                      <Link className="hover-underline-animation" to={child.to}>
+                        {child.label}
+                      </Link>
                     </div>
                   ))}
                 </div>

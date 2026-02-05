@@ -10,8 +10,10 @@
   top: 0.5rem;
   left: 50%;
   transform: translateX(-50%);
-  border: 3px solid var(--color-accent-primary);
+  border: 3px solid var(--color-border-primary);
   border-radius: 8px;
+  --background: url(../assets/ui/NCOW-Background-1.png) no-repeat 50%/100% 100%;
+  overflow: hidden;
 
   * {
     color: var(--color-text-secondary);
@@ -46,11 +48,9 @@
       opacity: 0;
       transform: translateY(4px);
       pointer-events: none;
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
+      flex-direction: column;
       gap: 0.5rem;
-      padding: 1.25rem 0rem;
+      padding: 1.25rem 1rem 0.75rem;
       background-color: var(--color-primary);
       border: 3px solid var(--color-accent-primary);
       width: 100%;
@@ -65,10 +65,6 @@
       opacity: 1;
       transform: translateY(0);
       pointer-events: auto;
-    }
-
-    .has-submenu > .submenu {
-      display: flex;
     }
 
     .has-submenu {

@@ -4,6 +4,7 @@ import discordIcon from "../assets/icon-discord.svg";
 import vkIcon from "../assets/icon-vk.svg";
 import instaIcon from "../assets/icon-insta.svg";
 import youtubeIcon from "../assets/icon-youtube.svg";
+import logo from "../assets/logos/NCOW-Logo-4.png";
 
 export default function Footer() {
   return (
@@ -45,7 +46,7 @@ export default function Footer() {
           </li>
         </ul>
         <div className="logo">
-          <img src="https://placehold.co/100x100" alt="NCOW - Logo" />
+          <img src={logo} alt="NCOW Logo" />
         </div>
         <div className="footer_copyright">
           <span>© Website designed and developed by Maurice Samba.</span>
