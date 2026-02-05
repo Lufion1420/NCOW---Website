@@ -44,7 +44,7 @@ html {
   --font-weight-regular: 500;
   --font-weight-highlight: 600;
 
-  --letter-spacing-text: 1.77px;
+  --letter-spacing-text: 0.02em;
   --letter-spacing-headings: 0.1em;
   --line-height-text: inherit;
   --line-height-headings: inherit;
@@ -88,7 +88,7 @@ p,
 a {
   font-size: var(--font-size-text);
   font-weight: var(--font-weight-regular);
-  font-family: var(--font-family-secondary);
+  font-family: var(--font-family-primary);
   margin: 0;
   color: var(--color-text-secondary);
   letter-spacing: var(--letter-spacing-text);
@@ -99,10 +99,15 @@ button {
   border-radius: var(--border-radius);
   padding: 0.5rem 3rem;
   width: fit-content;
+
+  * {
+    font-family: var(--font-family-secondary);
+  }
 }
 
 a {
   text-decoration: none;
+  font-family: var(--font-family-secondary);
 }
 
 li,

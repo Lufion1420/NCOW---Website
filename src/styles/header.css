@@ -4,13 +4,14 @@
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   background-color: var(--color-primary);
-  width: 40%;
+  width: 30%;
   margin: auto;
   position: fixed;
   top: 0.5rem;
   left: 50%;
   transform: translateX(-50%);
   border: 2px solid var(--color-border-primary);
+  border-radius: 8px;
 
   * {
     color: var(--color-text-secondary);
@@ -42,7 +43,6 @@
       width: 100%;
 
       li {
-        position: relative;
         display: flex;
 
         a {
