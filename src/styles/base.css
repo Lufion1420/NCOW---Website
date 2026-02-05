@@ -150,6 +150,10 @@ hr {
   position: relative;
 }
 
+.hover-underline-animation:hover {
+  color: var(--color-link-hover-primary);
+}
+
 .hover-underline-animation::after {
   content: "";
   position: absolute;

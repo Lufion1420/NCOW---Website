@@ -4,7 +4,7 @@
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   background-color: var(--color-primary);
-  width: 30%;
+  width: 40%;
   margin: auto;
   position: fixed;
   top: 0.5rem;
@@ -12,12 +12,7 @@
   transform: translateX(-50%);
   border: 3px solid var(--color-border-primary);
   border-radius: 8px;
-  --background: url(../assets/ui/NCOW-Background-1.png) no-repeat 50%/100% 100%;
   overflow: hidden;
-
-  * {
-    color: var(--color-text-secondary);
-  }
 
   nav {
     display: flex;
@@ -35,8 +30,8 @@
         display: flex;
 
         a {
-          font-size: 14px;
-          font-weight: 600;
+          font-size: 20px;
+          font-weight: 500;
         }
       }
     }
