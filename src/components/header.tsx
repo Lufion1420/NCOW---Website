@@ -12,7 +12,15 @@ export default function Header() {
         { label: "Terrain", to: "/terrain" },
       ],
     },
-    { label: "Forum", to: "/forum" },
+    {
+      label: "Forum",
+      to: "/forum",
+      children: [
+        { label: "Items", to: "/items" },
+        { label: "Heroes", to: "/heroes" },
+        { label: "Terrain", to: "/terrain" },
+      ],
+    },
     { label: "Guides", to: "/guides" },
     { label: "Roadmap", to: "/roadmap" },
   ];
