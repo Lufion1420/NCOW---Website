@@ -17,23 +17,15 @@ export default function Header() {
     { label: "Roadmap", to: "/roadmap" },
   ];
 
-  /*   const subLinks = [
-    { label: "Login", to: "/login" },
-    { label: "Donations", to: "/" },
-    { label: "PLAY HERE", to: "/downloads" },
-  ]; */
-
   return (
     <header className="header container">
-      {/*  <h1 className="logo">
-        <img src="https://placehold.co/75x75" alt="NCOW - Logo" />
-        <Link to={`/`}></Link>
-      </h1> */}
       <nav>
         <ul className="main-nav">
           {mainLinks.map((link) => (
-            <li key={link.label} className={`hover-underline-animation ${link.children ? "has-submenu" : ""}`}>
-              <Link to={link.to}>{link.label}</Link>
+            <li key={link.label} className={link.children ? "has-submenu" : ""}>
+              <Link to={link.to} className="hover-underline-animation">
+                {link.label}
+              </Link>
               {link.children && (
                 <div className="submenu">
                   {link.children.map((child) => (

@@ -61,6 +61,12 @@ html {
   grid-template-rows: auto 1fr auto;
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   margin: auto;
   max-width: var(--page-width);
