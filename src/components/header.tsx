@@ -45,7 +45,7 @@ export default function Header() {
 
   return (
     <>
-      <header className="header container">
+      <header className="header">
         <nav>
           <ul className="main-nav">
             {mainLinks.map((link, index) => (

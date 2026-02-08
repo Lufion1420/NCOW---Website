@@ -14,15 +14,30 @@
     }
   }
 
+  .quick_banner_wrapper:hover {
+    ::before {
+      filter: invert(30%) sepia(50%) saturate(300%) hue-rotate(20deg) brightness(150%) contrast(125%);
+    }
+
+    .quick_banner_text img {
+      transform: translateX(2rem) translateY(-50%);
+    }
+  }
+
+  .quick_banner_wrapper:hover::before {
+    filter: invert(100%) sepia(60%) saturate(100%) hue-rotate(40deg) brightness(110%) contrast(155%);
+  }
+
   .quick_banner_wrapper::before {
-    background: url(../assets/ui/NCOW-Button-2.png) no-repeat 100% / 100% 100%;
+    background: url(../assets/ui/NCOW-Button-2.png) no-repeat 50% / 100% 100%;
     content: "";
     position: absolute;
     width: 120%;
     height: 100%;
-    left: -6rem;
+    left: -9rem;
     top: 0;
-    filter: invert(30%) sepia(50%) saturate(300%) hue-rotate(20deg) brightness(100%) contrast(125%);
+    filter: invert(100%) sepia(60%) saturate(100%) hue-rotate(40deg) brightness(100%) contrast(155%);
+    transition: filter 300ms ease;
   }
 
   .quick_banner_content {
@@ -36,6 +51,10 @@
     gap: 0.5rem;
     align-items: center;
     justify-content: center;
+
+    h3 {
+      padding-bottom: 0.5rem;
+    }
 
     a {
       position: absolute;
@@ -59,12 +78,16 @@
       span {
         max-width: 80%;
         color: black;
-        font-size: 16px;
+        font-size: 14px;
       }
     }
 
     .quick_banner_text {
       position: relative;
+
+      span {
+        font-size: 16px;
+      }
 
       img {
         width: 50px;
@@ -75,12 +98,6 @@
         transform: translateY(-50%);
         transition: transform 300ms ease;
       }
-    }
-  }
-
-  .quick_banner_content:hover {
-    .quick_banner_text img {
-      transform: translateX(2rem) translateY(-50%);
     }
   }
 }

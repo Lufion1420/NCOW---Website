@@ -66,7 +66,7 @@ html {
   --color-border-selected: #9fb8ff; /* Selected Items */
 
   --color-accent-primary: #d0af76; /* Both of these used sparingly for active nav, skill highlights, important Buttons */
-  --color-accent-secondary: #7697d0;
+  --color-accent-secondary: #8fb7ff;
 
   --color-success: #6fcf97;
   --color-warning: #e6c36a;
@@ -86,7 +86,7 @@ html {
   /* Font Related */
   --font-family-primary: "Shippori Mincho", serif;
 
-  --font-size-text: clamp(16px, 2vw, 20px);
+  --font-size-text: min(1vw, 21px);
   --font-size-h2: min(3.6458333333vw, 35px);
   --font-size-h3: min(2.6041666667vw, 26px);
 
@@ -99,7 +99,7 @@ html {
   --line-height-headings: inherit;
 
   --page-width: 1920px;
-  --padding-base: 4rem;
+  --padding-base: 10rem;
   --section-spacing: 5rem;
   --border-radius: 25px;
 }

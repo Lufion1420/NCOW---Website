@@ -32,8 +32,7 @@
 .header {
   display: flex;
   gap: 2rem;
-  padding-top: 0.9rem;
-  padding-bottom: 0.9rem;
+  padding: 0.9rem 4rem;
   background-color: var(--color-primary);
   width: 35%;
   margin: auto;

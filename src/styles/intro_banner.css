@@ -108,7 +108,7 @@
     button:hover > span::after,
     button:focus-visible > span::after {
       opacity: 1;
-      transform: translate(-50%, 0) scale(1.5);
+      transform: translate(-50%, 0);
     }
   }
 
@@ -121,7 +121,6 @@
   p {
     filter: drop-shadow(0 0 min(0.2604166667vw, 5px) white) drop-shadow(0 0 min(0.5208333333vw, 10px) white) drop-shadow(0 0 min(0.78125vw, 15px) white) drop-shadow(0 0 min(1.0416666667vw, 20px) white);
     color: var(--color-text-tetriary);
-    font-size: min(1.1979166667vw, 23px);
     font-weight: 700;
     line-height: 2.5;
     letter-spacing: min(0.01rem, 1px);
@@ -129,10 +128,11 @@
 
   > img {
     position: absolute;
-    width: 600px;
+    width: 800px;
     height: auto;
     top: 55%;
     transform: translateY(-50%);
     z-index: 1;
+    filter: blur(2px);
   }
 }

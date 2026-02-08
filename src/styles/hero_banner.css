@@ -65,7 +65,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: url(../assets/wallpapers/NCOW-Wallpaper-4.png) no-repeat 50% / auto 100%;
+  background: url(../assets/wallpapers/NCOW-Wallpaper-4.png) no-repeat 50% / 100% 100%;
   filter: blur(2px);
   width: 100%;
   height: 100%;

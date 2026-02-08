@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../styles/quick_banner.css";
-import Arrow from "../assets/ui/NCOW-Kunai-3.png";
+import Arrow from "../assets/ui/NCOW-Kunai-1_2.png";
 
 export default function QuickBanner() {
   return (
