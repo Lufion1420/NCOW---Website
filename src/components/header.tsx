@@ -31,16 +31,12 @@ export default function Header() {
         <ul className="main-nav">
           {mainLinks.map((link) => (
             <li key={link.label} className={link.children ? "has-submenu" : ""}>
-              <Link to={link.to} className="hover-underline-animation">
-                {link.label}
-              </Link>
+              <Link to={link.to}>{link.label}</Link>
               {link.children && (
                 <div className="submenu">
                   {link.children.map((child) => (
                     <div key={child.label}>
-                      <Link className="hover-underline-animation" to={child.to}>
-                        {child.label}
-                      </Link>
+                      <Link to={child.to}>{child.label}</Link>
                     </div>
                   ))}
                 </div>

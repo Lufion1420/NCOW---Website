@@ -8,11 +8,11 @@
 
 html {
   /* Color Palette */
-  --color-primary: #0b0d12; /* Main Page Background */
+  --color-primary: #212324; /* Main Page Background */
   --color-secondary: #151a24; /* Background for Cards, Sections, Navigation */
 
-  --color-text-primary: #edeff4; /* Headings / Main Text */
-  --color-text-secondary: #b6bccb; /* Descriptions */
+  --color-text-primary: #d0af76; /* Headings / Main Text */
+  --color-text-secondary: #e9e9e9; /* Descriptions */
   --color-text-disabled: #7d8496; /* Tooltips or Disabled UI */
 
   --color-link-primary: #8fb7ff; /* Main Links */
@@ -20,7 +20,7 @@ html {
   --color-link-hover-primary: #b3d1ff;
   --color-link-hover-secondary: #d2c8ff;
 
-  --color-border-primary: #2a3042; /* Cards / Panels */
+  --color-border-primary: #d0af76; /* Cards / Panels */
   --color-border-secondary: #3b4a6a; /* Active States */
   --color-border-selected: #9fb8ff; /* Selected Items */
 
@@ -221,4 +221,11 @@ hr {
   * {
     color: var(--color-text-disabled);
   }
+}
+
+.test {
+  width: 800px;
+  height: 400px;
+  margin: auto auto;
+  background: url(../assets/ui/NCOW-Border-1.png) no-repeat 50% / auto 100%;
 }

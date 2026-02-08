@@ -6,9 +6,9 @@
 
   span {
     text-shadow:
-      0 0 0.2083333333vw var(--color-text-primary),
-      0 0 0.2083333333vw var(--color-text-primary),
-      0 0 0.2604166667vw var(--color-text-primary);
+      0 0 0.2083333333vw var(--color-text-secondary),
+      0 0 0.2083333333vw var(--color-text-secondary),
+      0 0 0.2604166667vw var(--color-text-secondary);
     font-size: 46px;
     display: flex;
     position: absolute;
@@ -23,10 +23,10 @@
     content: "";
     position: absolute;
     inset: -0.01em -0.2em;
-    background: var(--color-text-secondary);
-    filter: blur(18px);
+    filter: blur(28px);
     z-index: -1;
     border-radius: 999px;
+    background: url(../assets/ui/NCOW-AccentBackground-2.png) no-repeat 50% / auto 100%;
   }
 
   img {
