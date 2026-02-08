@@ -8,7 +8,7 @@ export default function QuickBanner() {
     <div className="quick_banner">
       <div className="quick_banner_wrapper">
         <img src={Juubi} alt="Juubi" />
-        <div className="quick_banner_content container">
+        <div className="quick_banner_content">
           <Link to="/XXX"></Link>
           <h3>Jetzt vorbestellen</h3>
           <div className="quick_banner_subheading">
