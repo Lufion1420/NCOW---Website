@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import "../styles/hero_banner.css";
-import logo from "../assets/logos/NCOW-Logo-3.png";
+import logo from "../assets/logos/NCOW-Logo-1.png";
 
 export default function HeroBanner() {
   return (

@@ -44,41 +44,47 @@ export default function Header() {
   ];
 
   return (
-    <header className="header container">
-      <nav>
-        <ul className="main-nav">
-          {mainLinks.map((link, index) => (
-            <li
-              key={link.label}
-              className={link.children ? "has-submenu" : ""}
-              onMouseEnter={() => {
-                if (!link.children) {
-                  return;
-                }
-                clearCloseTimer();
-                setOpenIndex(index);
-              }}
-              onMouseLeave={() => {
-                if (!link.children) {
-                  return;
-                }
-                scheduleClose();
-              }}
-            >
-              <Link to={link.to}>{link.label}</Link>
-              {link.children && (
-                <div className={`submenu ${openIndex === index ? "is-open" : ""}`} onMouseEnter={clearCloseTimer} onMouseLeave={scheduleClose}>
-                  {link.children.map((child) => (
-                    <div key={child.label}>
-                      <Link to={child.to}>{child.label}</Link>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </header>
+    <>
+      <header className="header container">
+        <nav>
+          <ul className="main-nav">
+            {mainLinks.map((link, index) => (
+              <li
+                key={link.label}
+                className={link.children ? "has-submenu" : ""}
+                onMouseEnter={() => {
+                  if (!link.children) {
+                    return;
+                  }
+                  clearCloseTimer();
+                  setOpenIndex(index);
+                }}
+                onMouseLeave={() => {
+                  if (!link.children) {
+                    return;
+                  }
+                  scheduleClose();
+                }}
+              >
+                <Link to={link.to}>{link.label}</Link>
+                {link.children && (
+                  <div className={`submenu ${openIndex === index ? "is-open" : ""}`} onMouseEnter={clearCloseTimer} onMouseLeave={scheduleClose}>
+                    {link.children.map((child) => (
+                      <div key={child.label}>
+                        <Link to={child.to}>{child.label}</Link>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </header>
+
+      <button className="header_download_button">
+        <Link to={"/download"}>Download</Link>
+      </button>
+    </>
   );
 }

@@ -4,7 +4,7 @@ import discordIcon from "../assets/icon-discord.svg";
 import vkIcon from "../assets/icon-vk.svg";
 import instaIcon from "../assets/icon-insta.svg";
 import youtubeIcon from "../assets/icon-youtube.svg";
-import logo from "../assets/logos/NCOW-Logo-4.png";
+import logo from "../assets/logos/NCOW-Logo-2.png";
 
 export default function Footer() {
   return (
