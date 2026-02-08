@@ -1,0 +1,20 @@
+.character_cards {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+
+  .card_list {
+    .card {
+      display: flex;
+      flex-direction: column;
+      background: url(../assets/ui/NCOW-OpenScroll-1.png) no-repeat 50% / 100% 100%;
+
+      > * {
+        width: fit-content;
+      }
+    }
+  }
+}
