@@ -8,8 +8,8 @@ export default function HomePage() {
     <>
       <HeroBanner></HeroBanner>
       <QuickBanner></QuickBanner>
-      <IntroBanner></IntroBanner>
-      <CharacterCards></CharacterCards>
+      {/*       <IntroBanner></IntroBanner> */}
+      {/*   <CharacterCards></CharacterCards> */}
     </>
   );
 }

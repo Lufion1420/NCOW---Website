@@ -5,9 +5,21 @@
 
   .quick_banner_wrapper {
     position: relative;
-    padding-bottom: 3rem;
-    padding-top: 3rem;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
     pointer-events: none;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    max-height: 12rem;
+
+    > img {
+      width: 350px;
+      height: 350px;
+      position: relative;
+      bottom: 3.5rem;
+      z-index: 1;
+    }
 
     * {
       pointer-events: auto;
@@ -20,28 +32,27 @@
     }
 
     .quick_banner_text img {
-      transform: translateX(2rem) translateY(-50%);
+      transform: translateX(1rem) translateY(-50%);
     }
   }
 
   .quick_banner_wrapper:hover::before {
-    filter: invert(100%) sepia(60%) saturate(100%) hue-rotate(40deg) brightness(110%) contrast(155%);
+    filter: invert(0%) sepia(100%) saturate(800%) hue-rotate(750deg) brightness(90%) contrast(150%);
   }
 
   .quick_banner_wrapper::before {
-    background: url(../assets/ui/NCOW-Button-2.png) no-repeat 50% / 100% 100%;
+    background: url(../assets/ui/NCOW-Banner-6.png) no-repeat 50% / 100% 100%;
     content: "";
     position: absolute;
     width: 120%;
     height: 100%;
     left: -9rem;
     top: 0;
-    filter: invert(100%) sepia(60%) saturate(100%) hue-rotate(40deg) brightness(100%) contrast(155%);
+    filter: invert(0%) sepia(100%) saturate(800%) hue-rotate(750deg) brightness(70%) contrast(150%);
     transition: filter 300ms ease;
   }
 
   .quick_banner_content {
-    margin: auto 15%;
     display: flex;
     flex-direction: row;
     position: relative;
@@ -69,8 +80,8 @@
     }
 
     .quick_banner_subheading {
-      background: url(../assets/ui/NCOW-Banner-1.png) no-repeat 50% / 100% 100%;
-      padding: 1rem 2rem 2rem 2rem;
+      background: url(../assets/ui/NCOW-Banner-4.png) no-repeat 50% / 100% 100%;
+      padding: 0.5rem 1rem 0.5rem 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -102,7 +113,7 @@
   }
 }
 
-.quick_banner::before,
+/* .quick_banner::before,
 .quick_banner::after {
   content: "";
   position: absolute;
@@ -120,3 +131,4 @@
 .quick_banner::after {
   bottom: -2rem;
 }
+ */
