@@ -86,7 +86,7 @@ html {
   /* Font Related */
   --font-family-primary: "Shippori Mincho", serif;
 
-  --font-size-text: min(1vw, 21px);
+  --font-size-text: min(14px, 16px);
   --font-size-h2: min(3.6458333333vw, 35px);
   --font-size-h3: min(2.6041666667vw, 26px);
 
