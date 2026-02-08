@@ -83,7 +83,8 @@ export default function Header() {
       </header>
 
       <button className="header_download_button">
-        <Link to={"/download"}>Download</Link>
+        <span>Download</span>
+        <Link to={"/download"}></Link>
       </button>
     </>
   );

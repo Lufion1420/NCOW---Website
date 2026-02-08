@@ -6,8 +6,9 @@
 
   .footer_nav {
     display: flex;
-    gap: 1rem;
+    gap: 2rem;
     flex-direction: column;
+    align-items: center;
 
     a {
       font-size: 12px;
@@ -35,27 +36,6 @@
       > * {
         text-transform: uppercase;
         font-weight: var(--font-weight-highlight);
-      }
-    }
-
-    .social_links {
-      li {
-        width: 25px !important;
-        height: 25px !important;
-        position: relative;
-
-        a {
-          position: absolute;
-          width: 100%;
-          height: 100%;
-          left: 0;
-          top: 0;
-        }
-      }
-
-      li.icon-youtube {
-        width: 32px !important;
-        height: 32px !important;
       }
     }
 

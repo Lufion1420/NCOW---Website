@@ -2,10 +2,36 @@
   height: 800px;
   width: auto;
   position: relative;
-  z-index: -1;
-  pointer-events: none;
 
-  span {
+  .social_sidebar {
+    position: absolute;
+    left: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+
+    span {
+      writing-mode: vertical-rl;
+      font-size: 16px;
+      margin-bottom: 1rem;
+      text-shadow:
+        1px 1px 10px var(--color-text-primary),
+        1px 1px 10px var(--color-text-primary);
+    }
+
+    ul {
+      flex-direction: column;
+
+      > li > img {
+        filter: drop-shadow(0px 0px 6px var(--color-text-primary));
+      }
+
+      > li:hover img {
+        filter: drop-shadow(0px 0px 12px var(--color-text-secondary));
+      }
+    }
+  }
+
+  > span {
     text-shadow:
       0 0 0.2083333333vw var(--color-text-secondary),
       0 0 0.2083333333vw var(--color-text-secondary),
@@ -20,7 +46,7 @@
     padding: 1rem;
   }
 
-  span::before {
+  > span::before {
     content: "";
     position: absolute;
     inset: -0.01em -0.2em;
@@ -30,7 +56,7 @@
     background: url(../assets/ui/NCOW-AccentBackground-2.png) no-repeat 50% / auto 100%;
   }
 
-  img {
+  > img {
     display: flex;
     position: absolute;
     top: 40%;
@@ -52,4 +78,5 @@
   width: 100%;
   height: 100%;
   z-index: -1;
+  pointer-events: none;
 }
