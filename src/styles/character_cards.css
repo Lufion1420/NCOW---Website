@@ -18,38 +18,10 @@
       background: url(../assets/ui/NCOW-OpenScroll-1.png) no-repeat 50% / 100% 100%;
       min-height: 800px;
       padding-top: 5rem;
-
-      .char_name {
-        padding: 1rem 0;
-        position: relative;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-
-        span {
-          font-size: 18px;
-          font-weight: 700;
-          z-index: 2;
-          position: relative;
-          color: black;
-          letter-spacing: -0.07em;
-        }
-      }
-
-      .char_name::before {
-        background: url(../assets/ui/NCOW-AccentBackground-1.png) no-repeat 50% / 100% 100%;
-        content: "";
-        position: absolute;
-        width: 75%;
-        height: 100%;
-        left: 3rem;
-        top: 0;
-        z-index: -1;
-      }
+      overflow: hidden;
 
       .card_content {
-        padding: 1rem 3rem 2rem 3rem;
+        padding: 1rem 2rem 2rem 2rem;
         flex: 1;
         width: 100%;
         max-width: 85%;
@@ -57,6 +29,36 @@
         flex-direction: column;
         min-height: 0;
         gap: 1rem;
+
+        .char_name {
+          margin-top: 2rem;
+          padding: 1rem 0;
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 100%;
+
+          span {
+            font-size: 18px;
+            font-weight: 700;
+            z-index: 2;
+            position: relative;
+            color: black;
+            letter-spacing: -0.07em;
+          }
+        }
+
+        .char_name::before {
+          background: url(../assets/ui/NCOW-AccentBackground-1.png) no-repeat 50% / 100% 100%;
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          left: 0;
+          top: 0;
+          z-index: -1;
+        }
 
         .char_description {
           padding: 1rem 0 0;

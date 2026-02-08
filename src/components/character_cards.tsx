@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import { Pagination } from "swiper/modules";
 import "swiper/swiper.css";
 
 import JuubiCard from "../assets/ui/NCOW-Juubi-2.png";
@@ -159,21 +159,21 @@ export default function CharacterCards() {
 
       <Swiper
         className="card_list"
-        modules={[Navigation, Pagination]}
-        slidesPerView={2.3}
+        modules={[Pagination]}
+        slidesPerView={1}
         spaceBetween={24}
-        navigation
         pagination={{ clickable: true }}
         breakpoints={{
           768: { slidesPerView: 1 },
+          1200: { slidesPerView: 3 },
         }}
       >
         {cards.map((card) => (
           <SwiperSlide className="card" key={card.name}>
-            <div className="char_name">
-              <span>{card.name}</span>
-            </div>
             <div className="card_content">
+              <div className="char_name">
+                <span>{card.name}</span>
+              </div>
               <img src={card.image} alt={card.name} />
               <AutoEllipsisText className="char_description" text={card.description} />
               <button>
