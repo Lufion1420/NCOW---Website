@@ -4,14 +4,14 @@
   gap: 1.1rem;
 
   > li > img {
-    filter: drop-shadow(0px 0px 6px var(--color-text-primary)) invert(0%) contrast(100%);
+    filter: drop-shadow(0px 0px 6px var(--color-accent-primary)) invert(0%) contrast(100%);
     transition:
       filter 0.5s ease,
       transform 0.5s ease;
   }
 
   > li:hover img {
-    filter: drop-shadow(0px 0px 12px var(--color-text-secondary)) invert(100%) contrast(130%);
+    filter: drop-shadow(0px 0px 12px var(--color-accent-primary)) invert(100%) contrast(130%);
     transform: scale(130%);
   }
 

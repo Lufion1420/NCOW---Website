@@ -14,8 +14,8 @@
       font-size: 16px;
       margin-bottom: 1rem;
       text-shadow:
-        1px 1px 10px var(--color-text-primary),
-        1px 1px 10px var(--color-text-primary);
+        1px 1px 10px var(--color-accent-primary),
+        1px 1px 10px var(--color-accent-primary);
     }
 
     ul {
@@ -25,9 +25,9 @@
 
   > span {
     text-shadow:
-      0 0 0.2083333333vw var(--color-text-secondary),
-      0 0 0.2083333333vw var(--color-text-secondary),
-      0 0 0.2604166667vw var(--color-text-secondary);
+      0 0 0.2083333333vw var(--color-accent-primary),
+      0 0 0.2083333333vw var(--color-accent-primary),
+      0 0 0.2604166667vw var(--color-accent-primary);
     font-size: 46px;
     display: flex;
     position: absolute;

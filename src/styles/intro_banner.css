@@ -1,0 +1,95 @@
+.intro_banner::before {
+  background: url(../assets/wallpapers/NCOW-Wallpaper-5.png) no-repeat 50% / 100% 100%;
+  filter: blur(2px);
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.intro_banner {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  position: relative;
+
+  @media screen and (max-width: 768px) {
+    background: url(../assets/wallpapers/NCOW-Wallpaper-5.png) no-repeat 50% / auto 100%;
+  }
+
+  .intro_text {
+    margin-left: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    z-index: 2;
+    position: relative;
+
+    button {
+      background: url(../assets/ui/NCOW-Border-2.png) no-repeat 50% / 100% 100%;
+      border: none;
+      padding: 2rem 6rem;
+      width: 100%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 0;
+
+      a {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        inset: 0;
+      }
+
+      > span {
+        text-shadow:
+          0 0 min(1.0416666667vw, 20px) var(--color-accent-secondary),
+          0 0 min(0.78125vw, 15px) var(--color-accent-secondary),
+          0 0 min(0.5208333333vw, 10px) var(--color-accent-secondary),
+          0 0 min(0.2604166667vw, 5px) var(--color-accent-secondary);
+        font-size: 16px;
+      }
+    }
+
+    button::before {
+      background: url(../assets/ui/NCOW-AccentBackground-1.png) no-repeat 50% / 100% 100%;
+      content: "";
+      position: absolute;
+      inset: 0;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 105%;
+      height: 70%;
+      z-index: -10;
+      filter: drop-shadow(0px 0px 12px var(--color-accent-primary)) invert(100%) contrast(130%);
+      transition: filter 320ms ease;
+    }
+
+    button:hover::before {
+      filter: drop-shadow(0px 0px 12px var(--color-accent-primary)) invert(100%) contrast(80%);
+    }
+  }
+
+  h2 {
+    padding-bottom: 10rem;
+    z-index: 2;
+    position: relative;
+  }
+
+  p {
+    filter: drop-shadow(0 0 min(0.2604166667vw, 5px) white) drop-shadow(0 0 min(0.5208333333vw, 10px) white) drop-shadow(0 0 min(0.78125vw, 15px) white) drop-shadow(0 0 min(1.0416666667vw, 20px) white);
+    color: var(--color-text-tetriary);
+    font-size: min(1.1979166667vw, 23px);
+    font-weight: 700;
+    line-height: 2.5;
+    letter-spacing: min(0.01rem, 1px);
+  }
+
+  img {
+    position: absolute;
+    width: 600px;
+    height: auto;
+    top: 55%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+}

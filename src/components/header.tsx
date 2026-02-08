@@ -27,7 +27,7 @@ export default function Header() {
 
   const mainLinks = [
     {
-      label: "Gameplay",
+      label: "Geschichte",
       to: "/gameplay",
       children: [
         { label: "Items", to: "/items" },
