@@ -222,10 +222,3 @@ hr {
     color: var(--color-text-disabled);
   }
 }
-
-.test {
-  width: 800px;
-  height: 400px;
-  margin: auto auto;
-  background: url(../assets/ui/NCOW-Border-1.png) no-repeat 50% / auto 100%;
-}

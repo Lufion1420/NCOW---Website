@@ -5,7 +5,6 @@ export default function HomePage() {
   return (
     <>
       <HeroBanner></HeroBanner>
-      <div className="test"></div>
     </>
   );
 }
