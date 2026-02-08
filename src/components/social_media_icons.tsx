@@ -12,11 +12,7 @@ import youtubeIcon_colored from "../assets/icons/icon-youtube_colored.png";
 
 import "../styles/social_media_icons.css";
 
-type SocialIconsProps = {
-  useColoredIcons?: boolean;
-};
-
-export default function SocialIcons({ useColoredIcons = false }: SocialIconsProps) {
+export default function SocialIcons({ useColoredIcons = false }) {
   return (
     <ul className="social_links">
       <li className="icon-discord">

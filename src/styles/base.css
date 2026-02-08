@@ -24,7 +24,7 @@ html {
   --color-border-secondary: #3b4a6a; /* Active States */
   --color-border-selected: #9fb8ff; /* Selected Items */
 
-  --color-accent-primary: #a7c7ff; /* Both of these used sparingly for active nav, skill highlights, important Buttons */
+  --color-accent-primary: #d0af76; /* Both of these used sparingly for active nav, skill highlights, important Buttons */
   --color-accent-secondary: #9d8fe8;
 
   --color-success: #6fcf97;
@@ -87,12 +87,24 @@ h4,
 h5,
 h6 {
   margin: 0;
-  font-size: clamp(24px, 5vw, 46px);
   font-weight: var(--font-weight-highlight);
   font-family: var(--font-family-primary);
   line-height: var(--line-height-headings);
   letter-spacing: var(--letter-spacing);
   color: var(--color-text-primary);
+}
+
+h2 {
+  font-size: min(3.6458333333vw, 70px);
+  filter: drop-shadow(0 0 min(0.5208333333vw, 10px) var(--color-accent-primary)) drop-shadow(0 0 min(1.0416666667vw, 20px) var(--color-accent-primary)) drop-shadow(0 0 min(1.5625vw, 30px) var(--color-accent-primary));
+}
+
+h3 {
+  font-size: min(2.6041666667vw, 50px);
+  text-shadow:
+    0 0 min(0.5208333333vw, 10px) var(--color-accent-primary),
+    0 0 min(1.0416666667vw, 20px) var(--color-accent-primary),
+    0 0 min(1.0416666667vw, 20px) var(--color-accent-primary);
 }
 
 span,
