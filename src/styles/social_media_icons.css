@@ -1,7 +1,7 @@
 .social_links {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 1.1rem;
 
   li {
     display: flex;

@@ -9,7 +9,7 @@ export default function HeroBanner() {
     <div className="hero_banner">
       <div className="social_sidebar">
         <span>Find me here!</span>
-        <SocialIcons></SocialIcons>
+        <SocialIcons useColoredIcons={true}></SocialIcons>
       </div>
       <img src={logo} alt="NCOW Logo" />
       <span>Coming Soon!</span>
