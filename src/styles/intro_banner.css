@@ -31,9 +31,7 @@
       position: relative;
       overflow: hidden;
       border-radius: 0;
-      transition:
-        transform 620ms ease,
-        top 1s ease;
+      transition: transform 620ms ease;
 
       a {
         width: 100%;
@@ -65,6 +63,7 @@
         right: 3rem;
         top: 50%;
         transform: translateY(-50%);
+        transition: transform 300ms ease;
       }
     }
 
