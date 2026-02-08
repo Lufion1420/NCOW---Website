@@ -1,5 +1,9 @@
-import Swiper from "swiper";
+import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
+import "swiper/swiper.css";
+
+import JuubiCard from "../assets/ui/NCOW-Juubi-2.png";
 /* import Naruto from "../assets/characters/naruto_card_image.png";
 import Sasuke from "../assets/characters/sasuke_card_image.png";
 import Itachi from "../assets/characters/itachi_card_image.png";
@@ -32,24 +36,64 @@ export default function CharacterCards() {
     },
   ];
  */
+  const cards = [
+    {
+      name: "Character Name 1",
+      image: JuubiCard,
+      description: "Character Description here",
+    },
+    {
+      name: "Character Name 2",
+      image: JuubiCard,
+      description: "Character Description here",
+    },
+    {
+      name: "Character Name 3",
+      image: JuubiCard,
+      description: "Character Description here",
+    },
+    {
+      name: "Character Name 4",
+      image: JuubiCard,
+      description: "Character Description here",
+    },
+  ];
+
   return (
     <div className="character_cards container">
       <div className="heading">
         <h2>Characters</h2>
       </div>
 
-      <span className="subtitle">Subtitle Characters</span>
+      <div className="subtitle">Subtitle Characters</div>
 
-      <div className="card_list">
-        <div className="card">
-          <span className="char_name">Character Name</span>
-          <img src="../assets/ui/NCOW-Juubi-2.png" alt="" />
-          <p className="char_description">Character Description here</p>
-          <button>
-            <a href="">Read More</a>
-          </button>
-        </div>
-      </div>
+      <Swiper
+        className="card_list"
+        modules={[Navigation, Pagination]}
+        slidesPerView={2.5}
+        spaceBetween={24}
+        navigation
+        pagination={{ clickable: true }}
+        breakpoints={{
+          768: { slidesPerView: 2 },
+          1200: { slidesPerView: 3 },
+        }}
+      >
+        {cards.map((card) => (
+          <SwiperSlide className="card" key={card.name}>
+            <div className="char_name">
+              <span>{card.name}</span>
+            </div>
+            <div className="card_content">
+              <img src={card.image} alt={card.name} />
+              <p className="char_description">{card.description}</p>
+              <button>
+                <a href="">Read More</a>
+              </button>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   );
 }

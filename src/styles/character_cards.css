@@ -7,13 +7,71 @@
   padding-bottom: 5rem;
 
   .card_list {
+    width: 100%;
+    padding-bottom: 3rem;
+    padding-top: 2rem;
+
     .card {
       display: flex;
       flex-direction: column;
+      align-items: center;
       background: url(../assets/ui/NCOW-OpenScroll-1.png) no-repeat 50% / 100% 100%;
+      min-height: 600px;
+      padding-top: 5rem;
 
-      > * {
-        width: fit-content;
+      .char_name {
+        padding: 1rem 0;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        span {
+          font-size: 18px;
+          font-weight: 700;
+          z-index: 2;
+          position: relative;
+          color: black;
+          letter-spacing: -0.07em;
+        }
+      }
+
+      .char_name::before {
+        background: url(../assets/ui/NCOW-AccentBackground-1.png) no-repeat 50% / 100% 100%;
+        content: "";
+        position: absolute;
+        width: 75%;
+        height: 100%;
+        left: 3rem;
+        top: 0;
+        z-index: -1;
+      }
+
+      .card_content {
+        padding: 1rem 6rem 3rem 6rem;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .char_description {
+          padding-top: 2rem;
+          text-align: left;
+        }
+
+        button {
+          margin-top: auto;
+        }
+
+        img {
+          width: 230px;
+          height: auto;
+        }
+
+        * {
+          color: black;
+          width: 100%;
+        }
       }
     }
   }
