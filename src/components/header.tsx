@@ -1,7 +1,30 @@
+import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/header.css";
 
 export default function Header() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const closeTimerRef = useRef<number | null>(null);
+
+  const clearCloseTimer = () => {
+    if (closeTimerRef.current !== null) {
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  };
+
+  const scheduleClose = () => {
+    clearCloseTimer();
+    closeTimerRef.current = window.setTimeout(() => {
+      setOpenIndex(null);
+      closeTimerRef.current = null;
+    }, 80);
+  };
+
+  useEffect(() => {
+    return () => clearCloseTimer();
+  }, []);
+
   const mainLinks = [
     {
       label: "Gameplay",
@@ -15,11 +38,6 @@ export default function Header() {
     {
       label: "Forum",
       to: "/forum",
-      children: [
-        { label: "Items", to: "/items" },
-        { label: "Heroes", to: "/heroes" },
-        { label: "Terrain", to: "/terrain" },
-      ],
     },
     { label: "Guides", to: "/guides" },
     { label: "Roadmap", to: "/roadmap" },
@@ -29,11 +47,27 @@ export default function Header() {
     <header className="header container">
       <nav>
         <ul className="main-nav">
-          {mainLinks.map((link) => (
-            <li key={link.label} className={link.children ? "has-submenu" : ""}>
+          {mainLinks.map((link, index) => (
+            <li
+              key={link.label}
+              className={link.children ? "has-submenu" : ""}
+              onMouseEnter={() => {
+                if (!link.children) {
+                  return;
+                }
+                clearCloseTimer();
+                setOpenIndex(index);
+              }}
+              onMouseLeave={() => {
+                if (!link.children) {
+                  return;
+                }
+                scheduleClose();
+              }}
+            >
               <Link to={link.to}>{link.label}</Link>
               {link.children && (
-                <div className="submenu">
+                <div className={`submenu ${openIndex === index ? "is-open" : ""}`} onMouseEnter={clearCloseTimer} onMouseLeave={scheduleClose}>
                   {link.children.map((child) => (
                     <div key={child.label}>
                       <Link to={child.to}>{child.label}</Link>

@@ -42,6 +42,7 @@
       top: 95%;
       left: 0;
       opacity: 0;
+      visibility: hidden;
       display: flex;
       transform: translateY(4px);
       pointer-events: none;
@@ -53,14 +54,18 @@
       border: 3px solid var(--color-border-primary);
       transition:
         opacity 200ms ease,
-        transform 200ms ease;
+        transform 200ms ease,
+        visibility 0s linear 200ms;
     }
 
+    .submenu.is-open,
     .has-submenu:hover > .submenu,
     .has-submenu:focus-within > .submenu {
       opacity: 1;
+      visibility: visible;
       transform: translateY(0);
       pointer-events: auto;
+      transition-delay: 0s;
     }
 
     .has-submenu {
