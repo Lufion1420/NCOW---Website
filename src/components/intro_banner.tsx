@@ -1,5 +1,6 @@
 import "../styles/intro_banner.css";
 import Image from "../assets/ui/NCOW-Juubi.png";
+import Arrow from "../assets/ui/NCOW-Kunai-3.png";
 import { Link } from "react-router-dom";
 
 export default function IntroBanner() {
@@ -12,6 +13,7 @@ export default function IntroBanner() {
         <button>
           <Link to={"/gameplay"}></Link>
           <span>About Naruto Clash of Worlds</span>
+          <img src={Arrow} alt="Arrow Right" />
         </button>
       </div>
     </div>
