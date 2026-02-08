@@ -18,9 +18,13 @@
   .intro_inner_wrap {
     display: flex;
     gap: 5rem;
+    justify-content: center;
 
     .intro_video {
       position: relative;
+      height: auto;
+      aspect-ratio: 1/1;
+      width: 40%;
     }
 
     .intro_video::before {
@@ -33,10 +37,12 @@
 
     .intro_text {
       display: flex;
+      justify-content: center;
       flex-direction: column;
       gap: 2rem;
       z-index: 2;
       position: relative;
+      width: 50%;
 
       button {
         background: url(../assets/ui/NCOW-Border-2.png) no-repeat 50% / 100% 100%;
@@ -126,16 +132,13 @@
         transform: translate(-50%, 0);
       }
     }
-
-    > * {
-      width: 50%;
-    }
   }
 
   h2 {
     padding-bottom: 5rem;
     z-index: 2;
     position: relative;
+    text-align: center;
   }
 
   p {
