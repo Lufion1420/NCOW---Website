@@ -78,6 +78,10 @@ export default function CharacterCards() {
 
   return (
     <>
+      <div className="character_cards_heading">
+        <h2>Characters</h2>
+      </div>
+
       <div className="character_cards container">
         <div className="char_wrapper">
           <div className="char_content">
@@ -101,10 +105,6 @@ export default function CharacterCards() {
                 )}
               </Swiper>
             </div>
-            <button>
-              <span>More Info</span>
-              <Link to={selectedCharacter.link}></Link>
-            </button>
           </div>
 
           <div className="char_main_image">
