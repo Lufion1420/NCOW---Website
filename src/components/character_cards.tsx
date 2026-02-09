@@ -71,6 +71,10 @@ export default function CharacterCards() {
   const [selectedCharacterId, setSelectedCharacterId] = useState<string>(characters[0].id);
 
   const selectedCharacter = characters.find((character) => character.id === selectedCharacterId) ?? characters[0];
+  const selectedCharacterMainImages =
+    typeof selectedCharacter.image_main === "string"
+      ? [selectedCharacter.image_main]
+      : Object.values(selectedCharacter.image_main);
 
   return (
     <>
@@ -104,8 +108,9 @@ export default function CharacterCards() {
           </div>
 
           <div className="char_main_image">
-            <img src={selectedCharacter.image_main} alt={selectedCharacter.name} />
-            <img src={selectedCharacter.image_main} alt={selectedCharacter.name} />
+            {selectedCharacterMainImages.map((imageSrc, index) => (
+              <img key={`${selectedCharacter.id}-main-image-${index}`} src={imageSrc} alt={`${selectedCharacter.name} main image ${index + 1}`} />
+            ))}
           </div>
         </div>
       </div>

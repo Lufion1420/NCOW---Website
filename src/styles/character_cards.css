@@ -129,10 +129,22 @@
     .char_main_image {
       display: flex;
       align-items: center;
+      position: relative;
 
       img {
         width: 400px;
         height: auto;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+      img:first-child {
+        right: 35%;
+      }
+
+      img:last-child {
+        left: 35%;
       }
     }
   }
