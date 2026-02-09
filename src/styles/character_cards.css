@@ -162,41 +162,46 @@
 
 .char_list {
   position: relative;
+  --visible-icons: 5;
+  --icon-size: 60px;
+  --icon-gap: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+
+  > * {
+    position: relative;
+    z-index: 1;
+  }
 
   .swiper {
-    padding: 0 20rem;
-    display: flex;
-    align-items: center;
-    width: fit-content;
-    max-width: 10rem;
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      display: flex;
-    }
-
-    .swiper-button-next {
-      order: 3;
-      margin-right: auto;
-    }
-
-    .swiper-button-prev {
-      transform: rotate(180deg);
-      order: 1;
-      margin-left: auto;
-    }
+    width: calc((var(--icon-size) * var(--visible-icons)) + (var(--icon-gap) * (var(--visible-icons) - 1)));
+    max-width: 100%;
+    overflow: hidden;
+    margin: unset;
   }
 
   .swiper-wrapper {
-    align-items: center;
-    justify-content: center;
-    order: 2;
-    width: fit-content;
-    padding: 0 1rem;
+    justify-content: flex-start;
+    padding: 1rem 0;
   }
 
   .swiper-slide {
-    width: auto !important;
+    height: auto;
+  }
+
+  .char_list_prev,
+  .char_list_next {
+    position: static;
+    margin-top: 0;
+    transform: none;
+    flex: 0 0 auto;
+  }
+
+  .char_list_prev::after,
+  .char_list_next::after {
+    font-size: 1.25rem;
   }
 
   .char_icon_button {
@@ -214,8 +219,10 @@
 .char_list::before {
   background: url(../assets/ui/NCOW-Banner-6.png) no-repeat 50% / 100% 100%;
   content: "";
-  width: auto;
+  width: 100%;
   height: 100%;
   position: absolute;
   inset: 0;
+  z-index: 0;
+  pointer-events: none;
 }

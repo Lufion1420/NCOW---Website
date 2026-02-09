@@ -1,10 +1,11 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/swiper.css";
-
 import "../styles/character_cards.css";
+
+import Arrow from "../assets/ui/NCOW-Arrow-1.png";
 
 import Naruto_1 from "../assets/characters/NCOW_IMG_NarutoBaseXL.webp";
 import Naruto_2 from "../assets/characters/NCOW_IMG_NarutoSageXL.png";
@@ -22,6 +23,8 @@ import Obito from "../assets/characters/NCOW_IMG_NarutoBaseXL.webp";
 import Icon_Obito from "../assets/characters/NCOW_IMG_MaskedMan.png";
 
 export default function CharacterCards() {
+  const visibleIconCount = 3;
+  const visibleIconGap = 25;
   const characters = useMemo(
     () => [
       {
@@ -71,10 +74,7 @@ export default function CharacterCards() {
   const [selectedCharacterId, setSelectedCharacterId] = useState<string>(characters[0].id);
 
   const selectedCharacter = characters.find((character) => character.id === selectedCharacterId) ?? characters[0];
-  const selectedCharacterMainImages =
-    typeof selectedCharacter.image_main === "string"
-      ? [selectedCharacter.image_main]
-      : Object.values(selectedCharacter.image_main);
+  const selectedCharacterMainImages = typeof selectedCharacter.image_main === "string" ? [selectedCharacter.image_main] : Object.values(selectedCharacter.image_main);
 
   return (
     <>
@@ -115,8 +115,9 @@ export default function CharacterCards() {
         </div>
       </div>
 
-      <div className="char_list">
-        <Swiper modules={[Navigation]} tag="ul" slidesPerView="auto" spaceBetween={6} navigation centeredSlides centeredSlidesBounds>
+      <div className="char_list" style={{ "--visible-icons": visibleIconCount, "--icon-gap": `${visibleIconGap}px` } as CSSProperties}>
+        <button className="char_list_prev swiper-button-prev" aria-label="Previous character" />
+        <Swiper modules={[Navigation]} tag="ul" slidesPerView={visibleIconCount} spaceBetween={visibleIconGap} navigation={{ prevEl: ".char_list_prev", nextEl: ".char_list_next" }} watchOverflow>
           {characters.map((character) => (
             <SwiperSlide key={character.id} tag="li">
               <button className={`char_icon_button ${selectedCharacter.id === character.id ? "is-active" : ""}`} onClick={() => setSelectedCharacterId(character.id)} aria-label={`Select ${character.name}`}>
@@ -125,6 +126,7 @@ export default function CharacterCards() {
             </SwiperSlide>
           ))}
         </Swiper>
+        <button className="char_list_next swiper-button-next" aria-label="Next character" />
       </div>
     </>
   );
