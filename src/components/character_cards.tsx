@@ -9,7 +9,7 @@ export default function CharacterCards() {
     {
       naruto: {
         image: ImageNaruto,
-        name: "Naruzo Uzumaki",
+        name: "Naruto Uzumaki",
         description: "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. .",
       },
       sasuke: {
@@ -27,6 +27,16 @@ export default function CharacterCards() {
         name: "Obito Uchiha",
         description: "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. .",
       },
+      kabuto: {
+        image: ImageNaruto,
+        name: "Kabuto Yakushi",
+        description: "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. .",
+      },
+      Sasori: {
+        image: ImageNaruto,
+        name: "Sasori",
+        description: "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. .",
+      },
     },
   ];
 
@@ -35,19 +45,21 @@ export default function CharacterCards() {
   return (
     <div className="character_cards">
       <h2>Characters</h2>
-      <Swiper className="card_list" slidesPerView={5} centeredSlides spaceBetween={24} watchOverflow>
-        {characterList.map((character) => (
-          <SwiperSlide key={character.name}>
-            <article className="card">
-              <img src={character.image} alt={character.name} />
-              <div className="card_content">
-                <div className="card_name">{character.name}</div>
-                <div className="card_description">{character.description}</div>
-              </div>
-            </article>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+      <div className="card_list container">
+        <Swiper slidesPerView={4} spaceBetween={12} watchOverflow>
+          {characterList.map((character) => (
+            <SwiperSlide key={character.name}>
+              <article className="card">
+                <img src={character.image} alt={character.name} />
+                <div className="card_content">
+                  <div className="card_name">{character.name}</div>
+                  <div className="card_description">{character.description}</div>
+                </div>
+              </article>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 }
