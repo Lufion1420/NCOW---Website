@@ -56,17 +56,23 @@ export default function CharacterCards() {
 
   return (
     <div className="character_cards container">
-      <div className="char_content">
-        <div className="char_name"></div>
-        <div className="char_title"></div>
-        <div className="char_description"></div>
-        <div className="char_images">
-          <div className="char_image"></div>
-          <div className="char_image"></div>
+      <div className="char_wrapper">
+        <div className="char_content">
+          <div className="char_name"></div>
+          <div className="char_title"></div>
+          <div className="char_description"></div>
+          <div className="char_images">
+            <div className="char_image"></div>
+            <div className="char_image"></div>
+          </div>
+          <button>
+            <a href=""></a>
+          </button>
         </div>
-        <button>
-          <a href=""></a>
-        </button>
+
+        <div className="char_main_image">
+          <img src="" alt="Main Character Image" />
+        </div>
       </div>
 
       <ul className="char_list">
