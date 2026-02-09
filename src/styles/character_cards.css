@@ -64,6 +64,10 @@
           display: block;
           transition: transform 450ms ease;
         }
+
+        .card_image_link {
+          display: block;
+        }
       }
 
       .card::before {
@@ -100,12 +104,12 @@
 
       &:nth-child(odd) .card {
         --card-text-color: #000;
-        --card-title-glow: #fff;
+        --card-title-glow: transparent;
       }
 
       &:nth-child(even) .card {
         --card-text-color: #fff;
-        --card-title-glow: #000;
+        --card-title-glow: transparent;
       }
     }
   }

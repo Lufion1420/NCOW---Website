@@ -52,7 +52,7 @@ html {
   --color-secondary: #151a24; /* Background for Cards, Sections, Navigation */
 
   --color-text-primary: #e9e9e9; /* Headings (h1,h2,h3 etc...)  */
-  --color-text-secondary: #212324; /* Descriptions */
+  --color-text-secondary: #e9e9e9; /* Descriptions */
   --color-text-tetriary: #031a1f; /* Special Text / All headings that are not h1 or h2 */
   --color-text-disabled: #7d8496; /* Tooltips or Disabled UI */
 

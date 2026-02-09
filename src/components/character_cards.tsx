@@ -1,5 +1,6 @@
 import "../styles/character_cards.css";
 import type { CSSProperties } from "react";
+import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.css";
 
@@ -63,7 +64,9 @@ export default function CharacterCards() {
           {characterList.map((character) => (
             <SwiperSlide key={character.name}>
               <article className="card" style={{ "--card-hover-color": character.color } as CSSProperties}>
-                <img src={character.image} alt={character.name} />
+                <Link className="card_image_link" to={character.link} aria-label={`Open ${character.name}`}>
+                  <img src={character.image} alt={character.name} />
+                </Link>
                 <div className="card_content">
                   <div className="card_name">{character.name}</div>
                   <div className="card_description">{character.description}</div>
