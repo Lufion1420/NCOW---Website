@@ -6,7 +6,6 @@
   padding-top: 5rem;
   padding-bottom: 5rem;
   position: relative;
-  margin: 5rem 0;
 
   .char_wrapper {
     display: flex;
@@ -140,7 +139,7 @@
 }
 
 .character_cards::before {
-  background: url(../assets/ui/NCOW-OpenScroll-2.png) no-repeat 50% / 100% 100%;
+  background: url(../assets/ui/NCOW-Background-2.png) no-repeat 50% / 100% 100%;
   content: "";
   width: 100%;
   height: 100%;
@@ -151,6 +150,42 @@
 
 .char_list {
   position: relative;
+
+  .swiper {
+    padding: 0 20rem;
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 10rem;
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      display: flex;
+    }
+
+    .swiper-button-next {
+      order: 3;
+      margin-right: auto;
+    }
+
+    .swiper-button-prev {
+      transform: rotate(180deg);
+      order: 1;
+      margin-left: auto;
+    }
+  }
+
+  .swiper-wrapper {
+    align-items: center;
+    justify-content: center;
+    order: 2;
+    width: fit-content;
+    padding: 0 1rem;
+  }
+
+  .swiper-slide {
+    width: auto !important;
+  }
 
   .char_icon_button {
     background-color: transparent;

@@ -109,7 +109,7 @@ export default function CharacterCards() {
       </div>
 
       <div className="char_list">
-        <Swiper modules={[Navigation]} tag="ul" slidesPerView={4} spaceBetween={10} navigation breakpoints={{ 0: { slidesPerView: 3 }, 768: { slidesPerView: 4 }, 1024: { slidesPerView: 6 } }}>
+        <Swiper modules={[Navigation]} tag="ul" slidesPerView="auto" spaceBetween={6} navigation centeredSlides centeredSlidesBounds>
           {characters.map((character) => (
             <SwiperSlide key={character.id} tag="li">
               <button className={`char_icon_button ${selectedCharacter.id === character.id ? "is-active" : ""}`} onClick={() => setSelectedCharacterId(character.id)} aria-label={`Select ${character.name}`}>
