@@ -1,9 +1,10 @@
 .character_cards {
-  padding: 4rem 0;
+  padding: 4rem 0 7rem 0;
+  position: relative;
 
   h2 {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
   }
 
   .card_list {
@@ -19,6 +20,8 @@
         position: relative;
         padding: 1rem;
         overflow: hidden;
+        --card-text-color: #fff;
+        --card-title-glow: #fff;
 
         .card_content {
           position: absolute;
@@ -33,16 +36,8 @@
             opacity 320ms ease,
             transform 360ms ease;
 
-          *:nth-child(1n) {
-            color: black;
-          }
-
-          *:nth-child(2n) {
-            color: #fff;
-          }
-
           * {
-            color: var(--color-text-secondary) !important;
+            color: var(--card-text-color);
           }
 
           .card_name {
@@ -52,12 +47,8 @@
             text-align: center;
           }
 
-          .card_name:nth-child(1n) {
-            filter: drop-shadow(0 0 min(0.5208333333vw, 10px) white) drop-shadow(0 0 min(1.0416666667vw, 20px) white) drop-shadow(0 0 min(1.5625vw, 30px) white);
-          }
-
-          .card_name:nth-child(2n) {
-            filter: drop-shadow(0 0 min(0.5208333333vw, 10px) black) drop-shadow(0 0 min(1.0416666667vw, 20px) black) drop-shadow(0 0 min(1.5625vw, 30px) black);
+          .card_name {
+            filter: drop-shadow(0 0 min(0.5208333333vw, 10px) var(--card-title-glow)) drop-shadow(0 0 min(1.0416666667vw, 20px) var(--card-title-glow)) drop-shadow(0 0 min(1.5625vw, 30px) var(--card-title-glow));
           }
 
           .card_description {
@@ -106,6 +97,32 @@
       .card:hover img {
         transform: scale(1.04);
       }
+
+      &:nth-child(odd) .card {
+        --card-text-color: #000;
+        --card-title-glow: #fff;
+      }
+
+      &:nth-child(even) .card {
+        --card-text-color: #fff;
+        --card-title-glow: #000;
+      }
     }
   }
+}
+
+.character_cards::before {
+  content: "";
+  inset: 0;
+  position: absolute;
+  z-index: -1;
+  background: url(../assets/wallpapers/NCOW-BackgroundBrush.png) no-repeat 50% / 105% 90%;
+}
+
+.character_cards::after {
+  content: "";
+  inset: 0;
+  position: absolute;
+  z-index: -2;
+  background: url(../assets/wallpapers/NCOW-Background-3_2.png) no-repeat 50% / 100% 100%;
 }
