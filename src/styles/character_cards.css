@@ -197,11 +197,38 @@
     margin-top: 0;
     transform: none;
     flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    svg {
+      display: none;
+    }
   }
 
   .char_list_prev::after,
   .char_list_next::after {
-    font-size: 1.25rem;
+    content: none;
+  }
+
+  .char_list_prev img,
+  .char_list_next img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .swiper-button-disabled {
+    opacity: 0.4;
+  }
+
+  .char_list_prev img {
+    transform: scaleX(-1);
   }
 
   .char_icon_button {

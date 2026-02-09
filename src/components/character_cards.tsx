@@ -116,7 +116,9 @@ export default function CharacterCards() {
       </div>
 
       <div className="char_list" style={{ "--visible-icons": visibleIconCount, "--icon-gap": `${visibleIconGap}px` } as CSSProperties}>
-        <button className="char_list_prev swiper-button-prev" aria-label="Previous character" />
+        <button className="char_list_prev swiper-button-prev" aria-label="Previous character">
+          <img src={Arrow} alt="" aria-hidden="true" />
+        </button>
         <Swiper modules={[Navigation]} tag="ul" slidesPerView={visibleIconCount} spaceBetween={visibleIconGap} navigation={{ prevEl: ".char_list_prev", nextEl: ".char_list_next" }} watchOverflow>
           {characters.map((character) => (
             <SwiperSlide key={character.id} tag="li">
@@ -126,7 +128,9 @@ export default function CharacterCards() {
             </SwiperSlide>
           ))}
         </Swiper>
-        <button className="char_list_next swiper-button-next" aria-label="Next character" />
+        <button className="char_list_next swiper-button-next" aria-label="Next character">
+          <img src={Arrow} alt="" aria-hidden="true" />
+        </button>
       </div>
     </>
   );
