@@ -2,6 +2,8 @@
   position: relative;
   overflow: visible;
   z-index: 1;
+  border-top: 2px solid var(--color-border-primary);
+  border-bottom: 2px solid var(--color-border-primary);
 
   .quick_banner_wrapper {
     position: relative;
