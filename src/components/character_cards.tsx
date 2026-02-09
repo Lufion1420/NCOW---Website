@@ -1,4 +1,5 @@
 import "../styles/character_cards.css";
+import type { CSSProperties } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.css";
 
@@ -55,7 +56,7 @@ export default function CharacterCards() {
         <Swiper slidesPerView={4} spaceBetween={12} watchOverflow>
           {characterList.map((character) => (
             <SwiperSlide key={character.name}>
-              <article className="card">
+              <article className="card" style={{ "--card-hover-color": character.color } as CSSProperties}>
                 <img src={character.image} alt={character.name} />
                 <div className="card_content">
                   <div className="card_name">{character.name}</div>
