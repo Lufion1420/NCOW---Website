@@ -1,9 +1,8 @@
 import { useMemo, useState, type CSSProperties } from "react";
-import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/swiper.css";
-import "../styles/character_cards.css";
+import "../styles/character_intro.css";
 
 import Arrow from "../assets/ui/NCOW-Arrow-1.png";
 
@@ -22,7 +21,7 @@ import Icon_Itachi from "../assets/characters/NCOW_IMG_Itachi.png";
 import Obito from "../assets/characters/NCOW_IMG_NarutoBaseXL.webp";
 import Icon_Obito from "../assets/characters/NCOW_IMG_MaskedMan.png";
 
-export default function CharacterCards() {
+export default function CharacterIntro() {
   const visibleIconCount = 3;
   const visibleIconGap = 25;
   const characters = useMemo(
@@ -78,11 +77,11 @@ export default function CharacterCards() {
 
   return (
     <>
-      <div className="character_cards_heading">
+      <div className="character_intro_heading">
         <h2>Characters</h2>
       </div>
 
-      <div className="character_cards container">
+      <div className="character_intro container">
         <div className="char_wrapper">
           <div className="char_content">
             <span className="char_name">{selectedCharacter.name}</span>
