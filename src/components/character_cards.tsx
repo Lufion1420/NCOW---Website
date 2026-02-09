@@ -6,18 +6,19 @@ import "swiper/swiper.css";
 
 import "../styles/character_cards.css";
 
-import Naruto from "../assets/characters/NCOW_IMG_NarutoBaseSelect.png";
+import Naruto_1 from "../assets/characters/NCOW_IMG_NarutoBaseXL.webp";
+import Naruto_2 from "../assets/characters/NCOW_IMG_NarutoSageXL.png";
 import Icon_Naruto from "../assets/characters/NCOW_IMG_NarutoBase.png";
 import Naruto_Image_1 from "../assets/characters/NCOW-Placeholder-1.png";
 import Naruto_Image_2 from "../assets/characters/NCOW-Placeholder-2.png";
 
-import Sasuke from "../assets/characters/NCOW_IMG_SasukeBaseSelect.png";
+import Sasuke from "../assets/characters/NCOW_IMG_NarutoBaseXL.webp";
 import Icon_Sasuke from "../assets/characters/NCOW_IMG_SasukeHebi.png";
 
-import Itachi from "../assets/characters/NCOW_IMG_ItachiAlt_4Select.png";
+import Itachi from "../assets/characters/NCOW_IMG_NarutoBaseXL.webp";
 import Icon_Itachi from "../assets/characters/NCOW_IMG_Itachi.png";
 
-import Obito from "../assets/characters/NCOW_IMG_ObitoMaskedManSelect.png";
+import Obito from "../assets/characters/NCOW_IMG_NarutoBaseXL.webp";
 import Icon_Obito from "../assets/characters/NCOW_IMG_MaskedMan.png";
 
 export default function CharacterCards() {
@@ -27,7 +28,7 @@ export default function CharacterCards() {
         id: "naruto",
         name: "Naruto Uzumaki",
         title: "Kyuubi Jinchuriki",
-        image_main: Naruto,
+        image_main: { Naruto_1, Naruto_2 },
         icon: Icon_Naruto,
         description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
         link: "/XXX",
@@ -103,6 +104,7 @@ export default function CharacterCards() {
           </div>
 
           <div className="char_main_image">
+            <img src={selectedCharacter.image_main} alt={selectedCharacter.name} />
             <img src={selectedCharacter.image_main} alt={selectedCharacter.name} />
           </div>
         </div>
