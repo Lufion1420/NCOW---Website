@@ -11,31 +11,37 @@ export default function CharacterCards() {
         image: ImageNaruto,
         name: "Naruto Uzumaki",
         description: "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. .",
+        color: "#F66C2D",
       },
       sasuke: {
         image: ImageNaruto,
         name: "Sasuke Uchiha",
         description: "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. .",
+        color: "#2a3143",
       },
       itachi: {
         image: ImageNaruto,
         name: "Itachi Uchiha",
         description: "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. .",
+        color: "#A33B45",
       },
       obito: {
         image: ImageNaruto,
         name: "Obito Uchiha",
         description: "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. .",
+        color: "#344155",
       },
       kabuto: {
         image: ImageNaruto,
         name: "Kabuto Yakushi",
         description: "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. .",
+        color: "#b2b2b2",
       },
       Sasori: {
         image: ImageNaruto,
         name: "Sasori",
         description: "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. .",
+        color: "#902020",
       },
     },
   ];
