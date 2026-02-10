@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.css";
 
-import ImageNaruto from "../assets/characters/NCOW_IMG_NarutoBaseXL.webp";
+import ImageNaruto from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
 
 export default function CharacterCards() {
   const characters = [

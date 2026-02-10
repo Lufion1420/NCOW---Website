@@ -1,5 +1,9 @@
 .header_wrapper {
+  position: fixed;
   transform: scale(1);
+  top: 0;
+  width: 100%;
+  z-index: 3;
   --font-size-links-header: min(1.8vw, 30px);
 
   .header_download_button {

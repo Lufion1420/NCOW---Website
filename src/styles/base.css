@@ -35,12 +35,12 @@ h6,
 
 h2 {
   font-size: var(--font-size-h2);
-  filter: drop-shadow(0 0 min(0.5208333333vw, 10px) var(--color-accent-primary)) drop-shadow(0 0 min(1.0416666667vw, 20px) var(--color-accent-primary)) drop-shadow(0 0 min(1.5625vw, 30px) var(--color-accent-primary));
+  /* filter: drop-shadow(0 0 min(0.5208333333vw, 10px) var(--color-accent-primary)) drop-shadow(0 0 min(1.0416666667vw, 20px) var(--color-accent-primary)) drop-shadow(0 0 min(1.5625vw, 30px) var(--color-accent-primary)); */
 }
 
 h3 {
   font-size: var(--font-size-h3);
-  filter: drop-shadow(0 0 min(0.5208333333vw, 10px) var(--color-accent-primary)) drop-shadow(0 0 min(1.0416666667vw, 20px) var(--color-accent-primary)) drop-shadow(0 0 min(1.5625vw, 30px) var(--color-accent-primary));
+  /* filter: drop-shadow(0 0 min(0.5208333333vw, 10px) var(--color-accent-primary)) drop-shadow(0 0 min(1.0416666667vw, 20px) var(--color-accent-primary)) drop-shadow(0 0 min(1.5625vw, 30px) var(--color-accent-primary)); */
 }
 
 span,
