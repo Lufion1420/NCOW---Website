@@ -1,23 +1,45 @@
 import { Link } from "react-router-dom";
 import "../styles/quick_banner.css";
 import Arrow from "../assets/ui/NCOW-Kunai-1_2.png";
-import Juubi from "../assets/ui/NCOW-Juubi.png";
 
-export default function QuickBanner() {
+type QuickBannerProps = {
+  imageSrc?: string;
+  linkTo?: string;
+  headingText?: string;
+  subheadingText?: string;
+  quickBannerText?: string;
+};
+
+export default function QuickBanner({
+  imageSrc,
+  linkTo,
+  headingText,
+  subheadingText,
+  quickBannerText,
+}: QuickBannerProps) {
+  const normalizedLink = linkTo?.trim();
+  const hasHeading = Boolean(headingText && headingText.trim());
+  const hasSubheading = Boolean(subheadingText && subheadingText.trim());
+  const hasQuickText = Boolean(quickBannerText && quickBannerText.trim());
+
   return (
     <div className="quick_banner">
       <div className="quick_banner_wrapper">
-        <img src={Juubi} alt="Juubi" />
+        {imageSrc && <img src={imageSrc} alt="" />}
         <div className="quick_banner_content">
-          <Link to="/XXX"></Link>
-          <h3>Jetzt vorbestellen</h3>
-          <div className="quick_banner_subheading">
-            <span>Dekorüstung für Eleanor: Himmelschuppenkönigin</span>
-          </div>
-          <div className="quick_banner_text">
-            <span className="glow_effect-primary">Vorgestellbonus sichern</span>
-            <img src={Arrow} alt="" />
-          </div>
+          {normalizedLink ? <Link to={normalizedLink}></Link> : null}
+          {hasHeading && <h3>{headingText}</h3>}
+          {hasSubheading && (
+            <div className="quick_banner_subheading">
+              <span>{subheadingText}</span>
+            </div>
+          )}
+          {hasQuickText && (
+            <div className="quick_banner_text">
+              <span className="glow_effect-primary">{quickBannerText}</span>
+              <img src={Arrow} alt="" />
+            </div>
+          )}
         </div>
       </div>
     </div>
