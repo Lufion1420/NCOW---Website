@@ -68,7 +68,7 @@ html {
   --line-height-headings: inherit;
 
   --page-width: 1920px;
-  --padding-base: 10rem;
+  --padding-base: 5rem;
   --section-spacing: 5rem;
   --border-radius: 25px;
 }

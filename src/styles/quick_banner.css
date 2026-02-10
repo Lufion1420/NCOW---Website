@@ -2,12 +2,10 @@
   position: relative;
   overflow: visible;
   z-index: 2;
-  /*   border-top: 2px solid var(--color-border-primary);
-  border-bottom: 2px solid var(--color-border-primary); */
 
   .quick_banner_wrapper {
     position: relative;
-    padding-bottom: 1rem;
+    padding: 1rem 0 2rem 0;
     pointer-events: none;
     overflow: hidden;
     display: flex;
