@@ -1,9 +1,11 @@
 .header_wrapper {
   position: fixed;
-  transform: scale(1);
+  transform: scale(1) translateX(-50%);
   top: 0;
+  left: 50%;
   width: 100%;
   z-index: 3;
+  max-width: var(--page-width);
   --font-size-links-header: min(1.8vw, 30px);
 
   .header_download_button {
@@ -63,7 +65,7 @@
     gap: 2rem;
     padding: 0.9rem 4rem 1.5rem 4rem;
     background-color: var(--color-primary);
-    width: 35%;
+    width: 40rem;
     margin: auto;
     position: fixed;
     top: 0.5rem;
@@ -74,14 +76,12 @@
     z-index: 5;
 
     nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex: 1;
+      margin: auto;
 
       .main-nav {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
+        gap: 3rem;
         align-items: center;
         width: 100%;
 
