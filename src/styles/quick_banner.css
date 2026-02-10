@@ -76,10 +76,6 @@
     align-items: center;
     justify-content: center;
 
-    h3 {
-      padding-bottom: 0.5rem;
-    }
-
     a {
       position: absolute;
       width: 100%;
@@ -94,14 +90,13 @@
 
     .quick_banner_subheading {
       background: url(../assets/ui/NCOW-BrushStroke-1.png) no-repeat 50% / 100% 100%;
-      padding: 0.5rem 1rem 0.5rem 1rem;
+      padding: 1rem 1.5rem 1rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
       filter: invert(100%);
 
       span {
-        max-width: 80%;
         font-size: 14px;
         padding: 0 2rem;
       }
@@ -109,6 +104,7 @@
 
     .quick_banner_text {
       position: relative;
+      padding-top: 0.5rem;
 
       span {
         font-size: 16px;
