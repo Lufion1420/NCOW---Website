@@ -68,6 +68,9 @@
 
         .card_image_link {
           display: block;
+          z-index: 3;
+          position: absolute;
+          inset: 0;
         }
       }
 
