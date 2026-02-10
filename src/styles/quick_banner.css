@@ -16,10 +16,11 @@
     max-height: 12rem;
 
     > img {
-      width: 350px;
-      height: 350px;
+      --size: 400px;
+      width: var(--size);
+      height: var(--size);
       position: relative;
-      bottom: 3.5rem;
+      bottom: 5rem;
       z-index: 1;
     }
 
