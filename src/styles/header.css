@@ -1,4 +1,5 @@
 .header_wrapper {
+  transform: scale(1);
   --font-size-links-header: min(1.8vw, 30px);
 
   .header_download_button {

@@ -44,7 +44,7 @@ export default function Header() {
   ];
 
   return (
-    <div className="header_wrapper">
+    <div className="header_wrapper container">
       <header className="header">
         <nav>
           <ul className="main-nav">
