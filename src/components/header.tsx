@@ -44,7 +44,7 @@ export default function Header() {
   ];
 
   return (
-    <>
+    <div className="header_wrapper">
       <header className="header">
         <nav>
           <ul className="main-nav">
@@ -66,12 +66,16 @@ export default function Header() {
                   scheduleClose();
                 }}
               >
-                <Link to={link.to}>{link.label}</Link>
+                <Link className="heading" to={link.to}>
+                  {link.label}
+                </Link>
                 {link.children && (
                   <div className={`submenu ${openIndex === index ? "is-open" : ""}`} onMouseEnter={clearCloseTimer} onMouseLeave={scheduleClose}>
                     {link.children.map((child) => (
                       <div key={child.label}>
-                        <Link to={child.to}>{child.label}</Link>
+                        <Link className="heading" to={child.to}>
+                          {child.label}
+                        </Link>
                       </div>
                     ))}
                   </div>
@@ -83,9 +87,9 @@ export default function Header() {
       </header>
 
       <button className="header_download_button">
-        <span>Download</span>
+        <span className="heading">Download</span>
         <Link to={"/download"}></Link>
       </button>
-    </>
+    </div>
   );
 }

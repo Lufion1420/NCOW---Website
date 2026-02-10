@@ -11,7 +11,7 @@ export default function HeroBanner() {
         <SocialIcons useColoredIcons={true}></SocialIcons>
       </div>
       <img src={logo} alt="NCOW Logo" />
-      <span>Coming Soon!</span>
+      <span className="heading">Coming Soon!</span>
       <FallingLeafs></FallingLeafs>
     </div>
   );

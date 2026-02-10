@@ -23,7 +23,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+.heading {
   margin: 0;
   font-weight: var(--font-weight-highlight);
   font-family: var(--font-family-primary);
@@ -48,7 +49,7 @@ p,
 a {
   font-size: var(--font-size-text);
   font-weight: var(--font-weight-regular);
-  font-family: var(--font-family-primary);
+  font-family: var(--font-family-secondary);
   margin: 0;
   color: var(--color-text-secondary);
   letter-spacing: var(--letter-spacing-text);

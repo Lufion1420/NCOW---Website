@@ -1,47 +1,15 @@
 @font-face {
-  font-family: "Noto Serif";
-  src: url("../assets/fonts/NotoSerif-Regular.ttf") format("truetype");
+  font-family: "Heaters";
+  src: url("../fonts/Heaters.otf") format("truetype");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Noto Serif";
-  src: url("../assets/fonts/NotoSerif-Light.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Noto Serif";
-  src: url("../assets/fonts/NotoSerif-Bold.ttf") format("truetype");
-  font-weight: 700;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Shippori Mincho";
-  src: url("../assets/fonts/ShipporiMincho-Regular.ttf") format("truetype");
+  font-family: "Reggae One";
+  src: url("/fonts/ReggaeOne.ttf") format("truetype");
   font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Shippori Mincho";
-  src: url("../assets/fonts/ShipporiMincho-Medium.ttf") format("truetype");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "Shippori Mincho";
-  src: url("../assets/fonts/ShipporiMincho-Bold.ttf") format("truetype");
-  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }
@@ -84,11 +52,12 @@ html {
   --color-glow: rgba(167, 199, 255, 0.35);
 
   /* Font Related */
-  --font-family-primary: "Shippori Mincho", serif;
+  --font-family-primary: "Heaters", serif; /* Headings */
+  --font-family-secondary: "Reggae One", cursive; /* Body */
 
   --font-size-text: min(14px, 16px);
-  --font-size-h2: min(3.6458333333vw, 35px);
-  --font-size-h3: min(2.6041666667vw, 26px);
+  --font-size-h2: min(3.6458333333vw, 65px);
+  --font-size-h3: min(2.6041666667vw, 50px);
 
   --font-weight-regular: 400;
   --font-weight-highlight: 700;
