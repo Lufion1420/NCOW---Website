@@ -21,6 +21,7 @@
     span {
       font-size: var(--font-size-links-header);
       position: relative;
+      transition: color 300ms ease;
 
       text-shadow:
         0 0 14px var(--color-accent-secondary),
@@ -30,6 +31,15 @@
 
   .header_download_button:hover {
     filter: brightness(125%);
+
+    span {
+      color: black;
+      text-shadow: none;
+    }
+  }
+
+  .header_download_button:hover::before {
+    filter: invert(100%);
   }
 
   .header_download_button::before {
@@ -40,6 +50,7 @@
     height: 100%;
     content: "";
     filter: invert(0%) sepia(100%) saturate(150%) hue-rotate(1450deg) brightness(80%) contrast(100%);
+    transition: filter 500ms ease;
   }
 
   .header {
@@ -103,23 +114,28 @@
 
       .submenu {
         position: absolute;
-        top: 95%;
+        top: 70%;
         left: 50%;
-        --visibility: hidden;
         display: flex;
-        transform: translateY(-10px) translateX(-50%);
+        transform: translateX(-50%) scaleY(0.86);
+        transform-origin: top center;
         pointer-events: none;
         flex-direction: column;
         gap: 0.1rem;
         padding: 1.25rem 1rem 0.75rem;
         width: 80%;
+        opacity: 0;
+        visibility: hidden;
+        clip-path: inset(0 0 100% 0);
         transition:
-          opacity 200ms ease,
-          transform 200ms ease,
-          visibility 0s linear 200ms;
+          opacity 260ms ease,
+          transform 300ms ease,
+          clip-path 320ms ease,
+          visibility 0s linear 320ms;
 
         > div {
           position: relative;
+          overflow: hidden;
           transition: transform 300ms ease;
           pointer-events: none;
 
@@ -128,6 +144,9 @@
             text-align: center;
             padding: 0.5rem 0 1rem 0;
             pointer-events: auto;
+            position: relative;
+            z-index: 1;
+            transition: color 260ms ease;
           }
         }
 
@@ -136,14 +155,31 @@
           content: "";
           position: absolute;
           inset: 0;
+          z-index: 0;
         }
 
         > :nth-child(2n)::before {
           background: url(../assets/ui/NCOW-BrushStroke-3_2.png) no-repeat 50%/100% 100%;
         }
 
-        > div:hover::before {
+        > div::after {
+          content: "";
+          position: absolute;
+          inset: 0;
+          z-index: 0;
+          opacity: 0;
+          transition: opacity 520ms ease;
+          pointer-events: none;
+          background: url(../assets/ui/NCOW-BrushStroke-3.png) no-repeat 50%/100% 100%;
           filter: invert(100%);
+        }
+
+        > :nth-child(2n)::after {
+          background: url(../assets/ui/NCOW-BrushStroke-3_2.png) no-repeat 50%/100% 100%;
+        }
+
+        > div:hover::after {
+          opacity: 1;
         }
 
         > div:hover {
@@ -158,6 +194,9 @@
       .has-submenu:focus-within > .submenu {
         visibility: visible;
         pointer-events: auto;
+        opacity: 1;
+        transform: translateX(-50%) scaleY(1);
+        clip-path: inset(0 0 0 0);
         transition-delay: 0s;
       }
     }
