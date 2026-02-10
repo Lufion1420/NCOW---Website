@@ -2,6 +2,7 @@ import HeroBanner from "../components/hero_banner";
 import IntroBanner from "../components/intro_banner";
 import QuickBanner from "../components/quick_banner";
 import CharacterCards from "../components/character_cards";
+import CharacterIntro from "../components/character_intro";
 
 export default function HomePage() {
   return (
@@ -10,6 +11,7 @@ export default function HomePage() {
       <QuickBanner></QuickBanner>
       <IntroBanner></IntroBanner>
       <CharacterCards></CharacterCards>
+      <CharacterIntro></CharacterIntro>
     </>
   );
 }

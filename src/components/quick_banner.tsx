@@ -15,7 +15,7 @@ export default function QuickBanner() {
             <span>Dekorüstung für Eleanor: Himmelschuppenkönigin</span>
           </div>
           <div className="quick_banner_text">
-            <span className="glow_effect-secondary">Vorgestellbonus sichern</span>
+            <span className="glow_effect-primary">Vorgestellbonus sichern</span>
             <img src={Arrow} alt="" />
           </div>
         </div>
