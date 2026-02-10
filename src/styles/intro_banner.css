@@ -44,6 +44,16 @@
         order: 2;
       }
 
+      button {
+        span {
+          order: 2;
+        }
+
+        div {
+          transform: rotate(180deg);
+        }
+      }
+
       button::before {
         background: url(../assets/ui/NCOW-BrushStroke-3_2.png) no-repeat 50% / 100% 100%;
         content: "";
@@ -51,6 +61,12 @@
         inset: 0;
         z-index: 0;
         transition: filter 320ms ease;
+      }
+
+      button:hover {
+        div {
+          transform: rotate(180deg) translateX(1rem) !important;
+        }
       }
     }
 
