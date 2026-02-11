@@ -1,3 +1,4 @@
+import { useState } from "react";
 import "../styles/gallery.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.css";
@@ -16,6 +17,8 @@ import UI_8 from "../assets/images/NCOW-Image-UI-8.png";
 import UI_9 from "../assets/images/NCOW-Image-UI-9.png";
 
 import Video_1 from "../assets/videos/NCOW-Trailer_1.mp4";
+
+type GalleryTab = "terrain" | "ui" | "videos";
 
 export default function Gallery() {
   const terrains = {
@@ -42,26 +45,47 @@ export default function Gallery() {
   const list_uis = Object.values(uis);
   const list_terrains = Object.values(terrains);
   const list_videos = Object.values(videos);
+  const [activeTab, setActiveTab] = useState<GalleryTab>("terrain");
+
+  const mediaByTab: Record<GalleryTab, string[]> = {
+    terrain: list_terrains,
+    ui: list_uis,
+    videos: list_videos,
+  };
 
   return (
     <div className="gallery container">
       <h2>Gallery</h2>
       <div className="gallery_content">
         <div className="gallery_tabs">
-          <button className="tab heading">Terrain</button>
-          <button className="tab heading">Custom UI's</button>
-          <button className="tab heading">Videos</button>
+          <button className={`tab heading ${activeTab === "terrain" ? "is-active" : ""}`} onClick={() => setActiveTab("terrain")} type="button">
+            Terrain
+          </button>
+          <button className={`tab heading ${activeTab === "ui" ? "is-active" : ""}`} onClick={() => setActiveTab("ui")} type="button">
+            Custom UI's
+          </button>
+          <button className={`tab heading ${activeTab === "videos" ? "is-active" : ""}`} onClick={() => setActiveTab("videos")} type="button">
+            Videos
+          </button>
         </div>
         <div className="gallery_media">
-          <Swiper slidesPerView={2.5} spaceBetween={24} watchOverflow>
-            {list_uis.map((image: string) => (
-              <SwiperSlide>
-                <div>
-                  <img src={image} alt="" />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+          <div key={activeTab} className="gallery_media_content">
+            <Swiper slidesPerView={2.5} spaceBetween={24} watchOverflow>
+              {mediaByTab[activeTab].map((media: string, index: number) => (
+                <SwiperSlide key={`${activeTab}-${index}`}>
+                  <div>
+                    {activeTab === "videos" ? (
+                      <video controls preload="metadata">
+                        <source src={media} type="video/mp4" />
+                      </video>
+                    ) : (
+                      <img src={media} alt="" />
+                    )}
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
       </div>
     </div>

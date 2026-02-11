@@ -31,6 +31,8 @@
         padding: 1rem 4rem;
         position: relative;
         font-size: clamp(20px, 3vw, 30px);
+        color: var(--color-text-primary);
+        transition: color 300ms ease;
       }
 
       button:hover {
@@ -50,9 +52,21 @@
         position: absolute;
         transition: filter 300ms ease;
       }
+
+      button.is-active {
+        color: var(--color-text-tetriary);
+      }
+
+      button.is-active::before {
+        filter: invert(100%);
+      }
     }
 
     .gallery_media {
+      .gallery_media_content {
+        animation: gallery-fade-in 400ms ease;
+      }
+
       .swiper {
         .swiper-wrapper {
           .swiper-slide {
@@ -65,10 +79,27 @@
                 object-fit: cover;
                 display: block;
               }
+
+              video {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                display: block;
+              }
             }
           }
         }
       }
     }
+  }
+}
+
+@keyframes gallery-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }
