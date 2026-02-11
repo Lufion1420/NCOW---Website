@@ -2,6 +2,7 @@ import "../styles/character_cards.css";
 import type { CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation } from "swiper/modules";
 import "swiper/swiper.css";
 
 import ImageNaruto from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
@@ -60,7 +61,7 @@ export default function CharacterCards() {
     <div className="character_cards">
       <h2>Characters</h2>
       <div className="card_list container">
-        <Swiper slidesPerView={4} spaceBetween={12} watchOverflow>
+        <Swiper modules={[Navigation]} navigation slidesPerView={4} spaceBetween={12} watchOverflow>
           {characterList.map((character) => (
             <SwiperSlide key={character.name}>
               <article className="card" style={{ "--card-hover-color": character.color } as CSSProperties}>
