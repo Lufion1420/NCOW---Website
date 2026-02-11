@@ -68,6 +68,38 @@
       }
 
       .swiper {
+        padding-bottom: 4.25rem;
+
+        .swiper-pagination {
+          .swiper-pagination-bullet {
+            opacity: 0.7;
+            transition:
+              opacity 200ms ease,
+              transform 200ms ease;
+            width: 30px;
+            height: 30px;
+            position: relative;
+            margin: 0 6px;
+            background: none;
+          }
+
+          .swiper-pagination-bullet-active {
+            opacity: 1;
+            transform: scale(1.45);
+          }
+
+          .swiper-pagination-bullet::before {
+            content: "";
+            inset: 0;
+            position: absolute;
+            background: url(../assets/ui/NCOW-SliderIcon-1.png) no-repeat 50% / 100% 100%;
+          }
+
+          .swiper-pagination-bullet-active::before {
+            background: url(../assets/ui/NCOW-SliderIcon-1_2.png) no-repeat 50% / 100% 100%;
+          }
+        }
+
         .swiper-wrapper {
           .swiper-slide {
             > div {

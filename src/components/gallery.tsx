@@ -1,7 +1,9 @@
 import { useState, type MouseEvent } from "react";
 import "../styles/gallery.css";
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 import "swiper/swiper.css";
+import "swiper/css/pagination";
 
 import Terrain_1 from "../assets/images/NCOW-Image_Intro.png";
 import Terrain_2 from "../assets/images/NCOW-Image_Intro_2.png";
@@ -81,7 +83,7 @@ export default function Gallery() {
         </div>
         <div className="gallery_media">
           <div key={activeTab} className="gallery_media_content">
-            <Swiper slidesPerView={2.5} spaceBetween={24} watchOverflow>
+            <Swiper modules={[Pagination]} pagination={{ clickable: true }} slidesPerView={2.5} spaceBetween={24} watchOverflow>
               {mediaByTab[activeTab].map((media: string, index: number) => (
                 <SwiperSlide key={`${activeTab}-${index}`}>
                   <div>
