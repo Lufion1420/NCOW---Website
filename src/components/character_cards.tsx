@@ -69,7 +69,11 @@ export default function CharacterCards() {
         <Swiper
           modules={[Navigation, Pagination]}
           navigation={{ prevEl: `.${prevClass}`, nextEl: `.${nextClass}` }}
-          pagination={{ el: `.${paginationClass}`, clickable: true }}
+          pagination={{
+            el: `.${paginationClass}`,
+            type: "custom",
+            renderCustom: (_swiper, current, total) => `${current}/${total}`,
+          }}
           slidesPerView={4}
           spaceBetween={12}
           watchOverflow
