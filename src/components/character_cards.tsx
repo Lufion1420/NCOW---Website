@@ -1,13 +1,18 @@
 import "../styles/character_cards.css";
-import type { CSSProperties } from "react";
+import { useId, type CSSProperties } from "react";
 import { Link } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import { Navigation, Pagination } from "swiper/modules";
 import "swiper/swiper.css";
 
 import ImageNaruto from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
 
 export default function CharacterCards() {
+  const sliderId = useId().replace(/:/g, "");
+  const prevClass = `character_cards_prev_${sliderId}`;
+  const nextClass = `character_cards_next_${sliderId}`;
+  const paginationClass = `character_cards_pagination_${sliderId}`;
+
   const characters = [
     {
       naruto: {
@@ -61,7 +66,14 @@ export default function CharacterCards() {
     <div className="character_cards">
       <h2>Characters</h2>
       <div className="card_list container">
-        <Swiper modules={[Navigation]} navigation slidesPerView={4} spaceBetween={12} watchOverflow>
+        <Swiper
+          modules={[Navigation, Pagination]}
+          navigation={{ prevEl: `.${prevClass}`, nextEl: `.${nextClass}` }}
+          pagination={{ el: `.${paginationClass}`, clickable: true }}
+          slidesPerView={4}
+          spaceBetween={12}
+          watchOverflow
+        >
           {characterList.map((character) => (
             <SwiperSlide key={character.name}>
               <article className="card" style={{ "--card-hover-color": character.color } as CSSProperties}>
@@ -75,6 +87,11 @@ export default function CharacterCards() {
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className="character_cards_controls" aria-label="Character slider controls">
+          <button type="button" className={`swiper-button-prev ${prevClass}`} aria-label="Previous characters"></button>
+          <div className={`swiper-pagination ${paginationClass}`}></div>
+          <button type="button" className={`swiper-button-next ${nextClass}`} aria-label="Next characters"></button>
+        </div>
       </div>
     </div>
   );
