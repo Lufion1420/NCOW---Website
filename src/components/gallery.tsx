@@ -15,6 +15,8 @@ import UI_7 from "../assets/images/NCOW-Image-UI-7.png";
 import UI_8 from "../assets/images/NCOW-Image-UI-8.png";
 import UI_9 from "../assets/images/NCOW-Image-UI-9.png";
 
+import Video_1 from "../assets/videos/NCOW-Trailer_1.mp4";
+
 export default function Gallery() {
   const terrains = {
     Terrain_1,
@@ -33,7 +35,13 @@ export default function Gallery() {
     UI_9,
   };
 
+  const videos = {
+    Video_1,
+  };
+
   const list_uis = Object.values(uis);
+  const list_terrains = Object.values(terrains);
+  const list_videos = Object.values(videos);
 
   return (
     <div className="gallery container">
