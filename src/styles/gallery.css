@@ -1,0 +1,74 @@
+.gallery::before {
+  content: "";
+  inset: 0;
+  background: url(../assets/wallpapers/NCOW-Background-1_2.png) no-repeat 50% / 100% 100%;
+  z-index: -1;
+  position: absolute;
+}
+
+.gallery {
+  margin: -2rem 0;
+  padding-top: 5rem;
+  padding-bottom: 8rem;
+  position: relative;
+
+  h2 {
+    padding-bottom: 4rem;
+    color: var(--color-text-tetriary);
+    margin: auto;
+    width: fit-content;
+  }
+
+  .gallery_content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    .gallery_tabs {
+      display: flex;
+
+      button {
+        padding: 1rem 4rem;
+        position: relative;
+        font-size: clamp(20px, 3vw, 30px);
+      }
+
+      button:hover {
+        cursor: pointer;
+        color: var(--color-text-tetriary);
+      }
+
+      button:hover::before {
+        filter: invert(100%);
+      }
+
+      button::before {
+        content: "";
+        inset: 0;
+        background: url(../assets/ui/NCOW-BrushStroke-1.png) no-repeat 50% / 100% 100%;
+        z-index: -1;
+        position: absolute;
+        transition: filter 300ms ease;
+      }
+    }
+
+    .gallery_media {
+      .swiper {
+        .swiper-wrapper {
+          .swiper-slide {
+            > div {
+              aspect-ratio: 6/4;
+
+              img {
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                display: block;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

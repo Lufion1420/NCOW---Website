@@ -86,6 +86,11 @@ hr {
   color: var(--color-divider);
 }
 
+button {
+  background-color: transparent;
+  border: none;
+}
+
 /* Utility Classes */
 .container {
   padding-left: var(--padding-base);
