@@ -71,7 +71,16 @@ export default function Gallery() {
       <h2>Gallery</h2>
       <div className="gallery_content">
         <div className="gallery_tabs">
-          <Swiper slidesPerView={3} watchOverflow spaceBetween={1}>
+          <Swiper
+            className="gallery_tabs_swiper"
+            slidesPerView="auto"
+            watchOverflow
+            spaceBetween={10}
+            breakpoints={{
+              0: { allowTouchMove: true, slidesPerView: 2.5 },
+              1024: { allowTouchMove: false },
+            }}
+          >
             <SwiperSlide>
               <button className={`tab heading ${activeTab === "terrain" ? "is-active" : ""}`} onClick={() => setActiveTab("terrain")} type="button">
                 Terrain
@@ -91,7 +100,17 @@ export default function Gallery() {
         </div>
         <div className="gallery_media">
           <div key={activeTab} className="gallery_media_content">
-            <Swiper modules={[Pagination]} pagination={{ clickable: true }} slidesPerView={2.5} spaceBetween={24} watchOverflow>
+            <Swiper
+              modules={[Pagination]}
+              pagination={{ clickable: true }}
+              slidesPerView={2.5}
+              spaceBetween={24}
+              watchOverflow
+              breakpoints={{
+                0: { allowTouchMove: true, slidesPerView: 1 },
+                1024: { allowTouchMove: false },
+              }}
+            >
               {mediaByTab[activeTab].map((media: string, index: number) => (
                 <SwiperSlide key={`${activeTab}-${index}`}>
                   <div>

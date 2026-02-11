@@ -27,20 +27,33 @@
     .gallery_tabs {
       display: flex;
       max-width: 50rem;
+      width: 100%;
 
-      .swiper {
+      .gallery_tabs_swiper {
         margin: 0;
+        width: 100%;
+      }
+
+      .gallery_tabs_swiper .swiper-wrapper {
+        justify-content: flex-start;
+      }
+
+      .gallery_tabs_swiper .swiper-slide {
+        width: auto;
+        flex: 0 0 auto;
       }
 
       button {
-        padding: 1rem 4rem;
+        padding: 1rem 2.5rem;
         position: relative;
         font-size: clamp(20px, 3vw, 30px);
         color: var(--color-text-primary);
+        white-space: nowrap;
         transition: color 300ms ease;
 
         @media screen and (max-width: 768px) {
           max-height: 3rem;
+          padding: 0.9rem 1.6rem;
         }
       }
 
@@ -78,6 +91,10 @@
 
       .swiper {
         padding-bottom: 4.25rem;
+
+        @media screen and (max-width: 768px) {
+          padding-bottom: 6.25rem;
+        }
 
         .swiper-pagination {
           .swiper-pagination-bullet {
