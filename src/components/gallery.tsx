@@ -77,7 +77,7 @@ export default function Gallery() {
             watchOverflow
             spaceBetween={10}
             breakpoints={{
-              0: { allowTouchMove: true, slidesPerView: 2.5 },
+              0: { allowTouchMove: true },
               1024: { allowTouchMove: false },
             }}
           >
