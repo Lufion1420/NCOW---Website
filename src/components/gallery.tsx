@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type MouseEvent } from "react";
 import "../styles/gallery.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.css";
@@ -21,6 +21,17 @@ import Video_1 from "../assets/videos/NCOW-Trailer_1.mp4";
 type GalleryTab = "terrain" | "ui" | "videos";
 
 export default function Gallery() {
+  const handleVideoMouseEnter = (event: MouseEvent<HTMLVideoElement>) => {
+    const video = event.currentTarget;
+    void video.play();
+  };
+
+  const handleVideoMouseLeave = (event: MouseEvent<HTMLVideoElement>) => {
+    const video = event.currentTarget;
+    video.pause();
+    //video.currentTime = 0; // resets the video timer.
+  };
+
   const terrains = {
     Terrain_1,
     Terrain_2,
@@ -75,7 +86,7 @@ export default function Gallery() {
                 <SwiperSlide key={`${activeTab}-${index}`}>
                   <div>
                     {activeTab === "videos" ? (
-                      <video controls preload="metadata">
+                      <video loop muted onMouseEnter={handleVideoMouseEnter} onMouseLeave={handleVideoMouseLeave} playsInline preload="metadata">
                         <source src={media} type="video/mp4" />
                       </video>
                     ) : (
