@@ -16,12 +16,16 @@ type Parameters = {
 };
 
 function RichtextComponent({ title, text, alignment, image, image_alt }: Parameters) {
+  const paragraphs = text ? text.split(/\r?\n\s*\r?\n/).map((paragraph) => paragraph.trim()) : [];
+
   return (
     <div className={`text_container align-${alignment}`}>
       <div className="intro_text">
         <div className="text_container">
           {title ? <h3>{title}</h3> : null}
-          {text ? <p>{text}</p> : null}
+          {paragraphs.map((paragraph, index) => (
+            <p key={`${title ?? "intro"}-${index}`}>{paragraph}</p>
+          ))}
         </div>
         {image ? <img src={image} alt={image_alt} /> : null}
       </div>
@@ -32,17 +36,31 @@ function RichtextComponent({ title, text, alignment, image, image_alt }: Paramet
 export default function IntroBanner() {
   const title_1 = "What is NCOW";
   const text_1 = `Naruto Clash of Worlds is a custom Warcraft III mod, that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you decide about the fate of the shinobi world! 
+
+  As the spiritual successor to Naruto World, this mod aims to walk into its footsteps, but bigger, deeper, and more ambitious than ever! Also, unlike many other current and older modifications for Warcraft III, this projects goal will be to build a seamless and unique experience, that players can actually enjoy to the fullest. 
   
-  As the spiritual successor to Naruto World, this mod aims to walk into its footsteps, but bigger, deeper, and more ambitious than ever. Also, unlike many other current and older modifications for Warcraft III, this projects goal will be to build a seamless and unique experience, that players can actually enjoy to the fullest. Due to that, the project is expected to grow with its community if so desired and will be very open and appreciative of any feedback or suggestions. Feel free to check out the discord channel or any of the other social media platforms. You can find links in the Footer.`;
+  Feel free to check out the discord channel or any of the other social media platforms. You can find links in the Footer.`;
 
   const title_2 = "Gameplay";
-  const text_2 = "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. Featuring custom 3D models, quests, UI, and skillsets, this is the spiritual successor to Naruto World, but bigger, deeper, and more ambitious than ever.";
+  const text_2 = `Naruto Clash of Worlds delivers rich and immersive RPG gameplay built around handcrafted, unique characters, each designed with their own playstyle, abilities, and combat identity.
+
+  Explore a carefully crafted terrain that recreates iconic locations from the Naruto universe, faithfully rebuilt within the Warcraft III World Editor.
+
+  Engage in thoughtfully designed systems that deepen immersion and replayability, including Personal Character Questlines, Village Quests, challenging Boss Fights featuring custom AI behavior, interactive Support Characters and much more.`;
 
   const title_3 = "Custom Assets";
-  const text_3 = "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. Featuring custom 3D models, quests, UI, and skillsets, this is the spiritual successor to Naruto World, but bigger, deeper, and more ambitious than ever.";
+  const text_3 = `Naruto Clash of Worlds is built with a strong focus on originality and visual identity. The mod features a wide range of custom-made assets, including high-quality 3D character models, detailed environmental doodads, and unique visual effects designed and/or optimized specifically for NCOW.
 
-  const title_4 = "Custom UI's";
-  const text_4 = "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. Featuring custom 3D models, quests, UI, and skillsets, this is the spiritual successor to Naruto World, but bigger, deeper, and more ambitious than ever.";
+  From carefully modeled shinobi to atmospheric village props and handcrafted spell animations, every asset is created to enhance immersion and bring the Naruto world to life within the Warcraft III engine.
+
+  Each asset is thoughtfully integrated into the gameplay and world design, ensuring that visuals don’t just look impressive, but also support storytelling, combat clarity, and overall immersion.`;
+
+  const title_4 = "User Interface";
+  const text_4 = `Naruto Clash of Worlds features a fully customized User Interface designed from the ground up. Every menu and system has been reimagined from Shop interfaces and Character Selection screens to Game Mode selection and the main in-game HUD.
+
+  The gameplay interface itself has been carefully crafted to enhance clarity, style, and immersion. Abilities, health, resources, and character statistics are presented in a way that feels both intuitive and visually distinct, blending seamlessly with the Naruto-inspired aesthetic of the project.
+
+  The result is a polished and immersive experience where every interaction whether selecting a character, browsing a shop, or engaging in combat feels intentional and uniquely tailored to the world of NCOW.`;
 
   return (
     <div className="intro_banner container">
