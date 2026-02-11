@@ -27,7 +27,7 @@ function RichtextComponent({ title, text, alignment, image, image_alt }: Paramet
             <p key={`${title ?? "intro"}-${index}`}>{paragraph}</p>
           ))}
         </div>
-        {image ? <img src={image} alt={image_alt} /> : null}
+        <div>{image ? <img src={image} alt={image_alt} /> : null}</div>
       </div>
     </div>
   );

@@ -95,6 +95,11 @@ button {
 .container {
   padding-left: var(--padding-base);
   padding-right: var(--padding-base);
+
+  @media screen and (max-width: 1000px) {
+    padding-left: var(--padding-base-mobile);
+    padding-right: var(--padding-base-mobile);
+  }
 }
 
 .section {
