@@ -71,7 +71,7 @@
         width: 100%;
 
         img {
-          width: 50%;
+          width: 40%;
           height: auto;
           aspect-ratio: 1/1;
           object-fit: cover;
@@ -79,13 +79,13 @@
         }
 
         .text_container {
-          width: 50%;
+          width: 60%;
           display: flex;
           margin: auto;
           flex-direction: column;
 
           p {
-            /* filter: drop-shadow(0 0 min(0.2604166667vw, 5px) white) drop-shadow(0 0 min(0.5208333333vw, 300px) white) drop-shadow(0 0 min(0.78125vw, 100px) white) drop-shadow(0 0 min(1.0416666667vw, 100px) white); */
+            --filter: drop-shadow(0 0 min(0.2604166667vw, 5px) white) drop-shadow(0 0 min(0.5208333333vw, 300px) white) drop-shadow(0 0 min(0.78125vw, 100px) white) drop-shadow(0 0 min(1.0416666667vw, 100px) white);
             color: var(--color-text-tetriary);
             font-weight: 700;
             line-height: 2.5;
@@ -166,7 +166,7 @@
 
     span {
       color: var(--color-text-primary);
-      font-size: clamp(16px, 2vw, 20px);
+      font-size: clamp(24px, 5vw, 36px);
       width: 100%;
       height: 100%;
       position: relative;

@@ -31,7 +31,9 @@ function RichtextComponent({ title, text, alignment, image, image_alt }: Paramet
 
 export default function IntroBanner() {
   const title_1 = "What is NCOW";
-  const text_1 = "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. Featuring custom 3D models, quests, UI, and skillsets, this is the spiritual successor to Naruto World, but bigger, deeper, and more ambitious than ever.";
+  const text_1 = `Naruto Clash of Worlds is a custom Warcraft III mod, that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you decide about the fate of the shinobi world! 
+  
+  As the spiritual successor to Naruto World, this mod aims to walk into its footsteps, but bigger, deeper, and more ambitious than ever. Also, unlike many other current and older modifications for Warcraft III, this projects goal will be to build a seamless and unique experience, that players can actually enjoy to the fullest. Due to that, the project is expected to grow with its community if so desired and will be very open and appreciative of any feedback or suggestions. Feel free to check out the discord channel or any of the other social media platforms. You can find links in the Footer.`;
 
   const title_2 = "Gameplay";
   const text_2 = "Naruto Clash of Worlds is a custom Warcraft III mod that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you define your role. Featuring custom 3D models, quests, UI, and skillsets, this is the spiritual successor to Naruto World, but bigger, deeper, and more ambitious than ever.";
@@ -56,7 +58,7 @@ export default function IntroBanner() {
       </div>
 
       <button>
-        <span>Read More</span>
+        <span className="heading">Read More</span>
         <Link to={"/gameplay"}></Link>
       </button>
     </div>
