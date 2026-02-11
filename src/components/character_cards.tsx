@@ -76,6 +76,24 @@ export default function CharacterCards() {
           }}
           slidesPerView={4}
           spaceBetween={12}
+          breakpoints={{
+            0: {
+              slidesPerView: 1,
+              spaceBetween: 8,
+            },
+            640: {
+              slidesPerView: 2,
+              spaceBetween: 10,
+            },
+            960: {
+              slidesPerView: 3,
+              spaceBetween: 12,
+            },
+            1280: {
+              slidesPerView: 4,
+              spaceBetween: 12,
+            },
+          }}
           watchOverflow
         >
           {characterList.map((character) => (

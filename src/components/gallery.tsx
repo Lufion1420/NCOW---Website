@@ -71,15 +71,23 @@ export default function Gallery() {
       <h2>Gallery</h2>
       <div className="gallery_content">
         <div className="gallery_tabs">
-          <button className={`tab heading ${activeTab === "terrain" ? "is-active" : ""}`} onClick={() => setActiveTab("terrain")} type="button">
-            Terrain
-          </button>
-          <button className={`tab heading ${activeTab === "ui" ? "is-active" : ""}`} onClick={() => setActiveTab("ui")} type="button">
-            Custom UI's
-          </button>
-          <button className={`tab heading ${activeTab === "videos" ? "is-active" : ""}`} onClick={() => setActiveTab("videos")} type="button">
-            Videos
-          </button>
+          <Swiper slidesPerView={3} watchOverflow spaceBetween={1}>
+            <SwiperSlide>
+              <button className={`tab heading ${activeTab === "terrain" ? "is-active" : ""}`} onClick={() => setActiveTab("terrain")} type="button">
+                Terrain
+              </button>
+            </SwiperSlide>
+            <SwiperSlide>
+              <button className={`tab heading ${activeTab === "ui" ? "is-active" : ""}`} onClick={() => setActiveTab("ui")} type="button">
+                Custom UI's
+              </button>
+            </SwiperSlide>
+            <SwiperSlide>
+              <button className={`tab heading ${activeTab === "videos" ? "is-active" : ""}`} onClick={() => setActiveTab("videos")} type="button">
+                Videos
+              </button>
+            </SwiperSlide>
+          </Swiper>
         </div>
         <div className="gallery_media">
           <div key={activeTab} className="gallery_media_content">

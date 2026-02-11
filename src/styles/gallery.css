@@ -26,6 +26,11 @@
 
     .gallery_tabs {
       display: flex;
+      max-width: 50rem;
+
+      .swiper {
+        margin: 0;
+      }
 
       button {
         padding: 1rem 4rem;
@@ -33,6 +38,10 @@
         font-size: clamp(20px, 3vw, 30px);
         color: var(--color-text-primary);
         transition: color 300ms ease;
+
+        @media screen and (max-width: 768px) {
+          max-height: 3rem;
+        }
       }
 
       button:hover {
