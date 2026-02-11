@@ -1,16 +1,8 @@
 .intro_banner::before {
-  background: url(../assets/wallpapers/NCOW-Background-3_2.png) no-repeat 50% / 100% 100%;
+  background: url(../assets/wallpapers/NCOW-Background-3_3.png) no-repeat 50% / 105% 100%;
   content: "";
   position: absolute;
   inset: 0;
-}
-
-h2 {
-  padding-bottom: 5rem;
-  z-index: 2;
-  position: relative;
-  text-align: center;
-  color: black;
 }
 
 .intro_banner {
@@ -18,6 +10,32 @@ h2 {
   padding-top: 5rem;
   padding-bottom: 5rem;
   position: relative;
+  display: flex;
+  flex-direction: column;
+
+  .intro_banner_heading {
+    position: relative;
+    margin-bottom: 5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    > h2 {
+      padding: 1rem 0;
+      position: relative;
+      text-align: center;
+      max-width: 85%;
+      color: var(--color-text-primary);
+      font-size: clamp(22px, 4vw, 65px);
+    }
+  }
+
+  .intro_banner_heading::before {
+    background: url(../assets/ui/NCOW-BrushStroke-1.png) no-repeat 50% / 100% 100%;
+    position: absolute;
+    inset: 0;
+    content: "";
+  }
 
   .intro_inner_wrap {
     display: flex;
@@ -55,16 +73,25 @@ h2 {
         img {
           width: 50%;
           height: auto;
+          aspect-ratio: 1/1;
+          object-fit: cover;
+          border: 8px solid black;
         }
 
-        p {
-          /* filter: drop-shadow(0 0 min(0.2604166667vw, 5px) white) drop-shadow(0 0 min(0.5208333333vw, 300px) white) drop-shadow(0 0 min(0.78125vw, 100px) white) drop-shadow(0 0 min(1.0416666667vw, 100px) white); */
-          color: var(--color-text-tetriary);
-          font-weight: 700;
-          line-height: 2.5;
-          letter-spacing: min(0.01rem, 1px);
-          font-size: min(1.2em, 30px);
+        .text_container {
           width: 50%;
+          display: flex;
+          margin: auto;
+          flex-direction: column;
+
+          p {
+            /* filter: drop-shadow(0 0 min(0.2604166667vw, 5px) white) drop-shadow(0 0 min(0.5208333333vw, 300px) white) drop-shadow(0 0 min(0.78125vw, 100px) white) drop-shadow(0 0 min(1.0416666667vw, 100px) white); */
+            color: var(--color-text-tetriary);
+            font-weight: 700;
+            line-height: 2.5;
+            letter-spacing: min(0.01rem, 1px);
+            font-size: min(1.2em, 30px);
+          }
         }
       }
     }
@@ -81,7 +108,9 @@ h2 {
       }
 
       .intro_text {
-        align-items: flex-start;
+        .text_container {
+          align-items: flex-start;
+        }
       }
     }
     .text_container.align-center {
@@ -96,7 +125,9 @@ h2 {
       }
 
       .intro_text {
-        align-items: center;
+        .text_container {
+          align-items: center;
+        }
       }
     }
     .text_container.align-right {
@@ -106,13 +137,58 @@ h2 {
         inset: 0;
         content: "";
         position: absolute;
-        background: url(../assets/ui/NCOW-BrushStroke-3-2.png) no-repeat 50% / 100% 100%;
+        background: url(../assets/ui/NCOW-BrushStroke-3_2.png) no-repeat 50% / 100% 100%;
         z-index: -1;
       }
 
       .intro_text {
-        align-items: flex-end;
+        .text_container {
+          align-items: flex-end;
+          order: 2;
+
+          p,
+          h3 {
+            text-align: end;
+          }
+        }
       }
     }
+  }
+
+  > button {
+    position: relative;
+    min-width: 20rem;
+    margin: 5rem auto 0 auto;
+    background-color: transparent;
+    padding: 1rem 2rem 1rem 2rem;
+    border: none;
+    transition: filter 300ms ease;
+
+    span {
+      color: var(--color-text-primary);
+      font-size: clamp(16px, 2vw, 20px);
+      width: 100%;
+      height: 100%;
+      position: relative;
+      display: block;
+    }
+
+    a {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+    }
+  }
+
+  > button::before {
+    background: url(../assets/ui/NCOW-BrushStroke-1.png) repeat 50% / 105% 100%;
+    position: absolute;
+    inset: 0;
+    content: "";
+  }
+
+  > button:hover {
+    filter: invert(100%);
   }
 }

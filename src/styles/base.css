@@ -9,7 +9,11 @@
 *::before,
 *::after {
   box-sizing: border-box;
-  word-break: break-all;
+  hyphens: auto;
+  -webkit-hyphens: auto;
+  -moz-hyphens: auto;
+  -ms-hyphens: auto;
+  word-wrap: break-word;
 }
 
 body {
