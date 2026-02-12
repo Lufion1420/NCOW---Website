@@ -21,7 +21,7 @@ function RichtextComponent({ title, text, alignment, image, image_alt }: Paramet
   return (
     <div className={`text_container align-${alignment}`}>
       <div className="intro_text">
-        <div className="text_container">
+        <div className="inner_text_container">
           {title ? <h3>{title}</h3> : null}
           {paragraphs.map((paragraph, index) => (
             <p key={`${title ?? "intro"}-${index}`}>{paragraph}</p>
