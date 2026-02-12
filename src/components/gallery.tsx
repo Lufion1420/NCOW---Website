@@ -108,7 +108,7 @@ export default function Gallery() {
               watchOverflow
               breakpoints={{
                 0: { allowTouchMove: true, slidesPerView: 1 },
-                1024: { allowTouchMove: false },
+                1024: { allowTouchMove: true },
               }}
             >
               {mediaByTab[activeTab].map((media: string, index: number) => (
