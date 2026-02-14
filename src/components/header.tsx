@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
-import Logo from "../assets/logos/NCOW-Logo-1.png"
+import { Link, useLocation } from "react-router-dom";
+import Logo from "../assets/logos/NCOW-Logo-1.png";
 import "../styles/header.css";
 
 export default function Header() {
+  const { pathname } = useLocation();
+  const showLogo = pathname !== "/";
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const closeTimerRef = useRef<number | null>(null);
 
@@ -46,9 +48,11 @@ export default function Header() {
 
   return (
     <div className="header_wrapper container">
-      <Link to="/homepage" className="header_logo">
-        <img src={Logo} alt="Logo" />
-      </Link>
+      {showLogo && (
+        <Link to="/" className="header_logo">
+          <img src={Logo} alt="Logo" />
+        </Link>
+      )}
 
       <header className="header">
         <nav>
