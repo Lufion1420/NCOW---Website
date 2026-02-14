@@ -19,9 +19,16 @@
       }
 
       .text {
+        padding-bottom: 3rem;
+
         > * {
           color: black;
         }
+      }
+
+      .images {
+        display: flex;
+        gap: 1rem;
       }
     }
   }

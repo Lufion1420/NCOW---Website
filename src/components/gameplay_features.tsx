@@ -14,13 +14,22 @@ type Props = {
 };
 
 function Feature({ heading, text, alignment }: Props) {
+  const paragraphs = text ? text.split(/\r?\n\s*\r?\n/).map((paragraph) => paragraph.trim()) : [];
+
   return (
     <div className={`feature pseudo alignment-${alignment}`}>
       <div className="title">
         <h2>{heading}</h2>
       </div>
       <div className="text">
-        <p>{text}</p>
+        {paragraphs.map((paragraph, index) => (
+          <p key={`${heading ?? "feature"}-${index}`}>{paragraph}</p>
+        ))}
+      </div>
+      <div className="images">
+        <img src="https://placehold.co/600x400" alt="" />
+        <img src="https://placehold.co/600x400" alt="" />
+        <img src="https://placehold.co/600x400" alt="" />
       </div>
     </div>
   );
@@ -28,13 +37,45 @@ function Feature({ heading, text, alignment }: Props) {
 
 const content = {
   Quests: {
-    heading: "Quests",
-    text: "This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text!",
+    heading: "Quests and Missions",
+    text: `This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! 
+    
+    This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! 
+    
+    This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text!`,
+    images: {},
   },
 
-  Missions: {
-    heading: "Missions",
-    text: "This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text!",
+  Support_Characters: {
+    heading: "Support Characters",
+    text: `This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! 
+    
+    This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text!`,
+    images: {},
+  },
+
+  Objectives: {
+    heading: "Teams and Objectives",
+    text: `This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! 
+    
+    This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text!`,
+    images: {},
+  },
+
+  Shops: {
+    heading: "Shops",
+    text: `This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! 
+    
+    This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text!`,
+    images: {},
+  },
+
+  Bosses: {
+    heading: "Bosses with custom AI",
+    text: `This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! 
+    
+    This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text!`,
+    images: {},
   },
 };
 
@@ -44,8 +85,8 @@ export default function GameplayFeatures() {
   return (
     <div className="gameplay_features">
       <div className="pseudo wrapper">
-        {list_content.map((heading: string, text: string, alignment: Alignment) => (
-          <Feature heading={heading} text={text} alignment={alignment}></Feature>
+        {list_content.map((feature, index) => (
+          <Feature key={feature.heading} heading={feature.heading} text={feature.text} alignment={index % 2 === 0 ? "left" : "right"}></Feature>
         ))}
       </div>
     </div>
