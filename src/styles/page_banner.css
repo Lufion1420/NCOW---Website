@@ -29,7 +29,8 @@
   }
 
   .title::before {
-    background: url(../assets/ui/NCOW-AccentUnderlineText-1.png) repeat 50% / 100% 100%;
+    background: url(../assets/ui/NCOW-AccentUnderlineText-1.png) repeat 50% / 100% 120%;
+    --filter: invert(100%);
   }
 }
 

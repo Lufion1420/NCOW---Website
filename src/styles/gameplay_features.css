@@ -1,12 +1,49 @@
 .gameplay_features {
   position: relative;
   background-color: var(--color-secondary);
+  padding: 6rem 0;
 
   .wrapper {
-    min-height: 800px;
+    padding: 0rem 0rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    .feature {
+      position: relative;
+      padding: 1rem 3rem 6rem 3rem;
+      z-index: 1;
+
+      h2 {
+        color: black;
+      }
+
+      .text {
+        > * {
+          color: black;
+        }
+      }
+    }
   }
 
-  .wrapper::before {
-    --background: url(../assets/wallpapers/NCOW-BackgroundBrush.png) repeat 50% / 100% 100%;
+  .feature.alignment-right {
+    .title,
+    .text {
+      text-align: end;
+    }
+  }
+
+  .feature.alignment-left::before {
+    background: url(../assets/wallpapers/NCOW-BackgroundBrush.png) no-repeat 50% / 130% 100%;
+    filter: invert(100%);
+    transform: rotate(5deg);
+    z-index: -1;
+  }
+
+  .feature.alignment-right::before {
+    background: url(../assets/wallpapers/NCOW-BackgroundBrush.png) no-repeat 50% / 130% 100%;
+    filter: invert(100%);
+    transform: rotate(-5deg);
+    z-index: -1;
   }
 }
