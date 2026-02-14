@@ -1,9 +1,10 @@
-import { Link } from "react-router-dom";
+import PageBanner from "../components/page_banner";
+import Image from "../assets/wallpapers/NCOW-Wallpaper-5.png";
 
 export default function Gameplay() {
   return (
     <div>
-      <h1>This is the Gameplay Page</h1>
+      <PageBanner image={Image} heading="Gameplay"></PageBanner>
     </div>
   );
 }

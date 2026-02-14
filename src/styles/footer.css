@@ -1,8 +1,17 @@
+/* .footer::before {
+  inset: -0.2rem;
+  position: absolute;
+  content: "";
+  background: url(../assets/wallpapers/NCOW-BackgroundBrush-2.png) no-repeat 50% / 200% 120%;
+  z-index: 0;
+}
+ */
 .footer {
-  background-color: var(--color-primary);
+  background-color: black;
   padding-top: 2rem;
   padding-bottom: 2rem;
   border-top: 2px solid var(--color-border-primary);
+  position: relative;
 
   .footer_nav {
     display: flex;
@@ -26,6 +35,8 @@
     }
 
     .logo {
+      z-index: 1;
+
       img {
         width: 125px;
         height: auto;
@@ -33,6 +44,7 @@
     }
 
     .footer_links {
+      z-index: 1;
       > * {
         text-transform: uppercase;
         font-weight: var(--font-weight-highlight);
@@ -40,6 +52,7 @@
     }
 
     .footer_copyright {
+      z-index: 1;
       flex-direction: column;
       gap: 0;
 

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import Logo from "../assets/logos/NCOW-Logo-1.png"
 import "../styles/header.css";
 
 export default function Header() {
@@ -45,6 +46,10 @@ export default function Header() {
 
   return (
     <div className="header_wrapper container">
+      <Link to="/homepage" className="header_logo">
+        <img src={Logo} alt="Logo" />
+      </Link>
+
       <header className="header">
         <nav>
           <ul className="main-nav">

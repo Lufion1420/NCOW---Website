@@ -1,5 +1,6 @@
 import "../styles/intro_banner.css";
 import { Link } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import Image_1 from "../assets/images/NCOW-Image_Intro.png";
 import Image_2 from "../assets/images/NCOW-Image_Intro_2.png";
 import Image_3 from "../assets/characters/NCOW-3DModelGroup.png";
@@ -13,13 +14,43 @@ type Parameters = {
   image?: string;
   image_alt?: string;
   alignment?: Alignment;
+  delay?: number;
 };
 
-function RichtextComponent({ title, text, alignment, image, image_alt }: Parameters) {
+function RichtextComponent({ title, text, alignment, image, image_alt, delay = 0 }: Parameters) {
+  const textContainerRef = useRef<HTMLDivElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const currentContainer = textContainerRef.current;
+
+    if (!currentContainer) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.25,
+      },
+    );
+
+    observer.observe(currentContainer);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, []);
+
   const paragraphs = text ? text.split(/\r?\n\s*\r?\n/).map((paragraph) => paragraph.trim()) : [];
 
   return (
-    <div className={`text_container align-${alignment}`}>
+    <div ref={textContainerRef} className={`text_container align-${alignment} ${isVisible ? "visible" : ""}`} style={{ transitionDelay: `${delay}ms` }}>
       <div className="intro_text">
         <div className="inner_text_container">
           {title ? <h3>{title}</h3> : null}
@@ -35,7 +66,7 @@ function RichtextComponent({ title, text, alignment, image, image_alt }: Paramet
 
 export default function IntroBanner() {
   const title_1 = "What is NCOW";
-  const text_1 = `Naruto Clash of Worlds is a custom Warcraft III mod, that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions, Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you decide about the fate of the shinobi world! 
+  const text_1 = `Naruto Clash of Worlds is a custom Warcraft III mod, that lets you experience the Naruto story as a full-scale RPG. Choose one of four factions: Akatsuki, Konoha, Otogakure, or Evil and dive into story-driven gameplay where you decide about the fate of the shinobi world! 
 
   As the spiritual successor to Naruto World, this mod aims to walk into its footsteps, but bigger, deeper, and more ambitious than ever! Also, unlike many other current and older modifications for Warcraft III, this projects goal will be to build a seamless and unique experience, that players can actually enjoy to the fullest. 
   
@@ -69,10 +100,10 @@ export default function IntroBanner() {
       </div>
 
       <div className="intro_inner_wrap">
-        <RichtextComponent title={title_1} text={text_1} alignment="left" image={Image_1}></RichtextComponent>
-        <RichtextComponent title={title_2} text={text_2} alignment="right" image={Image_2}></RichtextComponent>
-        <RichtextComponent title={title_3} text={text_3} alignment="left" image={Image_3}></RichtextComponent>
-        <RichtextComponent title={title_4} text={text_4} alignment="right" image={Image_4}></RichtextComponent>
+        <RichtextComponent title={title_1} text={text_1} alignment="left" image={Image_1} delay={50}></RichtextComponent>
+        <RichtextComponent title={title_2} text={text_2} alignment="right" image={Image_2} delay={150}></RichtextComponent>
+        <RichtextComponent title={title_3} text={text_3} alignment="left" image={Image_3} delay={250}></RichtextComponent>
+        <RichtextComponent title={title_4} text={text_4} alignment="right" image={Image_4} delay={350}></RichtextComponent>
       </div>
 
       <button>
