@@ -18,11 +18,7 @@ type Props = {
   images?: ImageCollection;
 };
 
-const PLACEHOLDER_IMAGES = [
-  "https://placehold.co/600x400",
-  "https://placehold.co/600x400",
-  "https://placehold.co/600x400",
-];
+const PLACEHOLDER_IMAGES = ["https://placehold.co/600x400", "https://placehold.co/600x400", "https://placehold.co/600x400"];
 
 function Feature({ heading, text, alignment, images }: Props) {
   const paragraphs = text ? text.split(/\r?\n\s*\r?\n/).map((paragraph) => paragraph.trim()) : [];
@@ -43,7 +39,9 @@ function Feature({ heading, text, alignment, images }: Props) {
         <Swiper slidesPerView={1} spaceBetween={16} breakpoints={{ 769: { slidesPerView: 2.5, spaceBetween: 16 } }}>
           {renderedImages.map((src, index) => (
             <SwiperSlide key={`${heading ?? "feature"}-image-${index}`}>
-              <img src={src} alt={`${heading ?? "Feature"} image ${index + 1}`} />
+              <div className="image">
+                <img src={src} alt={`${heading ?? "Feature"} image ${index + 1}`} />
+              </div>
             </SwiperSlide>
           ))}
         </Swiper>
