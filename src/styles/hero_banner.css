@@ -2,6 +2,12 @@
   height: 900px;
   width: auto;
   position: relative;
+  overflow: hidden;
+
+  > * {
+    opacity: 0;
+    animation: hero-banner-content-reveal 500ms ease-out var(--page-banner-anim-duration) forwards;
+  }
 
   @media screen and (max-width: 768px) {
     height: 500px;
@@ -106,4 +112,41 @@
   height: 100%;
   z-index: -1;
   pointer-events: none;
+  will-change: transform, filter;
+  animation: hero-banner-focus-in var(--page-banner-anim-duration) ease-out forwards;
+}
+
+@keyframes hero-banner-focus-in {
+  from {
+    transform: translate(-50%, -50%) scale(1.15);
+    filter: blur(25px);
+  }
+
+  to {
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(2px);
+  }
+}
+
+@keyframes hero-banner-content-reveal {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero_banner > * {
+    animation: none;
+    opacity: 1;
+  }
+
+  .hero_banner::before {
+    animation: none;
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(2px);
+  }
 }
