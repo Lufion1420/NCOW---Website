@@ -9,6 +9,7 @@ export default function Header() {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
   const closeTimerRef = useRef<number | null>(null);
 
+  // Cancels any pending submenu-close timeout.
   const clearCloseTimer = () => {
     if (closeTimerRef.current !== null) {
       window.clearTimeout(closeTimerRef.current);
@@ -16,6 +17,7 @@ export default function Header() {
     }
   };
 
+  // Closes the submenu shortly after mouse leave to prevent flicker.
   const scheduleClose = () => {
     clearCloseTimer();
     closeTimerRef.current = window.setTimeout(() => {
@@ -24,9 +26,16 @@ export default function Header() {
     }, 80);
   };
 
+  // Cleanup timeout when the header unmounts.
   useEffect(() => {
     return () => clearCloseTimer();
   }, []);
+
+  // Reset submenu state whenever the route changes.
+  useEffect(() => {
+    clearCloseTimer();
+    setOpenIndex(null);
+  }, [pathname]);
 
   const mainLinks = [
     {
@@ -47,7 +56,7 @@ export default function Header() {
   ];
 
   return (
-    <div className="header_wrapper container">
+    <div key={pathname} className="header_wrapper container">
       {showLogo && (
         <Link to="/" className="header_logo">
           <img src={Logo} alt="Logo" />
