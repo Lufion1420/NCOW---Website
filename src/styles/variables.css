@@ -73,4 +73,7 @@ html {
   --padding-base-mobile: 1rem;
   --section-spacing: 5rem;
   --border-radius: 25px;
+
+  /* Animation related */
+  --page-banner-anim-duration: 950ms;
 }
