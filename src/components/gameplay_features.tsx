@@ -1,4 +1,6 @@
 import "../styles/gameplay_features.css";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper.css";
 
 /* 
     Tall Section with a fullscreen big brush background.
@@ -7,14 +9,25 @@ import "../styles/gameplay_features.css";
 */
 
 type Alignment = "left" | "right";
+type ImageCollection = Record<string, string> | string[];
+
 type Props = {
   heading?: string;
   text?: string;
   alignment?: Alignment;
+  images?: ImageCollection;
 };
 
-function Feature({ heading, text, alignment }: Props) {
+const PLACEHOLDER_IMAGES = [
+  "https://placehold.co/600x400",
+  "https://placehold.co/600x400",
+  "https://placehold.co/600x400",
+];
+
+function Feature({ heading, text, alignment, images }: Props) {
   const paragraphs = text ? text.split(/\r?\n\s*\r?\n/).map((paragraph) => paragraph.trim()) : [];
+  const imageList = images ? (Array.isArray(images) ? images : Object.values(images)) : [];
+  const renderedImages = imageList.length > 0 ? imageList : PLACEHOLDER_IMAGES;
 
   return (
     <div className={`feature pseudo alignment-${alignment}`}>
@@ -27,15 +40,25 @@ function Feature({ heading, text, alignment }: Props) {
         ))}
       </div>
       <div className="images">
-        <img src="https://placehold.co/600x400" alt="" />
-        <img src="https://placehold.co/600x400" alt="" />
-        <img src="https://placehold.co/600x400" alt="" />
+        <Swiper slidesPerView={1} spaceBetween={16} breakpoints={{ 769: { slidesPerView: 2.5, spaceBetween: 16 } }}>
+          {renderedImages.map((src, index) => (
+            <SwiperSlide key={`${heading ?? "feature"}-image-${index}`}>
+              <img src={src} alt={`${heading ?? "Feature"} image ${index + 1}`} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );
 }
 
-const content = {
+type FeatureContent = {
+  heading: string;
+  text: string;
+  images?: ImageCollection;
+};
+
+const content: Record<string, FeatureContent> = {
   Quests: {
     heading: "Quests and Missions",
     text: `This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! This could be your text! 
@@ -86,7 +109,7 @@ export default function GameplayFeatures() {
     <div className="gameplay_features">
       <div className="pseudo wrapper">
         {list_content.map((feature, index) => (
-          <Feature key={feature.heading} heading={feature.heading} text={feature.text} alignment={index % 2 === 0 ? "left" : "right"}></Feature>
+          <Feature key={feature.heading} heading={feature.heading} text={feature.text} images={feature.images} alignment={index % 2 === 0 ? "left" : "right"}></Feature>
         ))}
       </div>
     </div>
