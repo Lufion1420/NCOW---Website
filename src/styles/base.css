@@ -195,3 +195,10 @@ button {
 .glow_effect-secondary {
   filter: drop-shadow(0 0 min(0.5208333333vw, 10px) var(--color-accent-secondary)) drop-shadow(0 0 min(1.0416666667vw, 20px) var(--color-accent-secondary)) drop-shadow(0 0 min(1.5625vw, 30px) var(--color-accent-secondary));
 }
+
+.pseudo::before {
+  content: "";
+  inset: 0;
+  position: absolute;
+  z-index: -1;
+}

@@ -1,0 +1,12 @@
+.gameplay_features {
+  position: relative;
+  background-color: var(--color-secondary);
+
+  .wrapper {
+    min-height: 800px;
+  }
+
+  .wrapper::before {
+    --background: url(../assets/wallpapers/NCOW-BackgroundBrush.png) repeat 50% / 100% 100%;
+  }
+}

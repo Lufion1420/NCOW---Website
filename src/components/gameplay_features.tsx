@@ -6,6 +6,16 @@ import "../styles/gameplay_features.css";
     --> Switching layout from Image left and text right to text left and image right every second sub area.
 */
 
+function Feature() {
+  return <div className="feature"></div>;
+}
+
 export default function GameplayFeatures() {
-  return <div className="gameplay_features"></div>;
+  return (
+    <div className="gameplay_features container">
+      <div className="pseudo wrapper">
+        <Feature></Feature>
+      </div>
+    </div>
+  );
 }

@@ -1,7 +1,6 @@
 .page_banner {
   position: relative;
-  border-bottom: 2px solid var(--color-border-primary);
-  margin-bottom: 5rem;
+  border-bottom: 3px solid var(--color-border-primary);
 
   .image {
     height: 300px;
@@ -24,7 +23,13 @@
     transform: translate(-50%, -50%);
 
     h1 {
+      min-width: 40rem;
+      text-align: center;
     }
+  }
+
+  .title::before {
+    background: url(../assets/ui/NCOW-AccentUnderlineText-1.png) repeat 50% / 100% 100%;
   }
 }
 

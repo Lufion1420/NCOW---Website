@@ -11,7 +11,7 @@ export default function PageBanner({ image, heading }: Props) {
       <div className="image">
         <img src={image} alt="image banner" />
       </div>
-      <div className="title">
+      <div className="title pseudo">
         <h1>{heading}</h1>
       </div>
     </div>
