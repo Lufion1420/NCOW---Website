@@ -47,7 +47,9 @@ export const CHARACTER_INTRO_CHARACTERS: Character[] = [
       base: {
         slider: Naruto_Image_1,
         main: [Naruto_1, Naruto_2],
-        skills: [],
+        skills: [
+          
+        ],
       },
       sage: {
         slider: Naruto_Image_2,

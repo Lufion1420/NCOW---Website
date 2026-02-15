@@ -36,8 +36,6 @@ export default function CharacterIntro() {
   return (
     <>
       <div className="character_intro container">
-        <h1>test</h1>
-
         <div className="char_wrapper">
           <div className="char_content">
             <h2 className="char_name">{selectedCharacter.name}</h2>
@@ -99,6 +97,17 @@ export default function CharacterIntro() {
         </div>
 
         <div className="char_skill_info">
+          <div className="skill_list">
+            <button className="skill_q"></button>
+            <button className="skill_w"></button>
+            <button className="skill_e"></button>
+            <button className="skill_r"></button>
+            <button className="skill_d"></button>
+            <button className="skill_c"></button>
+            <button className="skill_z"></button>
+            <button className="skill_f"></button>
+          </div>
+
           <div className="title pseudo">
             <span className="heading">{activeSkill?.title ?? "Skill Title"}</span>
           </div>
