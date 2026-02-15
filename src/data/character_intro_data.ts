@@ -13,8 +13,6 @@ import Icon_Itachi from "../assets/characters/NCOW_IMG_Itachi.png";
 import Obito from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
 import Icon_Obito from "../assets/characters/NCOW_IMG_MaskedMan.png";
 
-const kits_konoha = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0qvL-ChgsThoIBhpvJty6-waQepQmSZVLGxsNTuVeP6DUgFL2zWXZgfW3Gc8nW2ZNI16y7HFyEUUF/pubhtml?gid=893355125&single=true";
-
 export type Button = "Q" | "W" | "E" | "R" | "D" | "F" | "C" | "Z";
 
 export type StageSkill = {

@@ -8,6 +8,8 @@ import { CHARACTER_INTRO_CHARACTERS } from "../data/character_intro_data";
 
 import Arrow from "../assets/ui/NCOW-Arrow-3.png";
 
+const kits_konoha = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0qvL-ChgsThoIBhpvJty6-waQepQmSZVLGxsNTuVeP6DUgFL2zWXZgfW3Gc8nW2ZNI16y7HFyEUUF/pubhtml?gid=893355125&single=true";
+
 export default function CharacterIntro() {
   const visibleIconCount = 3;
   const visibleIconGap = 25;
@@ -34,6 +36,8 @@ export default function CharacterIntro() {
   return (
     <>
       <div className="character_intro container">
+        <h1>test</h1>
+
         <div className="char_wrapper">
           <div className="char_content">
             <h2 className="char_name">{selectedCharacter.name}</h2>
