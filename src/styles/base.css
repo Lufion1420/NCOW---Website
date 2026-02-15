@@ -137,14 +137,6 @@ button {
   transform-origin: bottom left;
 }
 
-.description {
-  color: var(--color-text-secondary);
-
-  * {
-    color: var(--color-text-secondary) !important;
-  }
-}
-
 .btn-main {
   background-color: var(--color-button-primary);
 }

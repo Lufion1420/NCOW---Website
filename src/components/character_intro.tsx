@@ -43,7 +43,7 @@ export default function CharacterIntro() {
         title: "Uchiha Avenger",
         image_main: Sasuke,
         icon: Icon_Sasuke,
-        description: "Sasuke description here.",
+        description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
         link: "/XXX",
         char_images: [] as string[],
       },
@@ -53,7 +53,7 @@ export default function CharacterIntro() {
         title: "Uchiha Traitor",
         image_main: Itachi,
         icon: Icon_Itachi,
-        description: "Itachi description here.",
+        description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
         link: "/XXX",
         char_images: [] as string[],
       },
@@ -63,7 +63,7 @@ export default function CharacterIntro() {
         title: "Masked Man",
         image_main: Obito,
         icon: Icon_Obito,
-        description: "Obito description here.",
+        description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
         link: "/XXX",
         char_images: [] as string[],
       },
@@ -99,33 +99,32 @@ export default function CharacterIntro() {
                 }}
                 onSlideChange={(swiper) => setImageActiveIndex(swiper.activeIndex)}
               >
-                {selectedCharacter.char_images.length > 0 ? (
-                  selectedCharacter.char_images.map((charImage, index) => (
-                    <SwiperSlide key={`${selectedCharacter.id}-image-${index}`}>
-                      <div className="char_image">
-                        <img src={charImage} alt={`${selectedCharacter.name} screenshot ${index + 1}`} />
-                      </div>
-                    </SwiperSlide>
-                  ))
-                ) : (
-                  <SwiperSlide key={`${selectedCharacter.id}-image-empty`}>
-                    <div className="char_image char_image-empty">No additional images yet.</div>
-                  </SwiperSlide>
-                )}
+                {selectedCharacter.char_images.length > 0
+                  ? selectedCharacter.char_images.map((charImage, index) => (
+                      <SwiperSlide key={`${selectedCharacter.id}-image-${index}`}>
+                        <div className="char_image">
+                          <img src={charImage} alt={`${selectedCharacter.name} screenshot ${index + 1}`} />
+                        </div>
+                      </SwiperSlide>
+                    ))
+                  : null}
               </Swiper>
-              <div className="char_images_controls">
-                <button className="char_images_prev" aria-label="Previous image" onClick={() => imageSwiper?.slidePrev()} disabled={imageActiveIndex === 0}>
-                  <img src={Arrow} alt="" aria-hidden="true" />
-                </button>
-                <div className="char_images_pagination">
-                  {Array.from({ length: imageSlideCount }).map((_, index) => (
-                    <button key={`${selectedCharacter.id}-pagination-${index}`} type="button" className={`swiper-pagination-bullet ${index === imageActiveIndex ? "swiper-pagination-bullet-active" : ""}`} onClick={() => imageSwiper?.slideTo(index)} aria-label={`Go to image ${index + 1}`} aria-current={index === imageActiveIndex ? "true" : undefined} />
-                  ))}
+
+              {selectedCharacter.char_images.length > 0 ? (
+                <div className="char_images_controls">
+                  <button className="char_images_prev" aria-label="Previous image" onClick={() => imageSwiper?.slidePrev()} disabled={imageActiveIndex === 0}>
+                    <img src={Arrow} alt="" aria-hidden="true" />
+                  </button>
+                  <div className="char_images_pagination">
+                    {Array.from({ length: imageSlideCount }).map((_, index) => (
+                      <button key={`${selectedCharacter.id}-pagination-${index}`} type="button" className={`swiper-pagination-bullet ${index === imageActiveIndex ? "swiper-pagination-bullet-active" : ""}`} onClick={() => imageSwiper?.slideTo(index)} aria-label={`Go to image ${index + 1}`} aria-current={index === imageActiveIndex ? "true" : undefined} />
+                    ))}
+                  </div>
+                  <button className="char_images_next" aria-label="Next image" onClick={() => imageSwiper?.slideNext()} disabled={imageActiveIndex >= imageSlideCount - 1}>
+                    <img src={Arrow} alt="" aria-hidden="true" />
+                  </button>
                 </div>
-                <button className="char_images_next" aria-label="Next image" onClick={() => imageSwiper?.slideNext()} disabled={imageActiveIndex >= imageSlideCount - 1}>
-                  <img src={Arrow} alt="" aria-hidden="true" />
-                </button>
-              </div>
+              ) : null}
             </div>
           </div>
 
@@ -133,6 +132,15 @@ export default function CharacterIntro() {
             {selectedCharacterMainImages.map((imageSrc, index) => (
               <img key={`${selectedCharacter.id}-main-image-${index}`} src={imageSrc} alt={`${selectedCharacter.name} main image ${index + 1}`} />
             ))}
+          </div>
+        </div>
+
+        <div className="char_skill_info">
+          <div className="title pseudo">
+            <span className="heading">Skill Title</span>
+          </div>
+          <div className="description pseudo">
+            <p>This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character.</p>
           </div>
         </div>
       </div>
