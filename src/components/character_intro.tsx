@@ -1,10 +1,11 @@
 import { useMemo, useState, type CSSProperties } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination } from "swiper/modules";
+import type { Swiper as SwiperType } from "swiper";
+import { Navigation } from "swiper/modules";
 import "swiper/swiper.css";
 import "../styles/character_intro.css";
 
-import Arrow from "../assets/ui/NCOW-Arrow-1.png";
+import Arrow from "../assets/ui/NCOW-Arrow-3.png";
 
 import Naruto_1 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
 import Naruto_2 from "../assets/characters/NCOW_IMG_NarutoBaseXL_2.png";
@@ -71,9 +72,12 @@ export default function CharacterIntro() {
   );
 
   const [selectedCharacterId, setSelectedCharacterId] = useState<string>(characters[0].id);
+  const [imageSwiper, setImageSwiper] = useState<SwiperType | null>(null);
+  const [imageActiveIndex, setImageActiveIndex] = useState(0);
 
   const selectedCharacter = characters.find((character) => character.id === selectedCharacterId) ?? characters[0];
   const selectedCharacterMainImages = typeof selectedCharacter.image_main === "string" ? [selectedCharacter.image_main] : Object.values(selectedCharacter.image_main);
+  const imageSlideCount = selectedCharacter.char_images.length > 0 ? selectedCharacter.char_images.length : 1;
 
   return (
     <>
@@ -84,7 +88,17 @@ export default function CharacterIntro() {
             <h3 className="char_title">{selectedCharacter.title}</h3>
             <p className="char_description">{selectedCharacter.description}</p>
             <div className="char_images">
-              <Swiper modules={[Navigation, Pagination]} slidesPerView={1} spaceBetween={12} navigation pagination={{ clickable: true }}>
+              <Swiper
+                key={selectedCharacter.id}
+                modules={[Navigation]}
+                slidesPerView={1}
+                spaceBetween={12}
+                onSwiper={(swiper) => {
+                  setImageSwiper(swiper);
+                  setImageActiveIndex(swiper.activeIndex);
+                }}
+                onSlideChange={(swiper) => setImageActiveIndex(swiper.activeIndex)}
+              >
                 {selectedCharacter.char_images.length > 0 ? (
                   selectedCharacter.char_images.map((charImage, index) => (
                     <SwiperSlide key={`${selectedCharacter.id}-image-${index}`}>
@@ -99,6 +113,19 @@ export default function CharacterIntro() {
                   </SwiperSlide>
                 )}
               </Swiper>
+              <div className="char_images_controls">
+                <button className="char_images_prev" aria-label="Previous image" onClick={() => imageSwiper?.slidePrev()} disabled={imageActiveIndex === 0}>
+                  <img src={Arrow} alt="" aria-hidden="true" />
+                </button>
+                <div className="char_images_pagination">
+                  {Array.from({ length: imageSlideCount }).map((_, index) => (
+                    <button key={`${selectedCharacter.id}-pagination-${index}`} type="button" className={`swiper-pagination-bullet ${index === imageActiveIndex ? "swiper-pagination-bullet-active" : ""}`} onClick={() => imageSwiper?.slideTo(index)} aria-label={`Go to image ${index + 1}`} aria-current={index === imageActiveIndex ? "true" : undefined} />
+                  ))}
+                </div>
+                <button className="char_images_next" aria-label="Next image" onClick={() => imageSwiper?.slideNext()} disabled={imageActiveIndex >= imageSlideCount - 1}>
+                  <img src={Arrow} alt="" aria-hidden="true" />
+                </button>
+              </div>
             </div>
           </div>
 
