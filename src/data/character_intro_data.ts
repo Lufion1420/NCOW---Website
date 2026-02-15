@@ -47,6 +47,7 @@ export type CharacterStage = {
   slider: string;
   main: string[];
   skills: StageSkill[];
+  scale?: number;
 };
 
 export type Character = {
@@ -103,11 +104,13 @@ export const CHARACTER_INTRO_CHARACTERS: Character[] = [
         slider: Sasuke_Slider_Base,
         main: [Sasuke_Base_1],
         skills: [],
+        scale: 0.8,
       },
       ms: {
         slider: Sasuke_Slider_MS,
         main: [Sasuke_MS_1],
         skills: [],
+        scale: 0.6,
       }
     },
     description:
@@ -123,6 +126,7 @@ export const CHARACTER_INTRO_CHARACTERS: Character[] = [
         slider: Itachi_Slider_Base,
         main: [Itachi_Base_1],
         skills: [],
+        scale: 0.6,
       },
     },
     description:
@@ -138,11 +142,13 @@ export const CHARACTER_INTRO_CHARACTERS: Character[] = [
         slider: Obito_Slider_Base,
         main: [Obito_Base_1],
         skills: [],
+        scale: 0.8,
       },
       war: {
         slider: Obito_Slider_War,
         main: [Obito_War_1],
         skills: [],
+        scale: 0.7,
       }
     },
     description:

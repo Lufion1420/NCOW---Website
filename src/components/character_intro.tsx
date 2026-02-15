@@ -116,6 +116,7 @@ export default function CharacterIntro() {
   const currentStageEntry = selectedCharacterStages[imageActiveIndex] ?? selectedCharacterStages[0];
   const selectedCharacterStage = currentStageEntry[1];
   const selectedCharacterMainImages = selectedCharacterStage.main;
+  const selectedCharacterMainImageScale = selectedCharacterStage.scale ?? 1;
   const selectedStageSkills = selectedCharacterStage.skills;
   const stageSkillByButton = new Map<SkillButton, StageSkill>(selectedStageSkills.map((skill) => [skill.button, skill]));
   const activeSkillConfig = selectedStageSkills.find((skill) => skill.id === activeSkillId) ?? selectedStageSkills[0] ?? null;
@@ -208,7 +209,7 @@ export default function CharacterIntro() {
             </div>
           </div>
 
-          <div className="char_main_image">
+          <div className="char_main_image" style={{ transform: `scale(${selectedCharacterMainImageScale})` }}>
             {selectedCharacterMainImages.map((imageSrc, index) => (
               <img key={`${selectedCharacter.id}-main-image-${index}`} src={imageSrc} alt={`${selectedCharacter.name} main image ${index + 1}`} />
             ))}
