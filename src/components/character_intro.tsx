@@ -213,13 +213,7 @@ export default function CharacterIntro() {
                           <span className="image_throbber_spinner" aria-hidden="true"></span>
                         </div>
                       ) : null}
-                      <img
-                        src={stageData.slider}
-                        alt={`${selectedCharacter.name} ${stageId} stage`}
-                        className={loadedImageKeys[`slider-${selectedCharacter.id}-${stageId}-${stageData.slider}`] ? "" : "is-loading"}
-                        onLoad={() => setImageLoaded(`slider-${selectedCharacter.id}-${stageId}-${stageData.slider}`)}
-                        onError={() => setImageLoaded(`slider-${selectedCharacter.id}-${stageId}-${stageData.slider}`)}
-                      />
+                      <img src={stageData.slider} alt={`${selectedCharacter.name} ${stageId} stage`} className={loadedImageKeys[`slider-${selectedCharacter.id}-${stageId}-${stageData.slider}`] ? "" : "is-loading"} onLoad={() => setImageLoaded(`slider-${selectedCharacter.id}-${stageId}-${stageData.slider}`)} onError={() => setImageLoaded(`slider-${selectedCharacter.id}-${stageId}-${stageData.slider}`)} />
                     </div>
                   </SwiperSlide>
                 ))}
@@ -251,21 +245,15 @@ export default function CharacterIntro() {
                     <span className="image_throbber_spinner" aria-hidden="true"></span>
                   </div>
                 ) : null}
-                <img
-                  src={imageSrc}
-                  alt={`${selectedCharacter.name} main image ${index + 1}`}
-                  className={loadedImageKeys[`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`] ? "" : "is-loading"}
-                  onLoad={() => setImageLoaded(`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`)}
-                  onError={() => setImageLoaded(`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`)}
-                />
+                <img src={imageSrc} alt={`${selectedCharacter.name} main image ${index + 1}`} className={loadedImageKeys[`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`] ? "" : "is-loading"} onLoad={() => setImageLoaded(`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`)} onError={() => setImageLoaded(`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`)} />
               </div>
             ))}
           </div>
         </div>
 
-        <div className="char_skill_info">
+        <div className="char_skill_info pseudo">
           <div className="title pseudo">
-            <span className="heading">{isSkillDataLoading ? "Loading skill..." : (activeSkillData?.title || "Skill Title")}</span>
+            <span className="heading">{isSkillDataLoading ? "Loading skill..." : activeSkillData?.title || "Skill Title"}</span>
           </div>
           <div className="description pseudo">
             {isSkillDataLoading ? (
@@ -274,15 +262,7 @@ export default function CharacterIntro() {
                 <p>Loading skill data...</p>
               </div>
             ) : (
-              <div className="skill_description_content">
-                {activeSkillDescriptionParagraphs.length > 0 ? (
-                  activeSkillDescriptionParagraphs.map((paragraph, index) => (
-                    <p key={`${activeSkillConfig?.id ?? "skill"}-paragraph-${index}`}>{paragraph}</p>
-                  ))
-                ) : (
-                  <p>Skill description will appear here when you select a skill button.</p>
-                )}
-              </div>
+              <div className="skill_description_content">{activeSkillDescriptionParagraphs.length > 0 ? activeSkillDescriptionParagraphs.map((paragraph, index) => <p key={`${activeSkillConfig?.id ?? "skill"}-paragraph-${index}`}>{paragraph}</p>) : <p>Skill description will appear here when you select a skill button.</p>}</div>
             )}
           </div>
           <div className="skill_list">
@@ -315,13 +295,7 @@ export default function CharacterIntro() {
                       <span className="image_throbber_spinner" aria-hidden="true"></span>
                     </div>
                   ) : null}
-                  <img
-                    src={character.icon}
-                    alt={`${character.name} icon`}
-                    className={loadedImageKeys[`icon-${character.id}-${character.icon}`] ? "" : "is-loading"}
-                    onLoad={() => setImageLoaded(`icon-${character.id}-${character.icon}`)}
-                    onError={() => setImageLoaded(`icon-${character.id}-${character.icon}`)}
-                  />
+                  <img src={character.icon} alt={`${character.name} icon`} className={loadedImageKeys[`icon-${character.id}-${character.icon}`] ? "" : "is-loading"} onLoad={() => setImageLoaded(`icon-${character.id}-${character.icon}`)} onError={() => setImageLoaded(`icon-${character.id}-${character.icon}`)} />
                 </div>
               </button>
             </SwiperSlide>
