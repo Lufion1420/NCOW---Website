@@ -31,41 +31,49 @@ export default function CharacterIntro() {
         id: "naruto",
         name: "Naruto Uzumaki",
         title: "Kyuubi Jinchuriki",
-        image_main: { Naruto_1, Naruto_2 },
-        icon: Icon_Naruto,
+        images: {
+          main: { Naruto_1, Naruto_2 },
+          stage_slider: [Naruto_Image_1, Naruto_Image_2] as string[],
+          icon: Icon_Naruto,
+        },
         description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
         link: "/XXX",
-        char_images: [Naruto_Image_1, Naruto_Image_2] as string[],
       },
       {
         id: "sasuke",
         name: "Sasuke Uchiha",
         title: "Uchiha Avenger",
-        image_main: Sasuke,
-        icon: Icon_Sasuke,
+        images: {
+          main: Sasuke,
+          stage_slider: [] as string[],
+          icon: Icon_Sasuke,
+        },
         description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
         link: "/XXX",
-        char_images: [] as string[],
       },
       {
         id: "itachi",
         name: "Itachi Uchiha",
         title: "Uchiha Traitor",
-        image_main: Itachi,
-        icon: Icon_Itachi,
+        images: {
+          main: Itachi,
+          stage_slider: [] as string[],
+          icon: Icon_Itachi,
+        },
         description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
         link: "/XXX",
-        char_images: [] as string[],
       },
       {
         id: "obito",
         name: "Obito Uchiha",
         title: "Masked Man",
-        image_main: Obito,
-        icon: Icon_Obito,
+        images: {
+          main: Obito,
+          stage_slider: [] as string[],
+          icon: Icon_Obito,
+        },
         description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
         link: "/XXX",
-        char_images: [] as string[],
       },
     ],
     [],
@@ -76,8 +84,8 @@ export default function CharacterIntro() {
   const [imageActiveIndex, setImageActiveIndex] = useState(0);
 
   const selectedCharacter = characters.find((character) => character.id === selectedCharacterId) ?? characters[0];
-  const selectedCharacterMainImages = typeof selectedCharacter.image_main === "string" ? [selectedCharacter.image_main] : Object.values(selectedCharacter.image_main);
-  const imageSlideCount = selectedCharacter.char_images.length > 0 ? selectedCharacter.char_images.length : 1;
+  const selectedCharacterMainImages = typeof selectedCharacter.images.main === "string" ? [selectedCharacter.images.main] : Object.values(selectedCharacter.images.main);
+  const imageSlideCount = selectedCharacter.images.stage_slider.length > 0 ? selectedCharacter.images.stage_slider.length : 1;
 
   return (
     <>
@@ -99,8 +107,8 @@ export default function CharacterIntro() {
                 }}
                 onSlideChange={(swiper) => setImageActiveIndex(swiper.activeIndex)}
               >
-                {selectedCharacter.char_images.length > 0
-                  ? selectedCharacter.char_images.map((charImage, index) => (
+                {selectedCharacter.images.stage_slider.length > 0
+                  ? selectedCharacter.images.stage_slider.map((charImage, index) => (
                       <SwiperSlide key={`${selectedCharacter.id}-image-${index}`}>
                         <div className="char_image">
                           <img src={charImage} alt={`${selectedCharacter.name} screenshot ${index + 1}`} />
@@ -110,7 +118,7 @@ export default function CharacterIntro() {
                   : null}
               </Swiper>
 
-              {selectedCharacter.char_images.length > 0 ? (
+              {selectedCharacter.images.stage_slider.length > 0 ? (
                 <div className="char_images_controls">
                   <button className="char_images_prev" aria-label="Previous image" onClick={() => imageSwiper?.slidePrev()} disabled={imageActiveIndex === 0}>
                     <img src={Arrow} alt="" aria-hidden="true" />
@@ -125,6 +133,8 @@ export default function CharacterIntro() {
                   </button>
                 </div>
               ) : null}
+
+              <div className="char_skill_buttons"></div>
             </div>
           </div>
 
@@ -153,7 +163,7 @@ export default function CharacterIntro() {
           {characters.map((character) => (
             <SwiperSlide key={character.id} tag="li">
               <button className={`char_icon_button ${selectedCharacter.id === character.id ? "is-active" : ""}`} onClick={() => setSelectedCharacterId(character.id)} aria-label={`Select ${character.name}`}>
-                <img src={character.icon} alt={`${character.name} icon`} />
+                <img src={character.images.icon} alt={`${character.name} icon`} />
               </button>
             </SwiperSlide>
           ))}
