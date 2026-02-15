@@ -6,19 +6,19 @@ import "../styles/character_intro.css";
 
 import Arrow from "../assets/ui/NCOW-Arrow-1.png";
 
-import Naruto_1 from "../assets/characters/NCOW_IMG_NarutoBaseXL.webp";
-import Naruto_2 from "../assets/characters/NCOW_IMG_NarutoSageXL.png";
+import Naruto_1 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
+import Naruto_2 from "../assets/characters/NCOW_IMG_NarutoBaseXL_2.png";
 import Icon_Naruto from "../assets/characters/NCOW_IMG_NarutoBase.png";
 import Naruto_Image_1 from "../assets/characters/NCOW-Placeholder-1.png";
 import Naruto_Image_2 from "../assets/characters/NCOW-Placeholder-2.png";
 
-import Sasuke from "../assets/characters/NCOW_IMG_NarutoBaseXL.webp";
+import Sasuke from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
 import Icon_Sasuke from "../assets/characters/NCOW_IMG_SasukeHebi.png";
 
-import Itachi from "../assets/characters/NCOW_IMG_NarutoBaseXL.webp";
+import Itachi from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
 import Icon_Itachi from "../assets/characters/NCOW_IMG_Itachi.png";
 
-import Obito from "../assets/characters/NCOW_IMG_NarutoBaseXL.webp";
+import Obito from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
 import Icon_Obito from "../assets/characters/NCOW_IMG_MaskedMan.png";
 
 export default function CharacterIntro() {
@@ -77,15 +77,11 @@ export default function CharacterIntro() {
 
   return (
     <>
-      <div className="character_intro_heading">
-        <h2>Characters</h2>
-      </div>
-
       <div className="character_intro container">
         <div className="char_wrapper">
           <div className="char_content">
-            <span className="char_name">{selectedCharacter.name}</span>
-            <span className="char_title">{selectedCharacter.title}</span>
+            <h2 className="char_name">{selectedCharacter.name}</h2>
+            <h3 className="char_title">{selectedCharacter.title}</h3>
             <p className="char_description">{selectedCharacter.description}</p>
             <div className="char_images">
               <Swiper modules={[Navigation, Pagination]} slidesPerView={1} spaceBetween={12} navigation pagination={{ clickable: true }}>

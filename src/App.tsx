@@ -19,7 +19,7 @@ function App() {
       <Route element={<Layout />}>
         <Route index element={<Homepage />} />
         <Route path="gameplay" element={<Gameplay />} />
-        <Route path="heroes" element={<Heroes />} />
+        <Route path="heros" element={<Heroes />} />
         <Route path="items" element={<Items />} />
         <Route path="terrain" element={<Terrain />} />
         <Route path="forum" element={<Forum />} />

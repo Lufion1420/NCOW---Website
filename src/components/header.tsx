@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "../assets/logos/NCOW-Logo-1.png";
+import Logo from "../assets/logos/NCOW-Logo-3.png";
 import "../styles/header.css";
 
 export default function Header() {
@@ -43,7 +43,7 @@ export default function Header() {
       to: "/gameplay",
       children: [
         { label: "Items", to: "/items" },
-        { label: "Heroes", to: "/heroes" },
+        { label: "Heroes", to: "/heros" },
         { label: "Terrain", to: "/terrain" },
       ],
     },

@@ -89,7 +89,7 @@ const content: Record<string, FeatureContent> = {
 
   Quests: {
     heading: "Quests and Missions",
-    text: `Progression in Naruto Clash of Worlds is deeply rooted in character-driven storytelling and meaningful objectives. Every hero features a unique, anime-inspired questline tailored specifically to their lore, personality, and abilities. These personal quests allow players to unlock powerful stat increases, new techniques, and even entirely new forms. Some transformations are permanent, such as timeskip advancements that fundamentally alter a hero’s spell kit and mechanics and his look, while others are temporary power surges like Sage Mode, Mangekyō Sharingan, or the Susanoo. These systems ensure that character growth feels impactful and true to the Naruto universe.
+    text: `Progression in Naruto Clash of Worlds is deeply rooted in character-driven storytelling and meaningful objectives. Every hero features a unique, anime-inspired questline tailored specifically to their lore, personality, and abilities. These personal quests allow players to unlock powerful stat increases, new techniques, and even entirely new forms. Some transformations are permanent, such as timeskip advancements that fundamentally alter a hero’s spell kit and mechanics and his look, while others are temporary power surges like Sage Mode, Mangekyō Sharingan, or the Susanoo, that can be activated at will. These systems ensure that character growth feels impactful and true to the Naruto universe.
 
     The Otogakure faction places an even stronger emphasis on hero quests. Since their path to victory revolves around individual progression and strategic ambition, they have access to additional questlines to balance their unique win condition.
     

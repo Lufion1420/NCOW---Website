@@ -13,7 +13,7 @@
       transform-origin: center;
       animation: page-banner-focus-in var(--page-banner-anim-duration) ease-out forwards;
       will-change: transform, filter;
-      opacity: 0.5;
+      opacity: 0.6;
     }
   }
 
@@ -31,7 +31,7 @@
 
   .title::before {
     background: url(../assets/ui/NCOW-AccentUnderlineText-1.png) repeat 50% / 100% 120%;
-    --filter: invert(100%);
+    filter: invert(40%);
   }
 }
 

@@ -1,9 +1,12 @@
-import { Link } from "react-router-dom";
+import PageBanner from "../components/page_banner";
+import CharacterIntro from "../components/character_intro";
+import ImageBanner from "../assets/ui/NCOW-Banner-5.png";
 
 export default function Characters() {
   return (
     <div>
-      <h1>This is the Character Page</h1>
+      <PageBanner image={ImageBanner} heading="Heros"></PageBanner>
+      <CharacterIntro></CharacterIntro>
     </div>
   );
 }
