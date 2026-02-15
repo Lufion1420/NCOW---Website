@@ -1,3 +1,4 @@
+import Papa from "papaparse";
 import { useMemo, useState, type CSSProperties } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
@@ -22,6 +23,17 @@ import Icon_Itachi from "../assets/characters/NCOW_IMG_Itachi.png";
 import Obito from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
 import Icon_Obito from "../assets/characters/NCOW_IMG_MaskedMan.png";
 
+const kits_konoha = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0qvL-ChgsThoIBhpvJty6-waQepQmSZVLGxsNTuVeP6DUgFL2zWXZgfW3Gc8nW2ZNI16y7HFyEUUF/pubhtml?gid=893355125&single=true";
+type Button = "Q" | "W" | "E" | "R" | "D" | "F" | "C" | "Z";
+
+type AbilityRow = {
+  character: string;
+  abilityName: string;
+  description: string;
+  cooldown: string;
+  button: Button;
+};
+
 export default function CharacterIntro() {
   const visibleIconCount = 3;
   const visibleIconGap = 25;
@@ -36,8 +48,16 @@ export default function CharacterIntro() {
           stage_slider: [Naruto_Image_1, Naruto_Image_2] as string[],
           icon: Icon_Naruto,
         },
+        icon: Icon_Naruto,
+        stage: {
+          base: {
+            main: { Naruto_1, Naruto_2 },
+            slider: [Naruto_Image_1, Naruto_Image_2] as string[],
+          },
+          sage: {},
+          kcm: {},
+        },
         description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
-        link: "/XXX",
       },
       {
         id: "sasuke",
@@ -49,7 +69,6 @@ export default function CharacterIntro() {
           icon: Icon_Sasuke,
         },
         description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
-        link: "/XXX",
       },
       {
         id: "itachi",
@@ -61,7 +80,6 @@ export default function CharacterIntro() {
           icon: Icon_Itachi,
         },
         description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
-        link: "/XXX",
       },
       {
         id: "obito",
@@ -73,7 +91,6 @@ export default function CharacterIntro() {
           icon: Icon_Obito,
         },
         description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
-        link: "/XXX",
       },
     ],
     [],
