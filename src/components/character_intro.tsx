@@ -4,11 +4,100 @@ import type { Swiper as SwiperType } from "swiper";
 import { Navigation } from "swiper/modules";
 import "swiper/swiper.css";
 import "../styles/character_intro.css";
-import { CHARACTER_INTRO_CHARACTERS } from "../data/character_intro_data";
+import { CHARACTER_INTRO_CHARACTERS, type SkillButton, type StageSkill } from "../data/character_intro_data";
 
 import Arrow from "../assets/ui/NCOW-Arrow-3.png";
 
-const kits_konoha = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0qvL-ChgsThoIBhpvJty6-waQepQmSZVLGxsNTuVeP6DUgFL2zWXZgfW3Gc8nW2ZNI16y7HFyEUUF/pubhtml?gid=893355125&single=true";
+const kitsKonohaCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0qvL-ChgsThoIBhpvJty6-waQepQmSZVLGxsNTuVeP6DUgFL2zWXZgfW3Gc8nW2ZNI16y7HFyEUUF/pub?gid=893355125&single=true&output=csv";
+const SKILL_BUTTON_ORDER: SkillButton[] = ["q", "w", "e", "r", "d", "f", "c", "z"];
+
+type FetchedSkillData = {
+  id: string;
+  button: SkillButton;
+  row: number;
+  skillButton: string;
+  title: string;
+  description: string;
+  targetType: string;
+  levelRequirement: string;
+};
+
+function parseCsvRows(input: string): string[][] {
+  const rows: string[][] = [];
+  let currentRow: string[] = [];
+  let currentCell = "";
+  let inQuotes = false;
+
+  for (let index = 0; index < input.length; index += 1) {
+    const char = input[index];
+
+    if (inQuotes) {
+      if (char === "\"") {
+        if (input[index + 1] === "\"") {
+          currentCell += "\"";
+          index += 1;
+        } else {
+          inQuotes = false;
+        }
+      } else {
+        currentCell += char;
+      }
+      continue;
+    }
+
+    if (char === "\"") {
+      inQuotes = true;
+      continue;
+    }
+
+    if (char === ",") {
+      currentRow.push(currentCell);
+      currentCell = "";
+      continue;
+    }
+
+    if (char === "\n") {
+      currentRow.push(currentCell);
+      rows.push(currentRow);
+      currentRow = [];
+      currentCell = "";
+      continue;
+    }
+
+    if (char === "\r") {
+      continue;
+    }
+
+    currentCell += char;
+  }
+
+  if (currentCell.length > 0 || currentRow.length > 0) {
+    currentRow.push(currentCell);
+    rows.push(currentRow);
+  }
+
+  return rows;
+}
+
+function buildSkillDataById(stageSkills: StageSkill[], rows: string[][]): Record<string, FetchedSkillData> {
+  const skillDataById: Record<string, FetchedSkillData> = {};
+
+  for (const stageSkill of stageSkills) {
+    const rowCells = rows[stageSkill.row - 1] ?? [];
+    skillDataById[stageSkill.id] = {
+      id: stageSkill.id,
+      button: stageSkill.button,
+      row: stageSkill.row,
+      skillButton: (rowCells[1] ?? "").trim(),
+      title: (rowCells[2] ?? "").trim(),
+      description: (rowCells[3] ?? "").trim(),
+      targetType: (rowCells[4] ?? "").trim(),
+      levelRequirement: (rowCells[5] ?? "").trim(),
+    };
+  }
+
+  return skillDataById;
+}
 
 export default function CharacterIntro() {
   const visibleIconCount = 3;
@@ -19,6 +108,7 @@ export default function CharacterIntro() {
   const [imageSwiper, setImageSwiper] = useState<SwiperType | null>(null);
   const [imageActiveIndex, setImageActiveIndex] = useState(0);
   const [activeSkillId, setActiveSkillId] = useState<string | null>(null);
+  const [fetchedSkillDataById, setFetchedSkillDataById] = useState<Record<string, FetchedSkillData>>({});
 
   const selectedCharacter = characters.find((character) => character.id === selectedCharacterId) ?? characters[0];
   const selectedCharacterStages = Object.entries(selectedCharacter.stages);
@@ -27,11 +117,48 @@ export default function CharacterIntro() {
   const selectedCharacterStage = currentStageEntry[1];
   const selectedCharacterMainImages = selectedCharacterStage.main;
   const selectedStageSkills = selectedCharacterStage.skills;
-  const activeSkill = selectedStageSkills.find((skill) => skill.id === activeSkillId) ?? selectedStageSkills[0] ?? null;
+  const stageSkillByButton = new Map<SkillButton, StageSkill>(selectedStageSkills.map((skill) => [skill.button, skill]));
+  const activeSkillConfig = selectedStageSkills.find((skill) => skill.id === activeSkillId) ?? selectedStageSkills[0] ?? null;
+  const activeSkillData = activeSkillConfig ? fetchedSkillDataById[activeSkillConfig.id] ?? null : null;
 
   useEffect(() => {
     setActiveSkillId(selectedStageSkills[0]?.id ?? null);
   }, [selectedCharacterId, imageActiveIndex, selectedStageSkills]);
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function fetchSkillData() {
+      if (selectedStageSkills.length === 0) {
+        setFetchedSkillDataById({});
+        return;
+      }
+
+      try {
+        const response = await fetch(kitsKonohaCsvUrl);
+        if (!response.ok) {
+          throw new Error(`Failed to fetch Google Sheet data: ${response.status}`);
+        }
+
+        const csv = await response.text();
+        const rows = parseCsvRows(csv);
+        if (!cancelled) {
+          setFetchedSkillDataById(buildSkillDataById(selectedStageSkills, rows));
+        }
+      } catch (error) {
+        console.error(error);
+        if (!cancelled) {
+          setFetchedSkillDataById({});
+        }
+      }
+    }
+
+    fetchSkillData();
+
+    return () => {
+      cancelled = true;
+    };
+  }, [selectedStageSkills]);
 
   return (
     <>
@@ -78,14 +205,6 @@ export default function CharacterIntro() {
                   </button>
                 </div>
               ) : null}
-
-              <div className="char_skill_buttons">
-                {selectedStageSkills.map((skill) => (
-                  <button key={`${selectedCharacter.id}-skill-${skill.id}`} type="button" className={activeSkill?.id === skill.id ? "is-active" : ""} onClick={() => setActiveSkillId(skill.id)}>
-                    {skill.button}
-                  </button>
-                ))}
-              </div>
             </div>
           </div>
 
@@ -98,21 +217,22 @@ export default function CharacterIntro() {
 
         <div className="char_skill_info">
           <div className="skill_list">
-            <button className="skill_q"></button>
-            <button className="skill_w"></button>
-            <button className="skill_e"></button>
-            <button className="skill_r"></button>
-            <button className="skill_d"></button>
-            <button className="skill_c"></button>
-            <button className="skill_z"></button>
-            <button className="skill_f"></button>
+            {SKILL_BUTTON_ORDER.map((button) => {
+              const stageSkill = stageSkillByButton.get(button) ?? null;
+              const isActive = stageSkill?.id === activeSkillConfig?.id;
+              return (
+                <button key={`${selectedCharacter.id}-${button}`} className={`skill_${button}${isActive ? " is-active" : ""}`} type="button" onClick={() => stageSkill && setActiveSkillId(stageSkill.id)} disabled={!stageSkill} aria-label={`Select ${button.toUpperCase()} skill`} aria-current={isActive ? "true" : undefined}>
+                  {button.toUpperCase()}
+                </button>
+              );
+            })}
           </div>
 
           <div className="title pseudo">
-            <span className="heading">{activeSkill?.title ?? "Skill Title"}</span>
+            <span className="heading">{activeSkillData?.title || "Skill Title"}</span>
           </div>
           <div className="description pseudo">
-            <p>{activeSkill?.description ?? "This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character."}</p>
+            <p>{activeSkillData?.description || "Skill description will appear here when you select a skill button."}</p>
           </div>
         </div>
       </div>

@@ -13,13 +13,12 @@ import Icon_Itachi from "../assets/characters/NCOW_IMG_Itachi.png";
 import Obito from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
 import Icon_Obito from "../assets/characters/NCOW_IMG_MaskedMan.png";
 
-export type Button = "Q" | "W" | "E" | "R" | "D" | "F" | "C" | "Z";
+export type SkillButton = "q" | "w" | "e" | "r" | "d" | "f" | "c" | "z";
 
 export type StageSkill = {
   id: string;
-  button: Button;
-  title: string;
-  description: string;
+  button: SkillButton;
+  row: number;
 };
 
 export type CharacterStage = {
@@ -48,7 +47,14 @@ export const CHARACTER_INTRO_CHARACTERS: Character[] = [
         slider: Naruto_Image_1,
         main: [Naruto_1, Naruto_2],
         skills: [
-          
+          { id: "naruto-base-q", button: "q", row: 9 },
+          { id: "naruto-base-w", button: "w", row: 13 },
+          { id: "naruto-base-e", button: "e", row: 17 },
+          { id: "naruto-base-r", button: "r", row: 21 },
+          { id: "naruto-base-d", button: "d", row: 25 },
+          { id: "naruto-base-f", button: "f", row: 30 },
+          { id: "naruto-base-c", button: "c", row: 38 },
+          { id: "naruto-base-z", button: "z", row: 34 },
         ],
       },
       sage: {
