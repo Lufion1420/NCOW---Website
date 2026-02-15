@@ -1,10 +1,10 @@
 //Naruto
-import Naruto_Base_1 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
-import Naruto_Base_2 from "../assets/characters/NCOW_IMG_NarutoBaseXL_2.png";
-import Naruto_Sage_1 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
-import Naruto_Sage_2 from "../assets/characters/NCOW_IMG_NarutoBaseXL_2.png";
-import Naruto_KCM_1 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
-import Naruto_KCM_2 from "../assets/characters/NCOW_IMG_NarutoBaseXL_2.png";
+import Naruto_Base_1 from "../assets/characters/NCOW-NarutoBaseXL_1.png";
+import Naruto_Base_2 from "../assets/characters/NCOW-NarutoBaseXL_2.png";
+import Naruto_Sage_1 from "../assets/characters/NCOW-NarutoSageXL_1.png";
+import Naruto_Sage_2 from "../assets/characters/NCOW-NarutoSageXL_2.png";
+import Naruto_KCM_1 from "../assets/characters/NCOW-NarutoKCMXL_1.png";
+import Naruto_KCM_2 from "../assets/characters/NCOW-NarutoKCMXL_2.png";
 import Icon_Naruto from "../assets/characters/NCOW_IMG_NarutoBase.png";
 import Naruto_Slider_Base from "../assets/characters/NCOW-Placeholder-1.png";
 import Naruto_Slider_Sage from "../assets/characters/NCOW-Placeholder-2.png";
@@ -19,28 +19,27 @@ import Naruto_Skill_7 from "../assets/characters/NCOW_IMG_NarutoBase.png";
 import Naruto_Skill_8 from "../assets/characters/NCOW_IMG_NarutoBase.png";
 
 //Sasuke
-import Sasuke_Base_1 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
-import Sasuke_Base_2 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
-import Sasuke_MS_1 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
-import Sasuke_MS_2 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
+import Sasuke_Base_1 from "../assets/characters/NCOW-SasukeBaseXL_1.png";
+import Sasuke_Base_2 from "../assets/characters/NCOW-SasukeBaseXL_2.png";
+import Sasuke_MS_1 from "../assets/characters/NCOW-SasukeMSXL_1.png";
+import Sasuke_MS_2 from "../assets/characters/NCOW-SasukeMSXL_2.png";
 import Sasuke_Slider_Base from "../assets/characters/NCOW-Placeholder-1.png";
 import Sasuke_Slider_MS from "../assets/characters/NCOW-Placeholder-1.png";
 import Icon_Sasuke from "../assets/characters/NCOW_IMG_SasukeHebi.png";
 
 //Itachi
-import Itachi_Base_1 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
-import Itachi_Base_2 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
+import Itachi_Base_1 from "../assets/characters/NCOW-ItachiBaseXL_1.png";
+import Itachi_Base_2 from "../assets/characters/NCOW-ItachiBaseXL_2.png";
 import Itachi_Slider_Base from "../assets/characters/NCOW-Placeholder-2.png";
 import Icon_Itachi from "../assets/characters/NCOW_IMG_Itachi.png";
 
 //Obito
-import Obito_Base_1 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
-import Obito_Base_2 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
-import Obito_War_1 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
-import Obito_War_2 from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
+import Obito_Base_1 from "../assets/characters/NCOW-ObitoBaseXL_1.png";
+import Obito_Base_2 from "../assets/characters/NCOW-ObitoBaseXL_2.png";
+import Obito_War_1 from "../assets/characters/NCOW-ObitoWarXL_1.png";
+import Obito_War_2 from "../assets/characters/NCOW-ObitoWarXL_2.png";
 import Obito_Slider_Base from "../assets/characters/NCOW-Placeholder-1.png";
 import Obito_Slider_War from "../assets/characters/NCOW-Placeholder-2.png";
-
 import Icon_Obito from "../assets/characters/NCOW_IMG_MaskedMan.png";
 
 export type SkillButton = "q" | "w" | "e" | "r" | "d" | "f" | "c" | "z";

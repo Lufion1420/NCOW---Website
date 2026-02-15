@@ -5,7 +5,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/swiper.css";
 
-import ImageNaruto from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
+import ImageNaruto from "../assets/characters/NCOW-NarutoBaseXL_1.png";
 
 export default function CharacterCards() {
   const sliderId = useId().replace(/:/g, "");
