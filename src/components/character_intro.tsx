@@ -1,5 +1,4 @@
-import Papa from "papaparse";
-import { useMemo, useState, type CSSProperties } from "react";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { Navigation } from "swiper/modules";
@@ -26,36 +25,50 @@ import Icon_Obito from "../assets/characters/NCOW_IMG_MaskedMan.png";
 const kits_konoha = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQ0qvL-ChgsThoIBhpvJty6-waQepQmSZVLGxsNTuVeP6DUgFL2zWXZgfW3Gc8nW2ZNI16y7HFyEUUF/pubhtml?gid=893355125&single=true";
 type Button = "Q" | "W" | "E" | "R" | "D" | "F" | "C" | "Z";
 
-type AbilityRow = {
-  character: string;
-  abilityName: string;
-  description: string;
-  cooldown: string;
+type StageSkill = {
+  id: string;
   button: Button;
+  title: string;
+  description: string;
+};
+
+type CharacterStage = {
+  slider: string;
+  main: string[];
+  skills: StageSkill[];
+};
+
+type Character = {
+  id: string;
+  name: string;
+  title: string;
+  icon: string;
+  description: string;
+  stages: Record<string, CharacterStage>;
 };
 
 export default function CharacterIntro() {
   const visibleIconCount = 3;
   const visibleIconGap = 25;
+
   const characters = useMemo(
-    () => [
+    (): Character[] => [
       {
         id: "naruto",
         name: "Naruto Uzumaki",
         title: "Kyuubi Jinchuriki",
-        images: {
-          main: { Naruto_1, Naruto_2 },
-          stage_slider: [Naruto_Image_1, Naruto_Image_2] as string[],
-          icon: Icon_Naruto,
-        },
         icon: Icon_Naruto,
-        stage: {
+        stages: {
           base: {
-            main: { Naruto_1, Naruto_2 },
             slider: Naruto_Image_1,
+            main: [Naruto_1, Naruto_2],
+            skills: [],
           },
-          sage: {},
-          kcm: {},
+          sage: {
+            slider: Naruto_Image_2,
+            main: [Naruto_1, Naruto_2],
+            skills: [],
+          },
         },
         description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
       },
@@ -63,10 +76,13 @@ export default function CharacterIntro() {
         id: "sasuke",
         name: "Sasuke Uchiha",
         title: "Uchiha Avenger",
-        images: {
-          main: Sasuke,
-          stage_slider: [] as string[],
-          icon: Icon_Sasuke,
+        icon: Icon_Sasuke,
+        stages: {
+          base: {
+            slider: Sasuke,
+            main: [Sasuke],
+            skills: [],
+          },
         },
         description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
       },
@@ -74,10 +90,13 @@ export default function CharacterIntro() {
         id: "itachi",
         name: "Itachi Uchiha",
         title: "Uchiha Traitor",
-        images: {
-          main: Itachi,
-          stage_slider: [] as string[],
-          icon: Icon_Itachi,
+        icon: Icon_Itachi,
+        stages: {
+          base: {
+            slider: Itachi,
+            main: [Itachi],
+            skills: [],
+          },
         },
         description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
       },
@@ -85,10 +104,13 @@ export default function CharacterIntro() {
         id: "obito",
         name: "Obito Uchiha",
         title: "Masked Man",
-        images: {
-          main: Obito,
-          stage_slider: [] as string[],
-          icon: Icon_Obito,
+        icon: Icon_Obito,
+        stages: {
+          base: {
+            slider: Obito,
+            main: [Obito],
+            skills: [],
+          },
         },
         description: "Der Prinz (oder die Prinzessin) von Azuria und Kapitän der Rangers. Sie sind äußerst geschickt und die einzigen Rathalos-Rider im Land. Der Protagonist hat sich auf seine Pflichten als Ranger konzentriert, indem er das Ökosystem der Monster beschützt und den Ei-Quarz erforscht, als ein schockierendes Ereignis alles verändert. Sie stellen fest, dass sie nur wenig bis gar nichts über die Ereignisse in der Welt und die Beteiligung der Menschen daran wissen. Um die Wahrheit zu erfahren, machen sie sich auf den Weg über den Nord-Meridian und auf verbotenen Boden.",
       },
@@ -99,10 +121,20 @@ export default function CharacterIntro() {
   const [selectedCharacterId, setSelectedCharacterId] = useState<string>(characters[0].id);
   const [imageSwiper, setImageSwiper] = useState<SwiperType | null>(null);
   const [imageActiveIndex, setImageActiveIndex] = useState(0);
+  const [activeSkillId, setActiveSkillId] = useState<string | null>(null);
 
   const selectedCharacter = characters.find((character) => character.id === selectedCharacterId) ?? characters[0];
-  const selectedCharacterMainImages = typeof selectedCharacter.images.main === "string" ? [selectedCharacter.images.main] : Object.values(selectedCharacter.images.main);
-  const imageSlideCount = selectedCharacter.images.stage_slider.length > 0 ? selectedCharacter.images.stage_slider.length : 1;
+  const selectedCharacterStages = Object.entries(selectedCharacter.stages);
+  const imageSlideCount = selectedCharacterStages.length;
+  const currentStageEntry = selectedCharacterStages[imageActiveIndex] ?? selectedCharacterStages[0];
+  const selectedCharacterStage = currentStageEntry[1];
+  const selectedCharacterMainImages = selectedCharacterStage.main;
+  const selectedStageSkills = selectedCharacterStage.skills;
+  const activeSkill = selectedStageSkills.find((skill) => skill.id === activeSkillId) ?? selectedStageSkills[0] ?? null;
+
+  useEffect(() => {
+    setActiveSkillId(selectedStageSkills[0]?.id ?? null);
+  }, [selectedCharacterId, imageActiveIndex, selectedStageSkills]);
 
   return (
     <>
@@ -112,6 +144,7 @@ export default function CharacterIntro() {
             <h2 className="char_name">{selectedCharacter.name}</h2>
             <h3 className="char_title">{selectedCharacter.title}</h3>
             <p className="char_description">{selectedCharacter.description}</p>
+
             <div className="char_images">
               <Swiper
                 key={selectedCharacter.id}
@@ -124,18 +157,16 @@ export default function CharacterIntro() {
                 }}
                 onSlideChange={(swiper) => setImageActiveIndex(swiper.activeIndex)}
               >
-                {selectedCharacter.images.stage_slider.length > 0
-                  ? selectedCharacter.images.stage_slider.map((charImage, index) => (
-                      <SwiperSlide key={`${selectedCharacter.id}-image-${index}`}>
-                        <div className="char_image">
-                          <img src={charImage} alt={`${selectedCharacter.name} screenshot ${index + 1}`} />
-                        </div>
-                      </SwiperSlide>
-                    ))
-                  : null}
+                {selectedCharacterStages.map(([stageId, stageData], index) => (
+                  <SwiperSlide key={`${selectedCharacter.id}-stage-${stageId}-${index}`}>
+                    <div className="char_image">
+                      <img src={stageData.slider} alt={`${selectedCharacter.name} ${stageId} stage`} />
+                    </div>
+                  </SwiperSlide>
+                ))}
               </Swiper>
 
-              {selectedCharacter.images.stage_slider.length > 0 ? (
+              {imageSlideCount > 0 ? (
                 <div className="char_images_controls">
                   <button className="char_images_prev" aria-label="Previous image" onClick={() => imageSwiper?.slidePrev()} disabled={imageActiveIndex === 0}>
                     <img src={Arrow} alt="" aria-hidden="true" />
@@ -151,7 +182,13 @@ export default function CharacterIntro() {
                 </div>
               ) : null}
 
-              <div className="char_skill_buttons"></div>
+              <div className="char_skill_buttons">
+                {selectedStageSkills.map((skill) => (
+                  <button key={`${selectedCharacter.id}-skill-${skill.id}`} type="button" className={activeSkill?.id === skill.id ? "is-active" : ""} onClick={() => setActiveSkillId(skill.id)}>
+                    {skill.button}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -164,10 +201,10 @@ export default function CharacterIntro() {
 
         <div className="char_skill_info">
           <div className="title pseudo">
-            <span className="heading">Skill Title</span>
+            <span className="heading">{activeSkill?.title ?? "Skill Title"}</span>
           </div>
           <div className="description pseudo">
-            <p>This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character.</p>
+            <p>{activeSkill?.description ?? "This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character. This will be the skill description, of the currently clicked / active Skill of that character."}</p>
           </div>
         </div>
       </div>
@@ -180,7 +217,7 @@ export default function CharacterIntro() {
           {characters.map((character) => (
             <SwiperSlide key={character.id} tag="li">
               <button className={`char_icon_button ${selectedCharacter.id === character.id ? "is-active" : ""}`} onClick={() => setSelectedCharacterId(character.id)} aria-label={`Select ${character.name}`}>
-                <img src={character.images.icon} alt={`${character.name} icon`} />
+                <img src={character.icon} alt={`${character.name} icon`} />
               </button>
             </SwiperSlide>
           ))}
