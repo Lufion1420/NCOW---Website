@@ -221,7 +221,16 @@ export default function CharacterIntro() {
               const stageSkill = stageSkillByButton.get(button) ?? null;
               const isActive = stageSkill?.id === activeSkillConfig?.id;
               return (
-                <button key={`${selectedCharacter.id}-${button}`} className={`skill_${button}${isActive ? " is-active" : ""}`} type="button" onClick={() => stageSkill && setActiveSkillId(stageSkill.id)} disabled={!stageSkill} aria-label={`Select ${button.toUpperCase()} skill`} aria-current={isActive ? "true" : undefined}>
+                <button
+                  key={`${selectedCharacter.id}-${button}`}
+                  className={`skill_${button}${isActive ? " is-active" : ""}`}
+                  type="button"
+                  onClick={() => stageSkill && setActiveSkillId(stageSkill.id)}
+                  disabled={!stageSkill}
+                  aria-label={`Select ${button.toUpperCase()} skill`}
+                  aria-current={isActive ? "true" : undefined}
+                  style={stageSkill ? { backgroundImage: `url(${stageSkill.icon})` } : undefined}
+                >
                   {button.toUpperCase()}
                 </button>
               );

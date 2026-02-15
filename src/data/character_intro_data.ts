@@ -3,6 +3,14 @@ import Naruto_2 from "../assets/characters/NCOW_IMG_NarutoBaseXL_2.png";
 import Icon_Naruto from "../assets/characters/NCOW_IMG_NarutoBase.png";
 import Naruto_Image_1 from "../assets/characters/NCOW-Placeholder-1.png";
 import Naruto_Image_2 from "../assets/characters/NCOW-Placeholder-2.png";
+import Skill_1 from "../assets/characters/NCOW_IMG_NarutoBase.png";
+import Skill_2 from "../assets/characters/NCOW_IMG_NarutoBase.png";
+import Skill_3 from "../assets/characters/NCOW_IMG_NarutoBase.png";
+import Skill_4 from "../assets/characters/NCOW_IMG_NarutoBase.png";
+import Skill_5 from "../assets/characters/NCOW_IMG_NarutoBase.png";
+import Skill_6 from "../assets/characters/NCOW_IMG_NarutoBase.png";
+import Skill_7 from "../assets/characters/NCOW_IMG_NarutoBase.png";
+import Skill_8 from "../assets/characters/NCOW_IMG_NarutoBase.png";
 
 import Sasuke from "../assets/characters/NCOW_IMG_NarutoBaseXL.png";
 import Icon_Sasuke from "../assets/characters/NCOW_IMG_SasukeHebi.png";
@@ -19,6 +27,7 @@ export type StageSkill = {
   id: string;
   button: SkillButton;
   row: number;
+  icon: string;
 };
 
 export type CharacterStage = {
@@ -47,14 +56,14 @@ export const CHARACTER_INTRO_CHARACTERS: Character[] = [
         slider: Naruto_Image_1,
         main: [Naruto_1, Naruto_2],
         skills: [
-          { id: "naruto-base-q", button: "q", row: 9 },
-          { id: "naruto-base-w", button: "w", row: 13 },
-          { id: "naruto-base-e", button: "e", row: 17 },
-          { id: "naruto-base-r", button: "r", row: 21 },
-          { id: "naruto-base-d", button: "d", row: 25 },
-          { id: "naruto-base-f", button: "f", row: 30 },
-          { id: "naruto-base-c", button: "c", row: 38 },
-          { id: "naruto-base-z", button: "z", row: 34 },
+          { id: "naruto-base-q", button: "q", row: 9, icon: Skill_1 },
+          { id: "naruto-base-w", button: "w", row: 13, icon: Skill_2 },
+          { id: "naruto-base-e", button: "e", row: 17, icon: Skill_3 },
+          { id: "naruto-base-r", button: "r", row: 21, icon: Skill_4 },
+          { id: "naruto-base-d", button: "d", row: 25, icon: Skill_5 },
+          { id: "naruto-base-f", button: "f", row: 30, icon: Skill_6 },
+          { id: "naruto-base-c", button: "c", row: 38, icon: Skill_7 },
+          { id: "naruto-base-z", button: "z", row: 34, icon: Skill_8 },
         ],
       },
       sage: {
