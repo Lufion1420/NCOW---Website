@@ -99,6 +99,17 @@ function buildSkillDataById(stageSkills: StageSkill[], rows: string[][]): Record
   return skillDataById;
 }
 
+function getDescriptionParagraphs(description: string | undefined): string[] {
+  if (!description) {
+    return [];
+  }
+
+  return description
+    .split(/\r?\n\s*\r?\n/g)
+    .map((paragraph) => paragraph.trim())
+    .filter((paragraph) => paragraph.length > 0);
+}
+
 export default function CharacterIntro() {
   const visibleIconCount = 3;
   const visibleIconGap = 25;
@@ -124,6 +135,7 @@ export default function CharacterIntro() {
   const stageSkillByButton = new Map<SkillButton, StageSkill>(selectedStageSkills.map((skill) => [skill.button, skill]));
   const activeSkillConfig = selectedStageSkills.find((skill) => skill.id === activeSkillId) ?? selectedStageSkills[0] ?? null;
   const activeSkillData = activeSkillConfig ? (fetchedSkillDataById[activeSkillConfig.id] ?? null) : null;
+  const activeSkillDescriptionParagraphs = getDescriptionParagraphs(activeSkillData?.description);
   const setImageLoaded = (imageKey: string) => {
     setLoadedImageKeys((previous) => (previous[imageKey] ? previous : { ...previous, [imageKey]: true }));
   };
@@ -262,7 +274,15 @@ export default function CharacterIntro() {
                 <p>Loading skill data...</p>
               </div>
             ) : (
-              <p>{activeSkillData?.description || "Skill description will appear here when you select a skill button."}</p>
+              <div className="skill_description_content">
+                {activeSkillDescriptionParagraphs.length > 0 ? (
+                  activeSkillDescriptionParagraphs.map((paragraph, index) => (
+                    <p key={`${activeSkillConfig?.id ?? "skill"}-paragraph-${index}`}>{paragraph}</p>
+                  ))
+                ) : (
+                  <p>Skill description will appear here when you select a skill button.</p>
+                )}
+              </div>
             )}
           </div>
           <div className="skill_list">
