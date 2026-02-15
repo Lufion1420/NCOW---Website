@@ -1,10 +1,7 @@
 //Naruto
 import Naruto_Base_1 from "../assets/characters/NCOW-NarutoBaseXL_1.png";
-import Naruto_Base_2 from "../assets/characters/NCOW-NarutoBaseXL_2.png";
 import Naruto_Sage_1 from "../assets/characters/NCOW-NarutoSageXL_1.png";
-import Naruto_Sage_2 from "../assets/characters/NCOW-NarutoSageXL_2.png";
 import Naruto_KCM_1 from "../assets/characters/NCOW-NarutoKCMXL_1.png";
-import Naruto_KCM_2 from "../assets/characters/NCOW-NarutoKCMXL_2.png";
 import Icon_Naruto from "../assets/characters/NCOW_IMG_NarutoBase.png";
 import Naruto_Slider_Base from "../assets/characters/NCOW-Placeholder-1.png";
 import Naruto_Slider_Sage from "../assets/characters/NCOW-Placeholder-2.png";
@@ -20,24 +17,19 @@ import Naruto_Skill_8 from "../assets/characters/NCOW_IMG_NarutoBase.png";
 
 //Sasuke
 import Sasuke_Base_1 from "../assets/characters/NCOW-SasukeBaseXL_1.png";
-import Sasuke_Base_2 from "../assets/characters/NCOW-SasukeBaseXL_2.png";
 import Sasuke_MS_1 from "../assets/characters/NCOW-SasukeMSXL_1.png";
-import Sasuke_MS_2 from "../assets/characters/NCOW-SasukeMSXL_2.png";
 import Sasuke_Slider_Base from "../assets/characters/NCOW-Placeholder-1.png";
 import Sasuke_Slider_MS from "../assets/characters/NCOW-Placeholder-1.png";
 import Icon_Sasuke from "../assets/characters/NCOW_IMG_SasukeHebi.png";
 
 //Itachi
-import Itachi_Base_1 from "../assets/characters/NCOW-ItachiBaseXL_1.png";
-import Itachi_Base_2 from "../assets/characters/NCOW-ItachiBaseXL_2.png";
+import Itachi_Base_1 from "../assets/characters/NCOW-ItachiBaseXL_2.png";
 import Itachi_Slider_Base from "../assets/characters/NCOW-Placeholder-2.png";
 import Icon_Itachi from "../assets/characters/NCOW_IMG_Itachi.png";
 
 //Obito
 import Obito_Base_1 from "../assets/characters/NCOW-ObitoBaseXL_1.png";
-import Obito_Base_2 from "../assets/characters/NCOW-ObitoBaseXL_2.png";
 import Obito_War_1 from "../assets/characters/NCOW-ObitoWarXL_1.png";
-import Obito_War_2 from "../assets/characters/NCOW-ObitoWarXL_2.png";
 import Obito_Slider_Base from "../assets/characters/NCOW-Placeholder-1.png";
 import Obito_Slider_War from "../assets/characters/NCOW-Placeholder-2.png";
 import Icon_Obito from "../assets/characters/NCOW_IMG_MaskedMan.png";
@@ -75,7 +67,7 @@ export const CHARACTER_INTRO_CHARACTERS: Character[] = [
     stages: {
       base: {
         slider: Naruto_Slider_Base,
-        main: [Naruto_Base_1, Naruto_Base_2],
+        main: [Naruto_Base_1],
         skills: [
           { id: "naruto-base-q", button: "q", row: 9, icon: Naruto_Skill_1 },
           { id: "naruto-base-w", button: "w", row: 13, icon: Naruto_Skill_2 },
@@ -89,12 +81,12 @@ export const CHARACTER_INTRO_CHARACTERS: Character[] = [
       },
       sage: {
         slider: Naruto_Slider_Sage,
-        main: [Naruto_Sage_1, Naruto_Sage_2],
+        main: [Naruto_Sage_1],
         skills: [],
       },
       kcm: {
         slider: Naruto_Slider_KCM,
-        main: [Naruto_KCM_1, Naruto_KCM_2],
+        main: [Naruto_KCM_1],
         skills: [],
       },
     },
@@ -109,12 +101,12 @@ export const CHARACTER_INTRO_CHARACTERS: Character[] = [
     stages: {
       base: {
         slider: Sasuke_Slider_Base,
-        main: [Sasuke_Base_1, Sasuke_Base_2],
+        main: [Sasuke_Base_1],
         skills: [],
       },
       ms: {
         slider: Sasuke_Slider_MS,
-        main: [Sasuke_MS_1, Sasuke_MS_2],
+        main: [Sasuke_MS_1],
         skills: [],
       }
     },
@@ -129,7 +121,7 @@ export const CHARACTER_INTRO_CHARACTERS: Character[] = [
     stages: {
       base: {
         slider: Itachi_Slider_Base,
-        main: [Itachi_Base_1, Itachi_Base_2],
+        main: [Itachi_Base_1],
         skills: [],
       },
     },
@@ -144,12 +136,12 @@ export const CHARACTER_INTRO_CHARACTERS: Character[] = [
     stages: {
       base: {
         slider: Obito_Slider_Base,
-        main: [Obito_Base_1, Obito_Base_2],
+        main: [Obito_Base_1],
         skills: [],
       },
       war: {
         slider: Obito_Slider_War,
-        main: [Obito_War_1, Obito_War_2],
+        main: [Obito_War_1],
         skills: [],
       }
     },
