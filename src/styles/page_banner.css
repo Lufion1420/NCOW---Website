@@ -13,6 +13,7 @@
       transform-origin: center;
       animation: page-banner-focus-in var(--page-banner-anim-duration) ease-out forwards;
       will-change: transform, filter;
+      opacity: 0.5;
     }
   }
 

@@ -1,6 +1,6 @@
 import PageBanner from "../components/page_banner";
 import GameplayFeatures from "../components/gameplay_features";
-import Image from "../assets/wallpapers/NCOW-Wallpaper-5.png";
+import Image from "../assets/characters/NCOW-Placeholder-2.png";
 
 export default function Gameplay() {
   return (
