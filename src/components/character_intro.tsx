@@ -32,9 +32,9 @@ function parseCsvRows(input: string): string[][] {
     const char = input[index];
 
     if (inQuotes) {
-      if (char === "\"") {
-        if (input[index + 1] === "\"") {
-          currentCell += "\"";
+      if (char === '"') {
+        if (input[index + 1] === '"') {
+          currentCell += '"';
           index += 1;
         } else {
           inQuotes = false;
@@ -45,7 +45,7 @@ function parseCsvRows(input: string): string[][] {
       continue;
     }
 
-    if (char === "\"") {
+    if (char === '"') {
       inQuotes = true;
       continue;
     }
@@ -119,7 +119,7 @@ export default function CharacterIntro() {
   const selectedStageSkills = selectedCharacterStage.skills;
   const stageSkillByButton = new Map<SkillButton, StageSkill>(selectedStageSkills.map((skill) => [skill.button, skill]));
   const activeSkillConfig = selectedStageSkills.find((skill) => skill.id === activeSkillId) ?? selectedStageSkills[0] ?? null;
-  const activeSkillData = activeSkillConfig ? fetchedSkillDataById[activeSkillConfig.id] ?? null : null;
+  const activeSkillData = activeSkillConfig ? (fetchedSkillDataById[activeSkillConfig.id] ?? null) : null;
 
   useEffect(() => {
     setActiveSkillId(selectedStageSkills[0]?.id ?? null);
@@ -216,32 +216,24 @@ export default function CharacterIntro() {
         </div>
 
         <div className="char_skill_info">
-          <div className="skill_list">
-            {SKILL_BUTTON_ORDER.map((button) => {
-              const stageSkill = stageSkillByButton.get(button) ?? null;
-              const isActive = stageSkill?.id === activeSkillConfig?.id;
-              return (
-                <button
-                  key={`${selectedCharacter.id}-${button}`}
-                  className={`skill_${button}${isActive ? " is-active" : ""}`}
-                  type="button"
-                  onClick={() => stageSkill && setActiveSkillId(stageSkill.id)}
-                  disabled={!stageSkill}
-                  aria-label={`Select ${button.toUpperCase()} skill`}
-                  aria-current={isActive ? "true" : undefined}
-                  style={stageSkill ? { backgroundImage: `url(${stageSkill.icon})` } : undefined}
-                >
-                  {button.toUpperCase()}
-                </button>
-              );
-            })}
-          </div>
-
           <div className="title pseudo">
             <span className="heading">{activeSkillData?.title || "Skill Title"}</span>
           </div>
           <div className="description pseudo">
             <p>{activeSkillData?.description || "Skill description will appear here when you select a skill button."}</p>
+          </div>
+          <div className="skill_list">
+            <div className="pseudo">
+              {SKILL_BUTTON_ORDER.map((button) => {
+                const stageSkill = stageSkillByButton.get(button) ?? null;
+                const isActive = stageSkill?.id === activeSkillConfig?.id;
+                return (
+                  <button key={`${selectedCharacter.id}-${button}`} className={`skill_${button}${isActive ? " is-active" : ""}`} type="button" onClick={() => stageSkill && setActiveSkillId(stageSkill.id)} disabled={!stageSkill} aria-label={`Select ${button.toUpperCase()} skill`} aria-current={isActive ? "true" : undefined} style={stageSkill ? { backgroundImage: `url(${stageSkill.icon})` } : undefined}>
+                    {button.toUpperCase()}
+                  </button>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
