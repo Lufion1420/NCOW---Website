@@ -52,7 +52,7 @@ export default function CharacterIntro() {
         stage: {
           base: {
             main: { Naruto_1, Naruto_2 },
-            slider: [Naruto_Image_1, Naruto_Image_2] as string[],
+            slider: Naruto_Image_1,
           },
           sage: {},
           kcm: {},
