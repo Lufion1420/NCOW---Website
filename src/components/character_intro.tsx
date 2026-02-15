@@ -109,11 +109,14 @@ export default function CharacterIntro() {
   const [imageActiveIndex, setImageActiveIndex] = useState(0);
   const [activeSkillId, setActiveSkillId] = useState<string | null>(null);
   const [fetchedSkillDataById, setFetchedSkillDataById] = useState<Record<string, FetchedSkillData>>({});
+  const [isSkillDataLoading, setIsSkillDataLoading] = useState(false);
+  const [loadedImageKeys, setLoadedImageKeys] = useState<Record<string, boolean>>({});
 
   const selectedCharacter = characters.find((character) => character.id === selectedCharacterId) ?? characters[0];
   const selectedCharacterStages = Object.entries(selectedCharacter.stages);
   const imageSlideCount = selectedCharacterStages.length;
   const currentStageEntry = selectedCharacterStages[imageActiveIndex] ?? selectedCharacterStages[0];
+  const currentStageId = currentStageEntry[0];
   const selectedCharacterStage = currentStageEntry[1];
   const selectedCharacterMainImages = selectedCharacterStage.main;
   const selectedCharacterMainImageScale = selectedCharacterStage.scale ?? 1;
@@ -121,6 +124,9 @@ export default function CharacterIntro() {
   const stageSkillByButton = new Map<SkillButton, StageSkill>(selectedStageSkills.map((skill) => [skill.button, skill]));
   const activeSkillConfig = selectedStageSkills.find((skill) => skill.id === activeSkillId) ?? selectedStageSkills[0] ?? null;
   const activeSkillData = activeSkillConfig ? (fetchedSkillDataById[activeSkillConfig.id] ?? null) : null;
+  const setImageLoaded = (imageKey: string) => {
+    setLoadedImageKeys((previous) => (previous[imageKey] ? previous : { ...previous, [imageKey]: true }));
+  };
 
   useEffect(() => {
     setActiveSkillId(selectedStageSkills[0]?.id ?? null);
@@ -132,8 +138,11 @@ export default function CharacterIntro() {
     async function fetchSkillData() {
       if (selectedStageSkills.length === 0) {
         setFetchedSkillDataById({});
+        setIsSkillDataLoading(false);
         return;
       }
+
+      setIsSkillDataLoading(true);
 
       try {
         const response = await fetch(kitsKonohaCsvUrl);
@@ -145,11 +154,13 @@ export default function CharacterIntro() {
         const rows = parseCsvRows(csv);
         if (!cancelled) {
           setFetchedSkillDataById(buildSkillDataById(selectedStageSkills, rows));
+          setIsSkillDataLoading(false);
         }
       } catch (error) {
         console.error(error);
         if (!cancelled) {
           setFetchedSkillDataById({});
+          setIsSkillDataLoading(false);
         }
       }
     }
@@ -184,8 +195,19 @@ export default function CharacterIntro() {
               >
                 {selectedCharacterStages.map(([stageId, stageData], index) => (
                   <SwiperSlide key={`${selectedCharacter.id}-stage-${stageId}-${index}`}>
-                    <div className="char_image">
-                      <img src={stageData.slider} alt={`${selectedCharacter.name} ${stageId} stage`} />
+                    <div className="char_image image_loading_shell">
+                      {!loadedImageKeys[`slider-${selectedCharacter.id}-${stageId}-${stageData.slider}`] ? (
+                        <div className="image_throbber" role="status" aria-live="polite">
+                          <span className="image_throbber_spinner" aria-hidden="true"></span>
+                        </div>
+                      ) : null}
+                      <img
+                        src={stageData.slider}
+                        alt={`${selectedCharacter.name} ${stageId} stage`}
+                        className={loadedImageKeys[`slider-${selectedCharacter.id}-${stageId}-${stageData.slider}`] ? "" : "is-loading"}
+                        onLoad={() => setImageLoaded(`slider-${selectedCharacter.id}-${stageId}-${stageData.slider}`)}
+                        onError={() => setImageLoaded(`slider-${selectedCharacter.id}-${stageId}-${stageData.slider}`)}
+                      />
                     </div>
                   </SwiperSlide>
                 ))}
@@ -211,17 +233,37 @@ export default function CharacterIntro() {
 
           <div className="char_main_image" style={{ transform: `scale(${selectedCharacterMainImageScale})` }}>
             {selectedCharacterMainImages.map((imageSrc, index) => (
-              <img key={`${selectedCharacter.id}-main-image-${index}`} src={imageSrc} alt={`${selectedCharacter.name} main image ${index + 1}`} />
+              <div key={`${selectedCharacter.id}-main-image-${index}`} className="image_loading_shell">
+                {!loadedImageKeys[`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`] ? (
+                  <div className="image_throbber" role="status" aria-live="polite">
+                    <span className="image_throbber_spinner" aria-hidden="true"></span>
+                  </div>
+                ) : null}
+                <img
+                  src={imageSrc}
+                  alt={`${selectedCharacter.name} main image ${index + 1}`}
+                  className={loadedImageKeys[`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`] ? "" : "is-loading"}
+                  onLoad={() => setImageLoaded(`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`)}
+                  onError={() => setImageLoaded(`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`)}
+                />
+              </div>
             ))}
           </div>
         </div>
 
         <div className="char_skill_info">
           <div className="title pseudo">
-            <span className="heading">{activeSkillData?.title || "Skill Title"}</span>
+            <span className="heading">{isSkillDataLoading ? "Loading skill..." : (activeSkillData?.title || "Skill Title")}</span>
           </div>
           <div className="description pseudo">
-            <p>{activeSkillData?.description || "Skill description will appear here when you select a skill button."}</p>
+            {isSkillDataLoading ? (
+              <div className="skill_loading" role="status" aria-live="polite">
+                <span className="skill_loading_spinner" aria-hidden="true"></span>
+                <p>Loading skill data...</p>
+              </div>
+            ) : (
+              <p>{activeSkillData?.description || "Skill description will appear here when you select a skill button."}</p>
+            )}
           </div>
           <div className="skill_list">
             <div className="pseudo">
@@ -229,7 +271,7 @@ export default function CharacterIntro() {
                 const stageSkill = stageSkillByButton.get(button) ?? null;
                 const isActive = stageSkill?.id === activeSkillConfig?.id;
                 return (
-                  <button key={`${selectedCharacter.id}-${button}`} className={`skill_${button}${isActive ? " is-active" : ""}`} type="button" onClick={() => stageSkill && setActiveSkillId(stageSkill.id)} disabled={!stageSkill} aria-label={`Select ${button.toUpperCase()} skill`} aria-current={isActive ? "true" : undefined} style={stageSkill ? { backgroundImage: `url(${stageSkill.icon})` } : undefined}>
+                  <button key={`${selectedCharacter.id}-${button}`} className={`skill_${button}${isActive ? " is-active" : ""}`} type="button" onClick={() => stageSkill && setActiveSkillId(stageSkill.id)} disabled={!stageSkill || isSkillDataLoading} aria-label={`Select ${button.toUpperCase()} skill`} aria-current={isActive ? "true" : undefined} style={stageSkill ? { backgroundImage: `url(${stageSkill.icon})` } : undefined}>
                     {button.toUpperCase()}
                   </button>
                 );
@@ -247,7 +289,20 @@ export default function CharacterIntro() {
           {characters.map((character) => (
             <SwiperSlide key={character.id} tag="li">
               <button className={`char_icon_button ${selectedCharacter.id === character.id ? "is-active" : ""}`} onClick={() => setSelectedCharacterId(character.id)} aria-label={`Select ${character.name}`}>
-                <img src={character.icon} alt={`${character.name} icon`} />
+                <div className="char_icon_image image_loading_shell">
+                  {!loadedImageKeys[`icon-${character.id}-${character.icon}`] ? (
+                    <div className="image_throbber" role="status" aria-live="polite">
+                      <span className="image_throbber_spinner" aria-hidden="true"></span>
+                    </div>
+                  ) : null}
+                  <img
+                    src={character.icon}
+                    alt={`${character.name} icon`}
+                    className={loadedImageKeys[`icon-${character.id}-${character.icon}`] ? "" : "is-loading"}
+                    onLoad={() => setImageLoaded(`icon-${character.id}-${character.icon}`)}
+                    onError={() => setImageLoaded(`icon-${character.id}-${character.icon}`)}
+                  />
+                </div>
               </button>
             </SwiperSlide>
           ))}

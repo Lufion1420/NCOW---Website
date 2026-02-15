@@ -89,6 +89,7 @@ export const CHARACTER_INTRO_CHARACTERS: Character[] = [
         slider: Naruto_Slider_KCM,
         main: [Naruto_KCM_1],
         skills: [],
+        scale: 1.2,
       },
     },
     description:
