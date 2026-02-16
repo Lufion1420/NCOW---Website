@@ -180,15 +180,16 @@
     .char_main_image {
       display: flex;
       align-items: center;
+      justify-content: center;
       position: relative;
       margin-top: auto;
       opacity: 0;
-      transform: scale(var(--char-main-image-scale, 1));
       animation: char-intro-fade-in 900ms ease-out calc(var(--char-intro-content-delay) + 120ms) forwards;
 
       > .image_loading_shell {
-        width: 100%;
+        width: calc(100% * var(--char-main-image-scale, 1));
         height: 100%;
+        margin: 0 auto;
       }
 
       img {
@@ -541,10 +542,6 @@
   .char_list {
     opacity: 1;
     animation: none;
-  }
-
-  .character_intro .char_wrapper .char_main_image {
-    transform: scale(var(--char-main-image-scale, 1));
   }
 
   .character_intro .char_wrapper .char_main_image img {
