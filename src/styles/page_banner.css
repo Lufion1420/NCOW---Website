@@ -11,7 +11,7 @@
       width: 100%;
       object-fit: cover;
       transform-origin: center;
-      animation: page-banner-focus-in var(--page-banner-anim-duration) ease-out forwards;
+      animation: page-banner-focus-in var(--page-banner-anim-duration) ease-out var(--page-banner-anim-delay) both;
       will-change: transform, filter;
       opacity: 0.6;
     }
@@ -22,6 +22,9 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    opacity: 0;
+    animation: page-banner-title-in var(--page-banner-anim-duration) ease-out var(--page-banner-anim-delay) both;
+    will-change: transform, opacity, filter;
 
     h1 {
       min-width: 40rem;
@@ -47,10 +50,31 @@
   }
 }
 
+@keyframes page-banner-title-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -45%) scale(0.97);
+    filter: blur(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    filter: blur(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .page_banner .image img {
     animation: none;
     transform: scale(1);
+    filter: blur(0);
+  }
+
+  .page_banner .title {
+    animation: none;
+    opacity: 1;
+    transform: translate(-50%, -50%);
     filter: blur(0);
   }
 }
