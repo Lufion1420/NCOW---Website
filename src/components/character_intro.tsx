@@ -126,6 +126,8 @@ export default function CharacterIntro() {
   const selectedCharacter = characters.find((character) => character.id === selectedCharacterId) ?? characters[0];
   const selectedCharacterStages = Object.entries(selectedCharacter.stages);
   const imageSlideCount = selectedCharacterStages.length;
+  const canSlideCharacterStages = imageSlideCount > 1;
+  const canSlideCharacterList = characters.length > visibleIconCount;
   const currentStageEntry = selectedCharacterStages[imageActiveIndex] ?? selectedCharacterStages[0];
   const currentStageId = currentStageEntry[0];
   const selectedCharacterStage = currentStageEntry[1];
@@ -138,6 +140,12 @@ export default function CharacterIntro() {
   const activeSkillDescriptionParagraphs = getDescriptionParagraphs(activeSkillData?.description);
   const setImageLoaded = (imageKey: string) => {
     setLoadedImageKeys((previous) => (previous[imageKey] ? previous : { ...previous, [imageKey]: true }));
+  };
+  const handleCharacterSelect = (characterId: string) => {
+    setSelectedCharacterId(characterId);
+    if (typeof window !== "undefined") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
   };
 
   useEffect(() => {
@@ -221,17 +229,21 @@ export default function CharacterIntro() {
 
               {imageSlideCount > 0 ? (
                 <div className="char_images_controls">
-                  <button className="char_images_prev" aria-label="Previous image" onClick={() => imageSwiper?.slidePrev()} disabled={imageActiveIndex === 0}>
-                    <img src={Arrow} alt="" aria-hidden="true" />
-                  </button>
+                  {canSlideCharacterStages ? (
+                    <button className="char_images_prev" aria-label="Previous image" onClick={() => imageSwiper?.slidePrev()} disabled={imageActiveIndex === 0}>
+                      <img src={Arrow} alt="" aria-hidden="true" />
+                    </button>
+                  ) : null}
                   <div className="char_images_pagination">
                     {Array.from({ length: imageSlideCount }).map((_, index) => (
                       <button key={`${selectedCharacter.id}-pagination-${index}`} type="button" className={`swiper-pagination-bullet ${index === imageActiveIndex ? "swiper-pagination-bullet-active" : ""}`} onClick={() => imageSwiper?.slideTo(index)} aria-label={`Go to image ${index + 1}`} aria-current={index === imageActiveIndex ? "true" : undefined} />
                     ))}
                   </div>
-                  <button className="char_images_next" aria-label="Next image" onClick={() => imageSwiper?.slideNext()} disabled={imageActiveIndex >= imageSlideCount - 1}>
-                    <img src={Arrow} alt="" aria-hidden="true" />
-                  </button>
+                  {canSlideCharacterStages ? (
+                    <button className="char_images_next" aria-label="Next image" onClick={() => imageSwiper?.slideNext()} disabled={imageActiveIndex >= imageSlideCount - 1}>
+                      <img src={Arrow} alt="" aria-hidden="true" />
+                    </button>
+                  ) : null}
                 </div>
               ) : null}
             </div>
@@ -288,13 +300,15 @@ export default function CharacterIntro() {
       </div>
 
       <div className="char_list" style={{ "--visible-icons": visibleIconCount, "--icon-gap": `${visibleIconGap}px` } as CSSProperties}>
-        <button className="char_list_prev swiper-button-prev" aria-label="Previous character">
-          <img src={Arrow} alt="" aria-hidden="true" />
-        </button>
-        <Swiper modules={[Navigation]} tag="ul" slidesPerView={visibleIconCount} spaceBetween={visibleIconGap} navigation={{ prevEl: ".char_list_prev", nextEl: ".char_list_next" }} watchOverflow>
+        {canSlideCharacterList ? (
+          <button className="char_list_prev swiper-button-prev" aria-label="Previous character">
+            <img src={Arrow} alt="" aria-hidden="true" />
+          </button>
+        ) : null}
+        <Swiper modules={[Navigation]} tag="ul" slidesPerView={visibleIconCount} spaceBetween={visibleIconGap} navigation={canSlideCharacterList ? { prevEl: ".char_list_prev", nextEl: ".char_list_next" } : false} watchOverflow>
           {characters.map((character) => (
             <SwiperSlide key={character.id} tag="li">
-              <button className={`char_icon_button ${selectedCharacter.id === character.id ? "is-active" : ""}`} onClick={() => setSelectedCharacterId(character.id)} aria-label={`Select ${character.name}`}>
+              <button className={`char_icon_button ${selectedCharacter.id === character.id ? "is-active" : ""}`} onClick={() => handleCharacterSelect(character.id)} aria-label={`Select ${character.name}`}>
                 <div className="char_icon_image image_loading_shell">
                   {!loadedImageKeys[`icon-${character.id}-${character.icon}`] ? (
                     <div className="image_throbber" role="status" aria-live="polite">
@@ -307,9 +321,11 @@ export default function CharacterIntro() {
             </SwiperSlide>
           ))}
         </Swiper>
-        <button className="char_list_next swiper-button-next" aria-label="Next character">
-          <img src={Arrow} alt="" aria-hidden="true" />
-        </button>
+        {canSlideCharacterList ? (
+          <button className="char_list_next swiper-button-next" aria-label="Next character">
+            <img src={Arrow} alt="" aria-hidden="true" />
+          </button>
+        ) : null}
       </div>
     </>
   );
