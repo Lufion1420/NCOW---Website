@@ -280,7 +280,9 @@ export default function CharacterIntro() {
                 <p>Loading skill data...</p>
               </div>
             ) : (
-              <div className="skill_description_content">{activeSkillDescriptionParagraphs.length > 0 ? activeSkillDescriptionParagraphs.map((paragraph, index) => <p key={`${activeSkillConfig?.id ?? "skill"}-paragraph-${index}`}>{paragraph}</p>) : <p>Skill description will appear here when you select a skill button.</p>}</div>
+              <div key={activeSkillConfig?.id ?? "skill"} className="skill_description_content skill_description_reveal">
+                {activeSkillDescriptionParagraphs.length > 0 ? activeSkillDescriptionParagraphs.map((paragraph, index) => <p key={`${activeSkillConfig?.id ?? "skill"}-paragraph-${index}`}>{paragraph}</p>) : <p>Skill description will appear here when you select a skill button.</p>}
+              </div>
             )}
           </div>
           <div className="skill_list">
