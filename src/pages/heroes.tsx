@@ -5,7 +5,7 @@ import ImageBanner from "../assets/ui/NCOW-Banner-5.png";
 export default function Characters() {
   return (
     <div>
-      <PageBanner image={ImageBanner} heading="Heros"></PageBanner>
+      <PageBanner image={ImageBanner} heading="Heroes"></PageBanner>
       <CharacterIntro></CharacterIntro>
     </div>
   );

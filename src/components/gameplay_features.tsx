@@ -1,6 +1,7 @@
 import "../styles/gameplay_features.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/swiper.css";
+import { useEffect, useRef, useState } from "react";
 
 import Image_Quest_1 from "../assets/images/NCOW-Image-UI-3.png";
 import Image_Quest_2 from "../assets/images/NCOW-Image-UI-9.png";
@@ -31,17 +32,66 @@ type Props = {
   text?: string;
   alignment?: Alignment;
   images?: ImageCollection;
+  revealImmediately?: boolean;
+  revealDelay?: number;
 };
 
 const PLACEHOLDER_IMAGES = ["https://placehold.co/600x400", "https://placehold.co/600x400", "https://placehold.co/600x400"];
 
-function Feature({ heading, text, alignment, images }: Props) {
+function Feature({ heading, text, alignment, images, revealImmediately = false, revealDelay = 0 }: Props) {
+  const featureRef = useRef<HTMLDivElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (revealImmediately) {
+      const frame = window.requestAnimationFrame(() => {
+        setIsVisible(true);
+      });
+
+      return () => {
+        window.cancelAnimationFrame(frame);
+      };
+    }
+
+    if (typeof window === "undefined") {
+      return;
+    }
+
+    const currentFeature = featureRef.current;
+
+    if (!currentFeature) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      {
+        threshold: 0.25,
+      },
+    );
+
+    observer.observe(currentFeature);
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [revealImmediately]);
+
   const paragraphs = text ? text.split(/\r?\n\s*\r?\n/).map((paragraph) => paragraph.trim()) : [];
   const imageList = images ? (Array.isArray(images) ? images : Object.values(images)) : [];
   const renderedImages = imageList.length > 0 ? imageList : PLACEHOLDER_IMAGES;
 
   return (
-    <div className={`feature pseudo alignment-${alignment}`}>
+    <div
+      ref={featureRef}
+      className={`feature pseudo alignment-${alignment} ${isVisible ? "visible" : ""}`}
+      style={{ transitionDelay: `${revealDelay}ms` }}
+    >
       <div className="title">
         <h2>{heading}</h2>
       </div>
@@ -145,7 +195,15 @@ export default function GameplayFeatures() {
     <div className="gameplay_features">
       <div className="pseudo wrapper">
         {list_content.map((feature, index) => (
-          <Feature key={feature.heading} heading={feature.heading} text={feature.text} images={feature.images} alignment={index % 2 === 0 ? "left" : "right"}></Feature>
+          <Feature
+            key={feature.heading}
+            heading={feature.heading}
+            text={feature.text}
+            images={feature.images}
+            alignment={index % 2 === 0 ? "left" : "right"}
+            revealImmediately={index === 0}
+            revealDelay={index === 0 ? 0 : 100}
+          ></Feature>
         ))}
       </div>
     </div>
