@@ -22,7 +22,7 @@ export default function ItemIntro() {
       </div>
 
       <div className="item_list pseudo">
-        <div className="top">
+        <div className="tabs">
           <button className="general pseudo">
             <span>General</span>
           </button>
@@ -36,12 +36,12 @@ export default function ItemIntro() {
             <span>Recipes</span>
           </button>
         </div>
-        <div className="bottom">
-          <div className="item_list_content">
-            <div className="item_one"></div>
-            <div className="item_two"></div>
-            <div className="item_three"></div>
-          </div>
+        <div className="list">
+          <ul className="item_list_content">
+            <li className="item_one"></li>
+            <li className="item_two"></li>
+            <li className="item_three"></li>
+          </ul>
         </div>
       </div>
     </div>
