@@ -5,8 +5,8 @@
   justify-content: center;
   text-align: center;
   padding-top: 4rem;
-  padding-bottom: 4rem;
-  gap: 1.5rem;
+  padding-bottom: 3rem;
+  gap: 1.2rem;
   position: relative;
 
   .item_intro_top {
@@ -14,7 +14,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
+    gap: 0.4rem;
 
     .item_name {
       color: var(--color-text-primary);
@@ -32,8 +32,8 @@
   }
 
   .item_icon_wrap {
-    width: 100px;
-    height: 100px;
+    width: 88px;
+    height: 88px;
     display: grid;
     place-items: center;
 
@@ -46,14 +46,84 @@
   }
 
   .item_description {
-    max-width: 850px;
+    max-width: 900px;
 
     p {
       color: var(--color-text-tetriary);
     }
   }
 
+  .item_stats {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    p {
+      color: var(--color-text-tetriary);
+    }
+
+    span {
+      color: var(--color-text-tetriary);
+      font-weight: 700;
+    }
+  }
+
   .item_recipes {
+    width: min(100%, 950px);
+    min-height: 1px;
+
+    h4 {
+      color: var(--color-text-tetriary);
+      font-size: clamp(20px, 3vw, 32px);
+      margin-bottom: 1rem;
+    }
+
+    .item_recipe_list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+
+    .item_recipe_card {
+      position: relative;
+      padding: 1rem;
+      text-align: left;
+
+      .recipe_result {
+        color: var(--color-text-tetriary);
+        font-weight: 700;
+        margin-bottom: 0.8rem;
+      }
+
+      .recipe_components {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+
+      .recipe_component {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+
+        img {
+          width: 36px;
+          height: 36px;
+          border: 1px solid var(--color-border-primary);
+        }
+
+        span {
+          color: var(--color-text-tetriary);
+        }
+      }
+    }
+
+    .item_recipe_card::before {
+      background: url(../assets/ui/NCOW-BrushStroke-3.png) no-repeat 50% / 100% 100%;
+      filter: invert(92%);
+    }
   }
 }
 
@@ -74,65 +144,84 @@
   align-items: center;
   gap: 1rem;
   position: relative;
-  padding: 1rem 0 1rem 0;
+  padding: 1rem 0 1.2rem 0;
   border-top: 3px solid var(--color-border-primary);
 
   .tabs {
-    display: flex;
-    gap: 1rem;
+    width: 100%;
+    padding: 0 1rem;
 
-    button {
+    .swiper {
+      width: 100%;
+      overflow: visible;
+    }
+
+    .tab_button {
+      width: 100%;
+      min-height: 58px;
       position: relative;
-      padding: 0.8rem 3rem;
-      min-width: 12rem;
+      padding: 0.8rem 1.2rem;
 
       span {
         color: var(--color-text-tetriary);
         font-weight: 700;
+        line-height: 1.2;
       }
     }
 
-    button::before {
+    .tab_button::before {
       background: url(../assets/ui/NCOW-BrushStroke-2.png) no-repeat 50% / 100% 100%;
       filter: invert(100%);
       transition:
-        filter 600ms ease,
-        transform 500ms ease;
+        filter 300ms ease,
+        transform 300ms ease;
     }
 
-    button:hover {
+    .tab_button:hover {
       cursor: pointer;
-
-      span {
-        color: var(--color-text-primary);
-      }
     }
 
-    button:hover::before {
+    .tab_button:hover::before,
+    .tab_button.is-active::before {
       filter: invert(50%);
-      transform: scale(1.2);
+      transform: scale(1.03);
+    }
+
+    .tab_button.is-active span,
+    .tab_button:hover span {
+      color: var(--color-text-primary);
     }
   }
 
   .list {
     width: 100%;
-    height: 100%;
-    display: flex;
     border-top: 3px solid var(--color-border-primary);
-    padding-top: 1rem;
+    padding: 1rem 1rem 0 1rem;
 
-    .item_list_content {
-      position: relative;
+    .swiper {
+      width: 100%;
+      overflow: visible;
+    }
+
+    .item_icon_button {
+      width: 100%;
+      height: 74px;
+      background: transparent;
+      padding: 0.2rem;
+      border: 1px solid transparent;
       display: flex;
-      gap: 1rem;
-      position: relative;
-      margin: auto;
+      align-items: center;
+      justify-content: center;
 
-      > * {
-        background-color: red;
+      img {
         width: 64px;
         height: 64px;
+        border: 1px solid var(--color-border-primary);
       }
+    }
+
+    .item_icon_button.is-active {
+      border-color: var(--color-accent-primary);
     }
   }
 }
