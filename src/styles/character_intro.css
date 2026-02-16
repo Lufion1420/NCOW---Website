@@ -2,7 +2,7 @@
   --char-intro-start-delay: var(--page-banner-content-delay);
   --char-intro-name-delay: calc(var(--char-intro-start-delay) + 300ms);
   --char-intro-title-delay: calc(var(--char-intro-start-delay) + 900ms);
-  --char-intro-content-delay: calc(var(--char-intro-start-delay) + 1500ms);
+  --char-intro-content-delay: calc(var(--char-intro-start-delay) + 1000ms);
 
   display: flex;
   flex-direction: column;

@@ -76,6 +76,6 @@ html {
 
   /* Animation related */
   --page-banner-anim-delay: 0ms;
-  --page-banner-anim-duration: 950ms;
+  --page-banner-anim-duration: 550ms;
   --page-banner-content-delay: calc(var(--page-banner-anim-delay) + var(--page-banner-anim-duration));
 }

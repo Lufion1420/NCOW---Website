@@ -110,6 +110,52 @@ function getDescriptionParagraphs(description: string | undefined): string[] {
     .filter((paragraph) => paragraph.length > 0);
 }
 
+function SkillDescriptionTypewriter({ text, wordsPerTick = 1, tickMs = 1000 }: { text: string; wordsPerTick?: number; tickMs?: number }) {
+  const [visibleWordCount, setVisibleWordCount] = useState(0);
+  const words = text.match(/\S+\s*/g) ?? [];
+
+  useEffect(() => {
+    setVisibleWordCount(0);
+
+    if (words.length === 0) {
+      return;
+    }
+
+    const intervalId = window.setInterval(
+      () => {
+        setVisibleWordCount((previousCount) => {
+          if (previousCount >= words.length) {
+            window.clearInterval(intervalId);
+            return previousCount;
+          }
+
+          return Math.min(previousCount + Math.max(1, Math.floor(wordsPerTick)), words.length);
+        });
+      },
+      Math.max(1, tickMs),
+    );
+
+    return () => {
+      window.clearInterval(intervalId);
+    };
+  }, [words.length, wordsPerTick, tickMs]);
+
+  const visibleText = words.slice(0, visibleWordCount).join("");
+  const visibleParagraphs = getDescriptionParagraphs(visibleText);
+
+  if (visibleParagraphs.length === 0) {
+    return <p>&nbsp;</p>;
+  }
+
+  return (
+    <>
+      {visibleParagraphs.map((paragraph, index) => (
+        <p key={`typed-paragraph-${index}`}>{paragraph}</p>
+      ))}
+    </>
+  );
+}
+
 export default function CharacterIntro() {
   const visibleIconCount = 3;
   const visibleIconGap = 25;
@@ -138,6 +184,7 @@ export default function CharacterIntro() {
   const activeSkillConfig = selectedStageSkills.find((skill) => skill.id === activeSkillId) ?? selectedStageSkills[0] ?? null;
   const activeSkillData = activeSkillConfig ? (fetchedSkillDataById[activeSkillConfig.id] ?? null) : null;
   const activeSkillDescriptionParagraphs = getDescriptionParagraphs(activeSkillData?.description);
+  const activeSkillDescriptionText = activeSkillData?.description?.trim() || "Skill description will appear here when you select a skill button.";
   const setImageLoaded = (imageKey: string) => {
     setLoadedImageKeys((previous) => (previous[imageKey] ? previous : { ...previous, [imageKey]: true }));
   };
@@ -257,13 +304,7 @@ export default function CharacterIntro() {
                     <span className="image_throbber_spinner" aria-hidden="true"></span>
                   </div>
                 ) : null}
-                <img
-                  src={imageSrc}
-                  alt={`${selectedCharacter.name} main image ${index + 1}`}
-                  className={loadedImageKeys[`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`] ? "" : "is-loading"}
-                  onLoad={() => setImageLoaded(`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`)}
-                  onError={() => setImageLoaded(`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`)}
-                />
+                <img src={imageSrc} alt={`${selectedCharacter.name} main image ${index + 1}`} className={loadedImageKeys[`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`] ? "" : "is-loading"} onLoad={() => setImageLoaded(`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`)} onError={() => setImageLoaded(`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`)} />
               </div>
             ))}
           </div>
@@ -281,7 +322,7 @@ export default function CharacterIntro() {
               </div>
             ) : (
               <div key={activeSkillConfig?.id ?? "skill"} className="skill_description_content skill_description_reveal">
-                {activeSkillDescriptionParagraphs.length > 0 ? activeSkillDescriptionParagraphs.map((paragraph, index) => <p key={`${activeSkillConfig?.id ?? "skill"}-paragraph-${index}`}>{paragraph}</p>) : <p>Skill description will appear here when you select a skill button.</p>}
+                <SkillDescriptionTypewriter text={activeSkillDescriptionParagraphs.length > 0 ? activeSkillDescriptionText : "Skill description will appear here when you select a skill button."} wordsPerTick={18} tickMs={16} />
               </div>
             )}
           </div>
