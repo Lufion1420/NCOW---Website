@@ -102,6 +102,29 @@ function buildFetchedItemDataById(rows: string[][]): Record<string, FetchedItemD
   return data;
 }
 
+function toCsvSheetUrl(inputUrl: string): string {
+  try {
+    const url = new URL(inputUrl);
+
+    if (url.searchParams.get("output") === "csv") {
+      return url.toString();
+    }
+
+    if (url.pathname.endsWith("/pubhtml")) {
+      url.pathname = url.pathname.replace(/\/pubhtml$/, "/pub");
+    }
+
+    url.searchParams.set("output", "csv");
+    if (!url.searchParams.has("single")) {
+      url.searchParams.set("single", "true");
+    }
+
+    return url.toString();
+  } catch {
+    return inputUrl;
+  }
+}
+
 export default function ItemIntro() {
   const [activeCategory, setActiveCategory] = useState<ItemCategory>("general");
   const [selectedItemId, setSelectedItemId] = useState<string>(ITEM_INTRO_ITEMS[0]?.id ?? "");
@@ -124,15 +147,10 @@ export default function ItemIntro() {
     let cancelled = false;
 
     async function fetchItemData() {
-      if (!itemsCsvUrl.includes("output=csv")) {
-        setFetchedItemDataById({});
-        return;
-      }
-
       setIsItemDataLoading(true);
 
       try {
-        const response = await fetch(itemsCsvUrl);
+        const response = await fetch(toCsvSheetUrl(itemsCsvUrl));
         if (!response.ok) {
           throw new Error(`Failed to fetch item sheet data: ${response.status}`);
         }
