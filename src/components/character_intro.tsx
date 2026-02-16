@@ -1,4 +1,4 @@
-import { useEffect, useState, type CSSProperties } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { Navigation } from "swiper/modules";
@@ -168,6 +168,7 @@ export default function CharacterIntro() {
   const [fetchedSkillDataById, setFetchedSkillDataById] = useState<Record<string, FetchedSkillData>>({});
   const [isSkillDataLoading, setIsSkillDataLoading] = useState(false);
   const [loadedImageKeys, setLoadedImageKeys] = useState<Record<string, boolean>>({});
+  const charWrapperRef = useRef<HTMLDivElement | null>(null);
 
   const selectedCharacter = characters.find((character) => character.id === selectedCharacterId) ?? characters[0];
   const selectedCharacterStages = Object.entries(selectedCharacter.stages);
@@ -191,7 +192,16 @@ export default function CharacterIntro() {
   const handleCharacterSelect = (characterId: string) => {
     setSelectedCharacterId(characterId);
     if (typeof window !== "undefined") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      window.requestAnimationFrame(() => {
+        const target = charWrapperRef.current;
+        if (!target) {
+          return;
+        }
+
+        const topOffset = 80;
+        const targetTop = window.scrollY + target.getBoundingClientRect().top - topOffset;
+        window.scrollTo({ top: Math.max(0, targetTop), behavior: "smooth" });
+      });
     }
   };
 
@@ -242,7 +252,7 @@ export default function CharacterIntro() {
   return (
     <>
       <div className="character_intro container">
-        <div className="char_wrapper">
+        <div ref={charWrapperRef} className="char_wrapper">
           <div className="char_content">
             <h2 className="char_name">{selectedCharacter.name}</h2>
             <h3 className="char_title">{selectedCharacter.title}</h3>
