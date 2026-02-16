@@ -1,0 +1,112 @@
+.item_intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  gap: 1.5rem;
+  position: relative;
+
+  .item_intro_top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+
+    .item_name {
+      color: var(--color-text-primary);
+      text-shadow:
+        0 0 8px var(--color-accent-primary),
+        0 0 18px var(--color-accent-primary);
+    }
+
+    .item_type {
+      color: var(--color-text-primary);
+      text-shadow:
+        0 0 8px var(--color-accent-secondary),
+        0 0 18px var(--color-accent-secondary);
+    }
+  }
+
+  .item_icon_wrap {
+    width: 100px;
+    height: 100px;
+    display: grid;
+    place-items: center;
+
+    .item_icon {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border: 2px solid var(--color-border-primary);
+    }
+  }
+
+  .item_description {
+    max-width: 850px;
+
+    p {
+      color: var(--color-text-tetriary);
+    }
+  }
+
+  .item_recipes {
+  }
+}
+
+.item_intro::before {
+  background: url(../assets/wallpapers/NCOW-Wallpaper-6.png) no-repeat 50% / 100% 100%;
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  filter: blur(2px);
+}
+
+.item_list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  position: relative;
+  padding: 2rem 0;
+  border-top: 3px solid var(--color-border-primary);
+
+  .top {
+  }
+
+  .bottom {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    border-top: 3px solid var(--color-border-primary);
+
+    .item_list_content {
+      position: relative;
+      display: flex;
+      gap: 1rem;
+      position: relative;
+      margin: auto;
+
+      > * {
+        background-color: red;
+        width: 64px;
+        height: 64px;
+      }
+    }
+  }
+}
+
+.item_list::before {
+  background: url(../assets/ui/NCOW-AccentBackground-1.png) no-repeat 50% / 108% 100%;
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  filter: invert(100%) saturate(100%) brightness(50%) contrast(100%);
+}
