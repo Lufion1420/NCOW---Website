@@ -237,7 +237,7 @@ export default function CharacterIntro() {
             </div>
           </div>
 
-          <div className="char_main_image" style={{ transform: `scale(${selectedCharacterMainImageScale})` }}>
+          <div className="char_main_image" style={{ "--char-main-image-scale": selectedCharacterMainImageScale } as CSSProperties}>
             {selectedCharacterMainImages.map((imageSrc, index) => (
               <div key={`${selectedCharacter.id}-main-image-${index}`} className="image_loading_shell">
                 {!loadedImageKeys[`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`] ? (
@@ -245,7 +245,13 @@ export default function CharacterIntro() {
                     <span className="image_throbber_spinner" aria-hidden="true"></span>
                   </div>
                 ) : null}
-                <img src={imageSrc} alt={`${selectedCharacter.name} main image ${index + 1}`} className={loadedImageKeys[`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`] ? "" : "is-loading"} onLoad={() => setImageLoaded(`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`)} onError={() => setImageLoaded(`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`)} />
+                <img
+                  src={imageSrc}
+                  alt={`${selectedCharacter.name} main image ${index + 1}`}
+                  className={loadedImageKeys[`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`] ? "" : "is-loading"}
+                  onLoad={() => setImageLoaded(`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`)}
+                  onError={() => setImageLoaded(`main-${selectedCharacter.id}-${currentStageId}-${index}-${imageSrc}`)}
+                />
               </div>
             ))}
           </div>

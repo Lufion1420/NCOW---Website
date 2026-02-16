@@ -183,8 +183,8 @@
       position: relative;
       margin-top: auto;
       opacity: 0;
-      transform: translateY(24px);
-      animation: char-intro-fade-up 900ms ease-out calc(var(--char-intro-content-delay) + 120ms) forwards;
+      transform: scale(var(--char-main-image-scale, 1));
+      animation: char-intro-fade-in 900ms ease-out calc(var(--char-intro-content-delay) + 120ms) forwards;
 
       > .image_loading_shell {
         width: 100%;
@@ -194,6 +194,16 @@
       img {
         width: 100%;
         height: 100%;
+        opacity: 0;
+      }
+
+      img:not(.is-loading) {
+        animation: char-main-image-fade-in 700ms ease-out both;
+      }
+
+      img.is-loading {
+        opacity: 0;
+        animation: none;
       }
     }
   }
@@ -477,6 +487,26 @@
   }
 }
 
+@keyframes char-intro-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes char-main-image-fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes char-intro-fly-in-right {
   from {
     opacity: 0;
@@ -510,7 +540,15 @@
   .character_intro .char_skill_info,
   .char_list {
     opacity: 1;
-    transform: none;
+    animation: none;
+  }
+
+  .character_intro .char_wrapper .char_main_image {
+    transform: scale(var(--char-main-image-scale, 1));
+  }
+
+  .character_intro .char_wrapper .char_main_image img {
+    opacity: 1;
     animation: none;
   }
 }
