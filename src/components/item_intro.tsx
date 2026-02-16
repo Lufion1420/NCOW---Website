@@ -256,18 +256,20 @@ export default function ItemIntro() {
         </div>
 
         <div className="list">
-          <Swiper slidesPerView={3.5} spaceBetween={10} breakpoints={{ 769: { slidesPerView: 5.5, spaceBetween: 12 } }} watchOverflow>
-            {filteredItems.map((item) => {
-              const isSelected = selectedItem?.id === item.id;
-              return (
-                <SwiperSlide key={item.id}>
-                  <button className={`item_icon_button ${isSelected ? "is-active" : ""}`} onClick={() => setSelectedItemId(item.id)} aria-label={`Select ${fetchedItemDataById[item.id]?.name || item.id}`}>
-                    <img src={item.icon} alt={`${fetchedItemDataById[item.id]?.name || item.id} icon`} />
-                  </button>
-                </SwiperSlide>
-              );
-            })}
-          </Swiper>
+          <div>
+            <Swiper slidesPerView={7.5} spaceBetween={0} breakpoints={{ 769: { slidesPerView: 5.5, spaceBetween: 0 } }} watchOverflow>
+              {filteredItems.map((item) => {
+                const isSelected = selectedItem?.id === item.id;
+                return (
+                  <SwiperSlide key={item.id}>
+                    <button className={`item_icon_button ${isSelected ? "is-active" : ""}`} onClick={() => setSelectedItemId(item.id)} aria-label={`Select ${fetchedItemDataById[item.id]?.name || item.id}`}>
+                      <img src={item.icon} alt={`${fetchedItemDataById[item.id]?.name || item.id} icon`} />
+                    </button>
+                  </SwiperSlide>
+                );
+              })}
+            </Swiper>
+          </div>
         </div>
       </div>
     </div>

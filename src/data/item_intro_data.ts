@@ -48,14 +48,14 @@ export const ITEM_TABS: Array<{ id: ItemCategory; label: string }> = [
 ];
 
 export const ITEM_INTRO_ITEMS: ItemDefinition[] = [
-  { id: "kunai", icon: icon_kunai, row: 70, category: "general", recipeIds: ["recipe-shadow-edge"] },
+  { id: "kunai", icon: icon_kunai, row: 70, category: "general",  },
   { id: "senbon", icon: icon_senbon, row: 67, category: "general" },
   { id: "shuriken", icon: icon_demon_wind_shuriken, row: 64, category: "general" },
   { id: "shinobi_west", icon: icon_shinobi_west, row: 52, category: "general" },
   { id: "shinobi_headband", icon: icon_shinobi_headband, row: 49, category: "general" },
   { id: "shinobi_boots", icon: icon_shinobi_boots, row: 46, category: "general" },
   { id: "bingobook", icon: icon_bingobook, row: 43, category: "general" },
-  { id: "necklace_grey", icon: icon_necklace_grey, row: 40, category: "general" },
+  { id: "necklace_grey", icon: icon_necklace_grey, row: 40, category: "general", recipeIds: ["necklace_blue", "necklace_green", "necklace_red"] },
   { id: "sannin_headband", icon: icon_sannin_headband, row: 58, category: "general" },
 
   { id: "chakra-pill", icon: icon_chakra_pill, row: 0, category: "consumable" },
@@ -77,14 +77,24 @@ export const ITEM_INTRO_ITEMS: ItemDefinition[] = [
 ];
 
 export const ITEM_RECIPES: Record<string, ItemRecipe> = {
-  "recipe-shadow-edge": {
-    id: "recipe-shadow-edge",
-    resultItemId: "shadow-edge",
-    componentItemIds: ["kunai", "chakra-core", "forged-seal-scroll"],
+  "necklace_blue": {
+    id: "necklace_blue",
+    resultItemId: "necklace_blue",
+    componentItemIds: ["necklace_grey","necklace_green","necklace_blue"],
   },
-  "recipe-chakra-blade": {
-    id: "recipe-chakra-blade",
-    resultItemId: "chakra-blade",
-    componentItemIds: ["kunai", "chakra-core"],
+  "necklace_green": {
+    id: "necklace_green",
+    resultItemId: "necklace_green",
+    componentItemIds: ["necklace_grey"],
+  },
+  "necklace_red": {
+    id: "necklace_red",
+    resultItemId: "necklace_red",
+    componentItemIds: ["necklace_grey"],
+  },
+  "necklace_six_paths": {
+    id: "necklace_six_paths",
+    resultItemId: "necklace_six_paths",
+    componentItemIds: ["necklace_red", "necklace_green", "necklace_blue"],
   },
 };
