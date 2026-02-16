@@ -72,20 +72,54 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 1rem;
   position: relative;
-  padding: 2rem 0;
+  padding: 1rem 0 1rem 0;
   border-top: 3px solid var(--color-border-primary);
 
   .top {
+    display: flex;
+    gap: 1rem;
+
+    button {
+      position: relative;
+      padding: 0.8rem 3rem;
+      min-width: 12rem;
+
+      span {
+        color: var(--color-text-tetriary);
+        font-weight: 700;
+      }
+    }
+
+    button::before {
+      background: url(../assets/ui/NCOW-BrushStroke-2.png) no-repeat 50% / 100% 100%;
+      filter: invert(100%);
+      transition:
+        filter 600ms ease,
+        transform 500ms ease;
+    }
+
+    button:hover {
+      cursor: pointer;
+
+      span {
+        color: var(--color-text-primary);
+      }
+    }
+
+    button:hover::before {
+      filter: invert(50%);
+      transform: scale(1.2);
+    }
   }
 
   .bottom {
     width: 100%;
     height: 100%;
     display: flex;
-    align-items: center;
     border-top: 3px solid var(--color-border-primary);
+    padding-top: 1rem;
 
     .item_list_content {
       position: relative;

@@ -23,16 +23,16 @@ export default function ItemIntro() {
 
       <div className="item_list pseudo">
         <div className="top">
-          <button className="general">
+          <button className="general pseudo">
             <span>General</span>
           </button>
-          <button className="consumables">
+          <button className="consumables pseudo">
             <span>Consumables</span>
           </button>
-          <button className="scientific">
+          <button className="scientific pseudo">
             <span>Scientific Ninja Tools</span>
           </button>
-          <button className="recipes">
+          <button className="recipes pseudo">
             <span>Recipes</span>
           </button>
         </div>
