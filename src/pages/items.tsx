@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom";
+import ItemIntro from "../components/item_intro";
 
 export default function Items() {
   return (
     <div>
-      <h1>This is the Items Page</h1>
+      <ItemIntro></ItemIntro>
     </div>
   );
 }
